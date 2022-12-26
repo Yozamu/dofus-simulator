@@ -1,30 +1,17 @@
-import Image from 'next/image';
+import { styled } from '@mui/material';
+import { useState } from 'react';
+import Equipment from '../../components/Equipment';
 import { getEquipmentData } from '../../helpers/data';
 
-const Equipment = (props) => {
-  const { equipment } = props;
-  const slicedEquipment = equipment.slice(0, 50);
+const EquipmentPage = (props) => {
+  const [equipment, setEquipment] = useState(props.equipment);
   return (
-    <div>
+    <div className={props.className}>
       Equipment
-      <ul>
-        {slicedEquipment.map((eq) => (
+      <ul className="equipment-list">
+        {equipment.map((eq) => (
           <li key={eq._id}>
-            {/*<Image src={eq.imgUrl} alt="Equipment image" width={64} height={64} />*/}
-            Level {eq.level} - {eq.name}
-            {eq.statistics && (
-              <ul>
-                {eq.statistics.map((stat, index) => (
-                  <li key={index}>
-                    {Object.entries(stat).map(([key, val]) => (
-                      <>
-                        {key}: {val.min} - {val.max}
-                      </>
-                    ))}
-                  </li>
-                ))}
-              </ul>
-            )}
+            <Equipment equipment={eq} />
           </li>
         ))}
       </ul>
@@ -33,15 +20,19 @@ const Equipment = (props) => {
 };
 
 export async function getStaticProps() {
-  const equipmentResponse = ''; //await fetch('https://fr.dofus.dofapi.fr/equipments');
   const equipment = await getEquipmentData();
-  console.log(equipment);
-  //const equipment = await equipmentResponse.json();
   return {
     props: {
-      equipment,
+      equipment: equipment.data.slice(0, 50),
     },
   };
 }
 
-export default Equipment;
+export default styled(EquipmentPage)`
+  .equipment-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    list-style-type: none;
+  }
+`;
