@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import Head from 'next/head';
 
 const AdminPage = () => {
@@ -12,7 +13,9 @@ const AdminPage = () => {
       <Head>
         <title>Dofus simulator - Admin</title>
       </Head>
-      <button onClick={updateData}>Update data</button>
+      <Button onClick={updateData} variant="outlined">
+        Update data
+      </Button>
     </>
   );
 };

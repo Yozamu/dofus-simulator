@@ -10,12 +10,16 @@ const CLASSES_FILE = 'classes.json';
 const MONSTERS_FILE = 'monsters.json';
 const WEAPONS_FILE = 'weapons.json';
 const SETS_FILE = 'sets.json';
+const PETS_FILE = 'pets.json';
+const MOUNTS_FILE = 'mounts.json';
 // API names for DofAPI
 const EQUIPMENT_API = 'equipments';
 const CLASSES_API = 'classes';
 const MONSTERS_API = 'monsters';
 const WEAPONS_API = 'weapons';
 const SETS_API = 'sets';
+const PETS_API = 'pets';
+const MOUNTS_API = 'mounts';
 
 // Helpers
 
@@ -65,6 +69,10 @@ export const getWeaponsData = async () => await getJsonData(WEAPONS_FILE);
 
 export const getSetsData = async () => await getJsonData(SETS_FILE);
 
+export const getPetsData = async () => await getJsonData(PETS_FILE);
+
+export const getMountsData = async () => await getJsonData(MOUNTS_FILE);
+
 // Updaters
 
 export const updateEquipment = async () => await updateData(EQUIPMENT_FILE, EQUIPMENT_API);
@@ -77,10 +85,16 @@ export const updateWeapons = async () => await updateData(WEAPONS_FILE, WEAPONS_
 
 export const updateSets = async () => await updateData(SETS_FILE, SETS_API);
 
+export const updatePets = async () => await updateData(PETS_FILE, PETS_API);
+
+export const updateMounts = async () => await updateData(MOUNTS_FILE, MOUNTS_API);
+
 export const updateAll = async () => {
   await updateEquipment();
   await updateClasses();
   await updateMonsters();
   await updateWeapons();
   await updateSets();
+  await updatePets();
+  await updateMounts();
 };

@@ -1,6 +1,25 @@
 import '../styles/globals.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Layout from '../components/layout/Layout';
 
-// Use https://dofapi.fr/ for REST requests
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#FFF',
+      contrastText: '#303030',
+    },
+    background: {
+      default: '#303030',
+    },
+  },
+});
+
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <ThemeProvider theme={theme}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
+  );
 }

@@ -7,7 +7,6 @@ const EquipmentPage = (props) => {
   const [equipment, setEquipment] = useState(props.equipment);
   return (
     <div className={props.className}>
-      Equipment
       <ul className="equipment-list">
         {equipment.map((eq) => (
           <li key={eq._id}>
