@@ -1,17 +1,18 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { CLASSES, EQUIPMENT, MONSTERS, MOUNTS, PETS, SETS, WEAPONS } from './constants';
 
 const DOFAPI_URL = 'https://fr.dofus.dofapi.fr';
 const DATA_FOLDER = 'data';
 const IMAGES_FOLDER = 'public/images';
 // Data filenames
-const EQUIPMENT_FILE = 'equipment.json';
-const CLASSES_FILE = 'classes.json';
-const MONSTERS_FILE = 'monsters.json';
-const WEAPONS_FILE = 'weapons.json';
-const SETS_FILE = 'sets.json';
-const PETS_FILE = 'pets.json';
-const MOUNTS_FILE = 'mounts.json';
+const EQUIPMENT_FILE = `${EQUIPMENT}.json`;
+const CLASSES_FILE = `${CLASSES}.json`;
+const MONSTERS_FILE = `${MONSTERS}.json`;
+const WEAPONS_FILE = `${WEAPONS}.json`;
+const SETS_FILE = `${SETS}.json`;
+const PETS_FILE = `${PETS}.json`;
+const MOUNTS_FILE = `${MOUNTS}.json`;
 // API names for DofAPI
 const EQUIPMENT_API = 'equipments';
 const CLASSES_API = 'classes';
@@ -57,21 +58,63 @@ const updateData = async (filename, api) => {
   fs.writeFile(filePath, JSON.stringify(data));
 };
 
-// Getters
+// Getter
 
-export const getEquipmentData = async () => await getJsonData(EQUIPMENT_FILE);
+const isItemWithinInterval = (item, statRange) => {
+  const itemRange = { ...item, max: item.max || item.min };
+  if (!statRange.max) statRange.max = 9999;
+  if (!statRange.min) statRange.min = -9999;
+  const isItemStatHighEnough = statRange.min && itemRange.max >= statRange.min;
+  const isItemStatLowEnough = statRange.max && itemRange.min <= statRange.max;
+  return isItemStatHighEnough && isItemStatLowEnough;
+};
 
-export const getClassesData = async () => await getJsonData(CLASSES_FILE);
+const areStatsWithinValues = (itemStats = [], statsArray) => {
+  for (let stat of statsArray) {
+    let found = false;
+    for (let itemStat of itemStats) {
+      const itemStatName = Object.keys(itemStat)[0];
+      const statName = Object.keys(stat)[0];
+      if (itemStatName.toLowerCase() !== statName) {
+        continue;
+      }
+      found = true;
+      if (!isItemWithinInterval(itemStat[itemStatName], stat[statName])) {
+        return false;
+      }
+    }
+    if (!found) {
+      return false;
+    }
+  }
+  return true;
+};
 
-export const getMonstersData = async () => await getJsonData(MONSTERS_FILE);
+const applyFilters = (data, filters) => {
+  Object.entries(filters).forEach(([key, value]) => {
+    if (typeof value === 'string') {
+      data = data.filter((element) => element[key].toLowerCase().includes(value));
+    } else if (key === 'statistics') {
+      data = data.filter((element) => areStatsWithinValues(element[key], value));
+    } else {
+      // Simple range filter
+      value.min && (data = data.filter((e) => e[key] >= value.min));
+      value.max && (data = data.filter((e) => e[key] <= value.max));
+    }
+  });
+  return data;
+};
 
-export const getWeaponsData = async () => await getJsonData(WEAPONS_FILE);
-
-export const getSetsData = async () => await getJsonData(SETS_FILE);
-
-export const getPetsData = async () => await getJsonData(PETS_FILE);
-
-export const getMountsData = async () => await getJsonData(MOUNTS_FILE);
+export const getFilteredData = async (category, filters = {}, size = 50, offset = 0) => {
+  const json = await getJsonData(`${category}.json`);
+  let data = applyFilters(json.data, filters);
+  data.sort((a, b) => {
+    if (a.level !== b.level) return b.level - a.level;
+    return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+  });
+  data = data.slice(offset, offset + size);
+  return data;
+};
 
 // Updaters
 

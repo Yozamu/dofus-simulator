@@ -1,34 +1,34 @@
 import { Card, CardActionArea, CardContent, CardMedia, styled, Typography } from '@mui/material';
 import Image from 'next/image';
-import ImageWithFallback from './ImageWithFallback';
+import ImageWithFallback from '../ImageWithFallback';
 
-const Equipment = (props) => {
-  const { equipment, className } = props;
-  console.log(equipment);
+const Item = (props) => {
+  const { item, category, className } = props;
+
   return (
     <Card className={className}>
       <CardActionArea onClick={() => alert('Clicked card')}>
         <CardMedia>
-          <Image src={`/images/equipment/${equipment.ankamaId}.png`} alt="Equipment image" width={64} height={64} />
+          <Image src={`/images/${category}/${item.ankamaId}.png`} alt={item.name} width={64} height={64} />
         </CardMedia>
         <CardContent>
           <Typography variant="h6" component="div">
-            {equipment.name}
+            {item.name}
           </Typography>
           <Typography gutterBottom variant="subtitle1" component="div">
-            Level {equipment.level}
+            Level {item.level}
           </Typography>
           <hr />
-          {equipment.statistics && (
+          {item.statistics && (
             <ul className="stats">
-              {equipment.statistics.map((stat, index) =>
+              {item.statistics.map((stat, index) =>
                 Object.entries(stat).map(([key, val]) => (
                   <li key={index} className={val.min < 0 ? 'negative' : ''}>
                     <ImageWithFallback
                       key={key}
-                      src={`/images/ui/stats/${key.toLowerCase()}.png`}
+                      src={`/images/ui/stats/${key.includes(' ') ? 'other' : key.toLowerCase()}.png`}
                       fallbackSrc={'/images/ui/stats/other.png'}
-                      alt="stat image"
+                      alt={key}
                       className="icon"
                       width={32}
                       height={32}
@@ -45,7 +45,7 @@ const Equipment = (props) => {
   );
 };
 
-export default styled(Equipment)`
+export default styled(Item)`
   margin: 10px;
   color: #ffffff;
   background-color: #424242;

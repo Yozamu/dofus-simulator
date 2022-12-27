@@ -35,13 +35,24 @@ export default styled(Navbar)`
     color: #ffffff;
     background-color: #303030;
   }
+
+  nav > div {
+    padding: 0;
+  }
+
   button {
     color: #ffffff;
     background-color: #303030;
     margin: 0 4px;
   }
+
   a {
     color: inherit;
     text-decoration: inherit;
+  }
+
+  nav div > a:first-child {
+    margin-right: 20px;
+    border-right: 1px solid #424242;
   }
 `;
