@@ -32,8 +32,8 @@ const Navbar = (props) => {
 
 export default styled(Navbar)`
   nav {
-    color: #ffffff;
-    background-color: #303030;
+    color: var(--foreground);
+    background-color: var(--background-light);
   }
 
   nav > div {
@@ -41,8 +41,8 @@ export default styled(Navbar)`
   }
 
   button {
-    color: #ffffff;
-    background-color: #303030;
+    color: var(--foreground);
+    background-color: var(--background-light);
     margin: 0 4px;
   }
 
@@ -53,6 +53,6 @@ export default styled(Navbar)`
 
   nav div > a:first-child {
     margin-right: 20px;
-    border-right: 1px solid #424242;
+    border-right: 1px solid var(--background-lighter);
   }
 `;

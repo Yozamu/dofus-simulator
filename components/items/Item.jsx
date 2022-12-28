@@ -9,9 +9,15 @@ const Item = (props) => {
     <Card className={className}>
       <CardActionArea onClick={() => alert('Clicked card')}>
         <CardMedia>
-          <Image src={`/images/${category}/${item.ankamaId}.png`} alt={item.name} width={64} height={64} />
+          <Image
+            className="item-image"
+            src={`/images/${category}/${item.ankamaId}.png`}
+            alt={item.name}
+            width={64}
+            height={64}
+          />
         </CardMedia>
-        <CardContent>
+        <CardContent className="card-content">
           <Typography variant="h6" component="div">
             {item.name}
           </Typography>
@@ -30,10 +36,12 @@ const Item = (props) => {
                       fallbackSrc={'/images/ui/stats/other.png'}
                       alt={key}
                       className="icon"
-                      width={32}
-                      height={32}
+                      width={24}
+                      height={24}
                     />
-                    {key}: {val.min} {val.max && `à ${val.max}`}
+                    <span>
+                      {key}: {val.min} {val.max && `à ${val.max}`}
+                    </span>
                   </li>
                 ))
               )}
@@ -47,14 +55,34 @@ const Item = (props) => {
 
 export default styled(Item)`
   margin: 10px;
-  color: #ffffff;
-  background-color: #424242;
+  color: var(--foreground);
+  background-color: var(--background-light);
+
+  hr {
+    background-color: var(--background-lighter);
+    border: none;
+    height: 1px;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  .item-image {
+    position: absolute;
+    right: 0px;
+  }
 
   button {
     display: flex;
+    justify-content: flex-start;
     align-items: flex-start;
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 460px;
+  }
+
+  .card-content {
+    width: 100%;
   }
 
   .stats {

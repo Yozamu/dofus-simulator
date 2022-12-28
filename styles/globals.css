@@ -1,7 +1,13 @@
 :root {
-    color: white;
-    background-color: #303030;
+    --background: #303030;
+    --background-light: #424242;
+    --background-lighter: #646464;
+    --foreground: #f6f6f6;
+
+    color: var(--foreground);
+    background-color: var(--background);
     margin-top: 64px;
+    font-family: 'Roboto', 'Helvetica', 'Arial'
 }
 
 .icon {

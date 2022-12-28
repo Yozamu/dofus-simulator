@@ -1,6 +1,7 @@
 import { styled } from '@mui/material';
 import Head from 'next/head';
 import ItemList from '../../components/items/ItemList';
+import Filters from '../../components/filters/Filters';
 import { EQUIPMENT } from '../../helpers/constants';
 import { getFilteredData } from '../../helpers/data';
 
@@ -10,17 +11,16 @@ const EquipmentPage = (props) => {
       <Head>
         <title>Dofus Simulator - Equipement</title>
       </Head>
-      <ItemList items={props.equipment} category={EQUIPMENT} />
+      <div className={`${props.className} wrapper`}>
+        <Filters className="filters" />
+        <ItemList className="items" items={props.equipment} category={EQUIPMENT} />
+      </div>
     </>
   );
 };
 
 export async function getStaticProps() {
-  const equipment = await getFilteredData(EQUIPMENT, {
-    level: { min: 120, max: 195 },
-    type: 'chapeau',
-    statistics: [{ pa: { min: 1 } }, { puissance: { max: 40 } }],
-  });
+  const equipment = await getFilteredData(EQUIPMENT);
   return {
     props: {
       equipment: equipment,
@@ -28,4 +28,8 @@ export async function getStaticProps() {
   };
 }
 
-export default styled(EquipmentPage)``;
+export default styled(EquipmentPage)`
+  .items {
+    margin-left: 200px;
+  }
+`;
