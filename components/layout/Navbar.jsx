@@ -8,8 +8,7 @@ const Navbar = (props) => {
     { link: '/stuffs', name: 'Stuffs', icon: 'character' },
     { link: '/equipment', name: 'Equipements', icon: 'equipment' },
     { link: '/weapons', name: 'Armes', icon: 'weapons' },
-    { link: '/pets', name: 'Familiers', icon: 'pets' },
-    { link: '/mounts', name: 'Montures', icon: 'mounts' },
+    { link: '/pets', name: 'Familiers & Montures', icon: 'pets' },
   ];
 
   return (

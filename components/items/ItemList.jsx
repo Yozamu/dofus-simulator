@@ -1,9 +1,7 @@
 import { styled } from '@mui/material';
-import { useState } from 'react';
 import Item from './Item';
 
-const ItemList = (props) => {
-  const [items, setItems] = useState(props.items);
+const ItemList = ({ items, ...props }) => {
   return (
     <div className={props.className}>
       <ul className="items-list">

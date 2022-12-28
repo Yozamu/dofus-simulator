@@ -4,6 +4,7 @@ const NameFilter = ({ name, setName }) => {
   return (
     <div>
       <TextField
+        id="name"
         label="Nom"
         variant="standard"
         value={name}

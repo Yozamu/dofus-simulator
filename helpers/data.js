@@ -96,6 +96,8 @@ const applyFilters = (data, filters) => {
       data = data.filter((element) => element[key].toLowerCase().includes(value));
     } else if (key === 'statistics') {
       data = data.filter((element) => areStatsWithinValues(element[key], value));
+    } else if (Array.isArray(value) && value.length > 0) {
+      data = data.filter((element) => value.some((condition) => element[key] === condition));
     } else {
       // Simple range filter
       value.min && (data = data.filter((e) => e[key] >= value.min));

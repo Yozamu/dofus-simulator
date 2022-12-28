@@ -7,7 +7,7 @@ const Item = (props) => {
 
   return (
     <Card className={className}>
-      <CardActionArea onClick={() => alert('Clicked card')}>
+      <CardActionArea onClick={() => console.log('Clicked card')}>
         <CardMedia>
           <Image
             className="item-image"

@@ -4,26 +4,29 @@ import ItemList from '../../components/items/ItemList';
 import Filters from '../../components/filters/Filters';
 import { EQUIPMENT } from '../../helpers/constants';
 import { getFilteredData } from '../../helpers/data';
+import { useState } from 'react';
 
 const EquipmentPage = (props) => {
+  const [items, setItems] = useState(props.items);
+
   return (
     <>
       <Head>
         <title>Dofus Simulator - Equipement</title>
       </Head>
       <div className={`${props.className} wrapper`}>
-        <Filters className="filters" />
-        <ItemList className="items" items={props.equipment} category={EQUIPMENT} />
+        <Filters setItems={setItems} />
+        <ItemList className="items" items={items} category={EQUIPMENT} />
       </div>
     </>
   );
 };
 
 export async function getStaticProps() {
-  const equipment = await getFilteredData(EQUIPMENT);
+  const items = await getFilteredData(EQUIPMENT);
   return {
     props: {
-      equipment: equipment,
+      items: items,
     },
   };
 }

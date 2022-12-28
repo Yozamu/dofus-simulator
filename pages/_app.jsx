@@ -5,7 +5,7 @@ import Layout from '../components/layout/Layout';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#FFF',
+      main: '#b0de00',
       contrastText: '#303030',
     },
     background: {
