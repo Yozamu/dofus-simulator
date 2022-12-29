@@ -1,11 +1,21 @@
 import { Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select } from '@mui/material';
 
-const availableCategories = ['Amulette', 'Anneau', 'Coiffe'];
+const availableCategories = [
+  'Amulette',
+  'Anneau',
+  'Bottes',
+  'Bouclier',
+  'Ceinture',
+  'Cape',
+  'Chapeau',
+  'Dofus',
+  'Trophée',
+];
 
 const CategoriesFilter = ({ categories, setCategories }) => {
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 180 }}>
+      <FormControl sx={{ m: 1, width: 180, margin: 0 }}>
         <InputLabel id="categories-label">Catégories</InputLabel>
         <Select
           labelId="categories-label"

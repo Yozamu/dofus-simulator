@@ -41,7 +41,6 @@ export default styled(Navbar)`
 
   button {
     color: var(--foreground);
-    background-color: var(--background-light);
     margin: 0 4px;
   }
 

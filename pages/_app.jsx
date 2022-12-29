@@ -4,12 +4,18 @@ import Layout from '../components/layout/Layout';
 
 const theme = createTheme({
   palette: {
+    mode: 'dark',
     primary: {
-      main: '#b0de00',
+      main: '#b0de00', // or 9ce900
       contrastText: '#303030',
     },
     background: {
       default: '#303030',
+      paper: '#424242',
+    },
+    text: {
+      primary: '#fff',
+      secondary: '#fff',
     },
   },
 });

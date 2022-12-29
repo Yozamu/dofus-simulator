@@ -78,7 +78,7 @@ export default styled(Item)`
     justify-content: flex-start;
     align-items: flex-start;
     width: 320px;
-    height: 460px;
+    height: 480px;
   }
 
   .card-content {

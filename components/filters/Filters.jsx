@@ -5,6 +5,7 @@ import { EQUIPMENT } from '../../helpers/constants';
 import CategoriesFilter from './CategoriesFilter';
 import LevelFilter from './LevelFilter';
 import NameFilter from './NameFilter';
+import StatisticsFilter from './StatisticsFilter';
 
 const Filters = ({ setItems, ...props }) => {
   const [name, setName] = useState('');
@@ -27,12 +28,14 @@ const Filters = ({ setItems, ...props }) => {
 
   return (
     <Drawer className={`${props.className} drawer`} variant="permanent">
-      <Button variant="outlined" startIcon={<FilterAlt />} onClick={handleFilteredSearch}>
+      <Button variant="contained" startIcon={<FilterAlt />} onClick={handleFilteredSearch}>
         Filtrer
       </Button>
       <NameFilter name={name} setName={setName} />
+      <br />
       <LevelFilter levelRange={levelRange} setLevelRange={setLevelRange} />
       <CategoriesFilter categories={categories} setCategories={setCategories} />
+      <StatisticsFilter stats={stats} setStats={setStats} />
     </Drawer>
   );
 };
