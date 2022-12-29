@@ -1,6 +1,5 @@
 import { Card, CardActionArea, CardContent, CardMedia, styled, Typography } from '@mui/material';
 import Image from 'next/image';
-import ImageWithFallback from '../ImageWithFallback';
 
 const Item = (props) => {
   const { item, category, className } = props;
@@ -30,22 +29,38 @@ const Item = (props) => {
               {item.statistics.map((stat, index) =>
                 Object.entries(stat).map(([key, val]) => (
                   <li key={index} className={val.min < 0 ? 'negative' : ''}>
-                    <ImageWithFallback
+                    <Image
                       key={key}
-                      src={`/images/ui/stats/${key.includes(' ') ? 'other' : key.toLowerCase()}.png`}
-                      fallbackSrc={'/images/ui/stats/other.png'}
+                      src={
+                        key.length < 30
+                          ? `/images/ui/stats/${key.toLowerCase().replace(/[0-9]| |-|%/g, '')}.png`
+                          : '/images/ui/stats/other.png'
+                      }
                       alt={key}
                       className="icon"
                       width={24}
                       height={24}
                     />
                     <span>
-                      {key}: {val.min} {val.max && `à ${val.max}`}
+                      {key.replace(/[0-9]|-/g, '')}: {val.min} {val.max && `à ${val.max}`}
                     </span>
                   </li>
                 ))
               )}
             </ul>
+          )}
+          {item.conditions && (
+            <>
+              <hr />
+              <Typography gutterBottom variant="subtitle1" component="div">
+                Conditions
+              </Typography>
+              <ul>
+                {item.conditions.map((condition) => (
+                  <li key={condition}>{condition}</li>
+                ))}
+              </ul>
+            </>
           )}
         </CardContent>
       </CardActionArea>
@@ -65,7 +80,7 @@ export default styled(Item)`
   }
 
   ul {
-    padding: 0;
+    line-height: 1.5;
   }
 
   .item-image {
@@ -78,7 +93,7 @@ export default styled(Item)`
     justify-content: flex-start;
     align-items: flex-start;
     width: 320px;
-    height: 480px;
+    height: 500px;
   }
 
   .card-content {
@@ -86,6 +101,7 @@ export default styled(Item)`
   }
 
   .stats {
+    padding: 0;
     list-style-type: none;
   }
 
