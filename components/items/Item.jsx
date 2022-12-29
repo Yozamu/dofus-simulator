@@ -92,7 +92,7 @@ export default styled(Item)`
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 320px;
+    min-width: 320px;
     height: 500px;
   }
 

@@ -22,4 +22,8 @@ export default styled(ItemList)`
     justify-content: space-evenly;
     list-style-type: none;
   }
+
+  .items-list > li {
+    flex-basis: 21%;
+  }
 `;

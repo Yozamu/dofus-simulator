@@ -8,7 +8,7 @@ import NameFilter from './NameFilter';
 import StatisticsFilter from './StatisticsFilter';
 import Slide from '@mui/material/Slide';
 
-const Filters = ({ setItems, ...props }) => {
+const Filters = ({ setItems, availableCategories, ...props }) => {
   const [name, setName] = useState('');
   const [levelRange, setLevelRange] = useState([1, 200]);
   const [categories, setCategories] = useState(props.categories || []);
@@ -50,7 +50,11 @@ const Filters = ({ setItems, ...props }) => {
       <NameFilter name={name} setName={setName} />
       <br />
       <LevelFilter levelRange={levelRange} setLevelRange={setLevelRange} />
-      <CategoriesFilter categories={categories} setCategories={setCategories} />
+      <CategoriesFilter
+        categories={categories}
+        setCategories={setCategories}
+        availableCategories={availableCategories}
+      />
       <StatisticsFilter stats={stats} setStats={setStats} />
       <Snackbar
         open={snackbarIsOpened}

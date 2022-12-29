@@ -60,6 +60,12 @@ const updateData = async (filename, api) => {
 
 // Getter
 
+const extractMeaningfulData = (json) =>
+  json.data.map((element) => {
+    const { imgUrl, url, recipe, description, ...rest } = element;
+    return rest;
+  });
+
 const isItemWithinInterval = (item, statRange) => {
   const itemRange = { ...item, max: item.max || item.min };
   if (!statRange.max) statRange.max = 9999;
@@ -107,14 +113,15 @@ const applyFilters = (data, filters) => {
   return data;
 };
 
-export const getFilteredData = async (category, filters = {}, size = 50, offset = 0) => {
+export const getFilteredData = async (category, filters = {}, size = 24, offset = 0) => {
   const json = await getJsonData(`${category}.json`);
-  let data = applyFilters(json.data, filters);
+  let data = extractMeaningfulData(json);
+  data = applyFilters(data, filters);
   data.sort((a, b) => {
     if (a.level !== b.level) return b.level - a.level;
     return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
   });
-  data = data.slice(offset, offset + size);
+  data = data.slice(offset, +offset + size);
   return data;
 };
 

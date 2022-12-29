@@ -33,6 +33,7 @@ const StatisticsFilter = ({ stats = [], setStats, ...props }) => {
           key={stat.name}
           selected={stats.includes(stat.name)}
           onChange={(e) => handleStatToggle(stat.name)}
+          value={stat.name}
         >
           <Image src={`/images/ui/stats/${stat.icon}.png`} alt={stat} width={24} height={24} />
           {stat.name}

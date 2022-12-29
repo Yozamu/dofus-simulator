@@ -1,38 +1,32 @@
-import { styled } from '@mui/material';
-import Head from 'next/head';
-import ItemList from '../../components/items/ItemList';
-import Filters from '../../components/filters/Filters';
-import { EQUIPMENT } from '../../helpers/constants';
-import { getFilteredData } from '../../helpers/data';
-import { useState } from 'react';
+import { retrieveItems } from '../api/items';
+import ItemsPage from '../../components/items/ItemsPage';
 
-const EquipmentPage = (props) => {
-  const [items, setItems] = useState(props.items);
+const EquipmentPage = ({ items, query }) => {
+  const availableCategories = [
+    'Amulette',
+    'Anneau',
+    'Bottes',
+    'Bouclier',
+    'Ceinture',
+    'Cape',
+    'Chapeau',
+    'Dofus',
+    'Trophée',
+  ];
 
-  return (
-    <>
-      <Head>
-        <title>Dofus Simulator - Equipement</title>
-      </Head>
-      <div className={`${props.className} wrapper`}>
-        <Filters setItems={setItems} />
-        <ItemList className="items" items={items} category={EQUIPMENT} />
-      </div>
-    </>
-  );
+  return <ItemsPage title="Equipement" query={query} items={items} availableCategories={availableCategories} />;
 };
 
-export async function getStaticProps() {
-  const items = await getFilteredData(EQUIPMENT);
+export async function getServerSideProps(context) {
+  const query = { ...context.query, type: 'equipment' };
+  const req = { ...context.req, query };
+  const items = await retrieveItems(req);
   return {
     props: {
-      items: items,
+      items,
+      query,
     },
   };
 }
 
-export default styled(EquipmentPage)`
-  .items {
-    margin-left: 200px;
-  }
-`;
+export default EquipmentPage;

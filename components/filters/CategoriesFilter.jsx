@@ -9,19 +9,7 @@ import {
   styled,
 } from '@mui/material';
 
-const availableCategories = [
-  'Amulette',
-  'Anneau',
-  'Bottes',
-  'Bouclier',
-  'Ceinture',
-  'Cape',
-  'Chapeau',
-  'Dofus',
-  'Trophée',
-];
-
-const CategoriesFilter = ({ categories, setCategories, ...props }) => {
+const CategoriesFilter = ({ categories, setCategories, availableCategories, ...props }) => {
   return (
     <div className={props.className}>
       <FormControl sx={{ m: 1, width: 180, margin: 0 }}>

@@ -50,7 +50,7 @@ export default styled(Navbar)`
     text-decoration: inherit;
   }
 
-  nav div > a:first-child {
+  nav div > a:first-of-type {
     margin-right: 20px;
     border-right: 1px solid var(--background-lighter);
   }
