@@ -1,6 +1,6 @@
 import { retrieveItems } from './api/items';
 import ItemsPage from '../components/items/ItemsPage';
-import { PETS, WEAPONS } from '../helpers/constants';
+import { PETS } from '../helpers/constants';
 
 const PetsPage = ({ items, query }) => {
   const availableCategories = ['Dragodinde', 'Muldo', 'Familier', 'Montilier'];
