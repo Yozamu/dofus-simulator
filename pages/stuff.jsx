@@ -43,7 +43,7 @@ const StuffPage = (props) => {
 
   return (
     <Grid container spacing={2} className={props.className}>
-      <Grid item xs={3}>
+      <Grid item xs={4}>
         <ul>
           Stuff page
           {Object.entries(items).map(([key, val]) => (
@@ -54,11 +54,11 @@ const StuffPage = (props) => {
         </ul>
         <StuffCharacteristics />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={4}>
         <div>xs=6</div>
         <StuffShowcase items={items} />
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={4}>
         <div>xs=3</div>
         <StuffStats />
       </Grid>
@@ -66,4 +66,6 @@ const StuffPage = (props) => {
   );
 };
 
-export default styled(StuffPage)``;
+export default styled(StuffPage)`
+  margin-top: 50px;
+`;
