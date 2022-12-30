@@ -1,13 +1,13 @@
 import { styled } from '@mui/material';
 import Item from './Item';
 
-const ItemList = ({ items, ...props }) => {
+const ItemList = ({ items, category, ...props }) => {
   return (
     <div className={props.className}>
       <ul className="items-list">
         {items.map((item) => (
           <li key={item._id}>
-            <Item item={item} category={props.category} />
+            <Item item={item} category={category} />
           </li>
         ))}
       </ul>

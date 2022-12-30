@@ -24,7 +24,7 @@ const handler = async (req, res) => {
   if (req.method === 'GET') {
     data = await retrieveItems(req);
   }
-  res.status(200).json({ data });
+  res.status(200).json(data);
 };
 
 export default handler;

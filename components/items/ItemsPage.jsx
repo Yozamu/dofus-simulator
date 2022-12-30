@@ -1,33 +1,62 @@
 import { styled } from '@mui/material';
 import Head from 'next/head';
 import { useCallback, useEffect, useState } from 'react';
-import { EQUIPMENT } from '../../helpers/constants';
+import usePrevious from '../../hooks/usePrevious';
 import Filters from '../filters/Filters';
 import ItemList from './ItemList';
 
-const ItemsPage = ({ query, title, availableCategories, ...props }) => {
+const ItemsPage = ({ query = {}, title, availableCategories, ...props }) => {
   const [items, setItems] = useState(props.items);
+  const [itemCount, setItemCount] = useState(props.count);
   const [isFetching, setIsFetching] = useState(false);
+  const { type, ...queryRest } = query;
+  const [filters, setFilters] = useState({ level: [1, 200], ...queryRest });
+  const prevFilters = usePrevious(filters);
 
-  const handleScroll = useCallback(async () => {
-    if (isFetching) return;
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      setIsFetching(true);
-      const queryParams = [`offset=${items.length}`];
-      Object.entries(query).map(([key, val]) => {
+  const getQueryParams = useCallback(
+    (shouldReset) => {
+      const queryParams = [`type=${type}`, `offset=${shouldReset ? 0 : items.length}`];
+      Object.entries(filters).map(([key, val]) => {
         queryParams.push(`${key}=${val}`);
       });
-      const res = await fetch(`/api/items?${queryParams.join('&')}`);
-      const data = await res.json();
-      setItems(items.concat(data.data));
+      return queryParams.join('&');
+    },
+    [items, type, filters]
+  );
+
+  const fetchItems = useCallback(
+    async (shouldReset) => {
+      if (isFetching) return;
+      setIsFetching(true);
+      const queryParams = getQueryParams(shouldReset);
+      const res = await fetch(`/api/items?${queryParams}`);
+      const json = await res.json();
+      setItems(shouldReset ? json.data : items.concat(json.data));
+      setItemCount(json.count);
       setIsFetching(false);
+    },
+    [getQueryParams, isFetching, items]
+  );
+
+  const handleScroll = useCallback(async () => {
+    const itemsLeftToFetch = itemCount - items.length;
+    const hasScrolledEnough = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+    if (itemsLeftToFetch > 0 && hasScrolledEnough) {
+      fetchItems(false);
     }
-  }, [isFetching, query, items]);
+  }, [fetchItems, items, itemCount]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
+
+  useEffect(() => {
+    if (prevFilters && prevFilters !== filters) {
+      fetchItems(true);
+      window.scrollTo(0, 0);
+    }
+  }, [fetchItems, prevFilters, filters]);
 
   return (
     <>
@@ -35,8 +64,8 @@ const ItemsPage = ({ query, title, availableCategories, ...props }) => {
         <title>Dofus Simulator - {title}</title>
       </Head>
       <div className={`${props.className} wrapper`}>
-        <Filters setItems={setItems} availableCategories={availableCategories} />
-        <ItemList className="items" items={items} category={EQUIPMENT} />
+        <Filters setFilters={setFilters} availableCategories={availableCategories} />
+        <ItemList className="items" items={items} category={type} />
       </div>
     </>
   );

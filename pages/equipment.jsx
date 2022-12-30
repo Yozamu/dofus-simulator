@@ -1,5 +1,6 @@
-import { retrieveItems } from '../api/items';
-import ItemsPage from '../../components/items/ItemsPage';
+import { retrieveItems } from './api/items';
+import ItemsPage from '../components/items/ItemsPage';
+import { EQUIPMENT } from '../helpers/constants';
 
 const EquipmentPage = ({ items, query }) => {
   const availableCategories = [
@@ -18,12 +19,13 @@ const EquipmentPage = ({ items, query }) => {
 };
 
 export async function getServerSideProps(context) {
-  const query = { ...context.query, type: 'equipment' };
+  const query = { ...context.query, type: EQUIPMENT };
   const req = { ...context.req, query };
-  const items = await retrieveItems(req);
+  const res = await retrieveItems(req);
   return {
     props: {
-      items,
+      items: res.data,
+      count: res.count,
       query,
     },
   };

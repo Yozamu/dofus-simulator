@@ -113,16 +113,17 @@ const applyFilters = (data, filters) => {
   return data;
 };
 
-export const getFilteredData = async (category, filters = {}, size = 24, offset = 0) => {
-  const json = await getJsonData(`${category}.json`);
+export const getFilteredData = async (type, filters = {}, size = 24, offset = 0) => {
+  const json = await getJsonData(`${type}.json`);
   let data = extractMeaningfulData(json);
   data = applyFilters(data, filters);
   data.sort((a, b) => {
     if (a.level !== b.level) return b.level - a.level;
     return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
   });
+  const count = data.length;
   data = data.slice(offset, +offset + size);
-  return data;
+  return { data, count };
 };
 
 // Updaters

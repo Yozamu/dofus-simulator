@@ -1,33 +1,31 @@
-import { FilterAlt, RestartAlt } from '@mui/icons-material';
+import { RestartAlt } from '@mui/icons-material';
 import { Button, Drawer, IconButton, Snackbar, styled } from '@mui/material';
-import { useState } from 'react';
-import { EQUIPMENT } from '../../helpers/constants';
+import { useEffect, useState } from 'react';
 import CategoriesFilter from './CategoriesFilter';
 import LevelFilter from './LevelFilter';
 import NameFilter from './NameFilter';
 import StatisticsFilter from './StatisticsFilter';
 import Slide from '@mui/material/Slide';
 
-const Filters = ({ setItems, availableCategories, ...props }) => {
+const Filters = ({ setFilters, availableCategories, ...props }) => {
   const [name, setName] = useState('');
   const [levelRange, setLevelRange] = useState([1, 200]);
   const [categories, setCategories] = useState(props.categories || []);
   const [stats, setStats] = useState([]);
   const [snackbarIsOpened, setSnackbarIsOpened] = useState(false);
 
-  const handleFilteredSearch = async () => {
-    let query = `api/items?type=${EQUIPMENT}&`;
-    const queryParams = [];
-    if (name) queryParams.push(`name=${name}`);
-    queryParams.push(`level=${levelRange}`);
-    if (categories.length > 0) queryParams.push(`categories=${categories}`);
-    if (stats.length > 0) queryParams.push(`stats=${stats}`);
-    query += queryParams.join('&');
-    const res = await fetch(query);
-    const json = await res.json();
-    setItems(json.data);
-    window.scrollTo(0, 0);
-  };
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      const filters = {
+        level: levelRange,
+      };
+      if (name) filters.name = name;
+      if (categories.length > 0) filters.categories = categories;
+      if (stats.length > 0) filters.stats = stats;
+      setFilters(filters);
+    }, 500);
+    return () => clearTimeout(timerId);
+  }, [name, levelRange, categories, stats, setFilters]);
 
   const clearFilters = () => {
     setName('');
@@ -39,14 +37,9 @@ const Filters = ({ setItems, availableCategories, ...props }) => {
 
   return (
     <Drawer className={`${props.className} drawer`} variant="permanent">
-      <div>
-        <IconButton color="primary" aria-label="upload picture" component="label" onClick={clearFilters}>
-          <RestartAlt />
-        </IconButton>
-        <Button variant="contained" startIcon={<FilterAlt />} onClick={handleFilteredSearch}>
-          Filtrer
-        </Button>
-      </div>
+      <Button variant="contained" startIcon={<RestartAlt />} onClick={clearFilters}>
+        Reset
+      </Button>
       <NameFilter name={name} setName={setName} />
       <br />
       <LevelFilter levelRange={levelRange} setLevelRange={setLevelRange} />
