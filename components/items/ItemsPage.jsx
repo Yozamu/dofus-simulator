@@ -6,7 +6,7 @@ import usePrevious from '../../hooks/usePrevious';
 import Filters from '../filters/Filters';
 import ItemList from './ItemList';
 
-const ItemsPage = ({ query = {}, title, availableCategories, ...props }) => {
+const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...props }) => {
   const [items, setItems] = useState(props.items);
   const [itemCount, setItemCount] = useState(props.count);
   const [isFetching, setIsFetching] = useState(false);
@@ -70,7 +70,7 @@ const ItemsPage = ({ query = {}, title, availableCategories, ...props }) => {
       </Head>
       <div className={`${props.className} wrapper`}>
         <Filters setFilters={setFilters} availableCategories={availableCategories} />
-        <ItemList className="items" items={items} category={type} />
+        <ItemList className="items" items={items} category={type} itemHeight={itemHeight} />
         {isFetching && (
           <div className="progress">
             <CircularProgress />

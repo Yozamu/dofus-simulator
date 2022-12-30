@@ -17,7 +17,9 @@ const WeaponsPage = ({ items, query }) => {
     'Pioche',
   ];
 
-  return <ItemsPage title="Armes" query={query} items={items} availableCategories={availableCategories} />;
+  return (
+    <ItemsPage title="Armes" query={query} items={items} availableCategories={availableCategories} itemHeight={600} />
+  );
 };
 
 export async function getServerSideProps(context) {

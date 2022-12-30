@@ -1,5 +1,8 @@
 import { Card, CardActionArea, CardContent, CardMedia, styled, Typography } from '@mui/material';
 import Image from 'next/image';
+import ItemCharacteristics from './ItemCharacteristics';
+import ItemConditions from './ItemConditions';
+import ItemStats from './ItemStats';
 
 const Item = (props) => {
   const { item, category, className } = props;
@@ -23,43 +26,22 @@ const Item = (props) => {
           <Typography gutterBottom variant="subtitle1" component="div">
             Level {item.level}
           </Typography>
-          <hr />
+          {item.characteristics && (
+            <>
+              <hr />
+              <ItemCharacteristics characteristics={item.characteristics} />
+            </>
+          )}
           {item.statistics && (
-            <ul className="stats">
-              {item.statistics.map((stat, index) =>
-                Object.entries(stat).map(([key, val]) => (
-                  <li key={index} className={val.min < 0 ? 'negative' : ''}>
-                    <Image
-                      key={key}
-                      src={
-                        key.length < 30
-                          ? `/images/ui/stats/${key.toLowerCase().replace(/[0-9]| |-|%/g, '')}.png`
-                          : '/images/ui/stats/other.png'
-                      }
-                      alt={key}
-                      className="icon"
-                      width={24}
-                      height={24}
-                    />
-                    <span>
-                      {key.replace(/[0-9]|-/g, '')}: {val.min} {val.max && `à ${val.max}`}
-                    </span>
-                  </li>
-                ))
-              )}
-            </ul>
+            <>
+              <hr />
+              <ItemStats stats={item.statistics} />
+            </>
           )}
           {item.conditions && (
             <>
               <hr />
-              <Typography gutterBottom variant="subtitle1" component="div">
-                Conditions
-              </Typography>
-              <ul>
-                {item.conditions.map((condition) => (
-                  <li key={condition}>{condition}</li>
-                ))}
-              </ul>
+              <ItemConditions conditions={item.conditions} />
             </>
           )}
         </CardContent>
@@ -93,19 +75,10 @@ export default styled(Item)`
     justify-content: flex-start;
     align-items: flex-start;
     min-width: 320px;
-    height: 500px;
+    height: ${(props) => props.height}px;
   }
 
   .card-content {
     width: 100%;
-  }
-
-  .stats {
-    padding: 0;
-    list-style-type: none;
-  }
-
-  .negative {
-    color: red;
   }
 `;
