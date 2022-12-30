@@ -5,7 +5,7 @@ import Link from 'next/link';
 const Navbar = (props) => {
   const buttons = [
     { link: '/', name: 'Accueil', icon: 'dofus' },
-    { link: '/stuffs', name: 'Stuffs', icon: 'character' },
+    { link: '/stuff', name: 'Stuff', icon: 'character' },
     { link: '/equipment', name: 'Equipements', icon: 'equipment' },
     { link: '/weapons', name: 'Armes', icon: 'weapons' },
     { link: '/pets', name: 'Familiers & Montures', icon: 'pets' },

@@ -126,6 +126,12 @@ export const getFilteredData = async (type, filters = {}, size = 24, offset = 0)
   return { data, count };
 };
 
+export const getItemData = async (type, id) => {
+  const json = await getJsonData(`${type}.json`);
+  let data = extractMeaningfulData(json);
+  return data.find((element) => +element.ankamaId === +id);
+};
+
 // Updaters
 
 export const updateEquipment = async () => await updateData(EQUIPMENT_FILE, EQUIPMENT_API);

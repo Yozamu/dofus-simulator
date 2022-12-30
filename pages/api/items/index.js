@@ -1,4 +1,4 @@
-import { getFilteredData } from '../../helpers/data';
+import { getFilteredData } from '../../../helpers/data';
 
 export const retrieveItems = async (req) => {
   const { type, name = '', size, offset } = req.query;
