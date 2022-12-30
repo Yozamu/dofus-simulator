@@ -1,4 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
+import { Grid, styled } from '@mui/material';
+import { useEffect, useState } from 'react';
+import StuffCharacteristics from '../components/stuff/StuffCharacteristics';
+import StuffShowcase from '../components/stuff/StuffShowcase';
+import StuffStats from '../components/stuff/StuffStats';
 
 const STUFF_ITEMS = [
   'Chapeau',
@@ -13,7 +17,7 @@ const STUFF_ITEMS = [
   'Familier',
 ];
 
-const StuffPage = () => {
+const StuffPage = (props) => {
   const [items, setItems] = useState({});
 
   const getData = async (stuff, slot) => {
@@ -38,15 +42,28 @@ const StuffPage = () => {
   }, []);
 
   return (
-    <ul>
-      Stuff page
-      {Object.entries(items).map(([key, val]) => (
-        <li key={key}>
-          {key}:{JSON.stringify(val)}
-        </li>
-      ))}
-    </ul>
+    <Grid container spacing={2} className={props.className}>
+      <Grid item xs={3}>
+        <ul>
+          Stuff page
+          {Object.entries(items).map(([key, val]) => (
+            <li key={key}>
+              {key}:{JSON.stringify(val)}
+            </li>
+          ))}
+        </ul>
+        <StuffCharacteristics />
+      </Grid>
+      <Grid item xs={6}>
+        <div>xs=6</div>
+        <StuffShowcase items={items} />
+      </Grid>
+      <Grid item xs={3}>
+        <div>xs=3</div>
+        <StuffStats />
+      </Grid>
+    </Grid>
   );
 };
 
-export default StuffPage;
+export default styled(StuffPage)``;
