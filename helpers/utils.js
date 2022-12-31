@@ -27,3 +27,9 @@ export const setLocalStorageStuffItem = (item, category) => {
   }
   localStorage.setItem('stuff', JSON.stringify({ ...stuff, [key]: value }));
 };
+
+export const deleteStuffItemFromLocalStorage = (type, index) => {
+  const stuff = JSON.parse(localStorage.getItem('stuff')) || {};
+  Array.isArray(stuff[type]) && stuff[type].length > 1 ? stuff[type].splice(index, 1) : delete stuff[type];
+  localStorage.setItem('stuff', JSON.stringify({ ...stuff }));
+};

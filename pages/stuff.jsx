@@ -56,7 +56,7 @@ const StuffPage = (props) => {
       </Grid>
       <Grid item xs={4}>
         <div>xs=6</div>
-        <StuffShowcase items={items} />
+        <StuffShowcase items={items} setItems={setItems} />
       </Grid>
       <Grid item xs={4}>
         <div>xs=3</div>

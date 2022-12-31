@@ -1,10 +1,10 @@
 import { Delete } from '@mui/icons-material';
-import { Button, styled, Tooltip, tooltipClasses } from '@mui/material';
+import { Button, styled, Tooltip } from '@mui/material';
 import Image from 'next/image';
 import { getTypeFilename } from '../../helpers/utils';
 import ItemContent from '../items/ItemContent';
 
-const StuffShowcaseSlot = ({ type, item, tooltip, ...props }) => {
+const StuffShowcaseSlot = ({ type, index = 0, item, tooltip, deleteItem, ...props }) => {
   const imgPath = item
     ? `/images/${getTypeFilename(type)}/${item.ankamaId}.png`
     : `/images/ui/item-backgrounds/${type}.png`;
@@ -12,7 +12,7 @@ const StuffShowcaseSlot = ({ type, item, tooltip, ...props }) => {
   const TooltipContent = () => (
     <div>
       <ItemContent item={item} />
-      <Button sx={{ width: '100%' }} variant="contained" startIcon={<Delete />}>
+      <Button sx={{ width: '100%' }} variant="contained" onClick={() => deleteItem(type, index)} startIcon={<Delete />}>
         Supprimer
       </Button>
     </div>
