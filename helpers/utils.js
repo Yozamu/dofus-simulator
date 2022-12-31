@@ -9,6 +9,20 @@ export const getTypeFilename = (type) => {
   }
 };
 
+export const getItemSlotCategories = (type) => {
+  switch (type) {
+    case 'Anneaux':
+      return 'Anneau';
+    case 'Trophées':
+      return 'Trophée,Dofus';
+    case 'Arme':
+    case 'Familier':
+      return null;
+    default:
+      return type;
+  }
+};
+
 export const setLocalStorageStuffItem = (item, category) => {
   const stuff = JSON.parse(localStorage.getItem('stuff')) || {};
   let [key, value] = [item.type, item.ankamaId];

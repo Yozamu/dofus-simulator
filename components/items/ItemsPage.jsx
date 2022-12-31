@@ -11,7 +11,8 @@ const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...prop
   const [itemCount, setItemCount] = useState(props.count);
   const [isFetching, setIsFetching] = useState(false);
   const { type, ...queryRest } = query;
-  const [filters, setFilters] = useState({ level: [1, 200], ...queryRest });
+  const initialFilters = { level: [1, 200], ...queryRest };
+  const [filters, setFilters] = useState(initialFilters);
   const prevFilters = usePrevious(filters);
 
   const getQueryParams = useCallback(
@@ -69,7 +70,7 @@ const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...prop
         <title>Dofus Simulator - {title}</title>
       </Head>
       <div className={`${props.className} wrapper`}>
-        <Filters setFilters={setFilters} availableCategories={availableCategories} />
+        <Filters setFilters={setFilters} initialFilters={initialFilters} availableCategories={availableCategories} />
         <ItemList className="items" items={items} category={type} itemHeight={itemHeight} />
         {isFetching && (
           <div className="progress">

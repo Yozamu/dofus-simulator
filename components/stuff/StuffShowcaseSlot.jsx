@@ -1,10 +1,12 @@
 import { Delete } from '@mui/icons-material';
 import { Button, styled, Tooltip } from '@mui/material';
 import Image from 'next/image';
-import { getTypeFilename } from '../../helpers/utils';
+import { useRouter } from 'next/router';
+import { getItemSlotCategories, getTypeFilename } from '../../helpers/utils';
 import ItemContent from '../items/ItemContent';
 
 const StuffShowcaseSlot = ({ type, index = 0, item, tooltip, deleteItem, ...props }) => {
+  const router = useRouter();
   const imgPath = item
     ? `/images/${getTypeFilename(type)}/${item.ankamaId}.png`
     : `/images/ui/item-backgrounds/${type}.png`;
@@ -18,9 +20,14 @@ const StuffShowcaseSlot = ({ type, index = 0, item, tooltip, deleteItem, ...prop
     </div>
   );
 
+  const browseItems = () => {
+    const slotCategories = getItemSlotCategories(type);
+    router.push(`/${getTypeFilename(type)}${slotCategories ? `?categories=${slotCategories}` : ''}`);
+  };
+
   return (
     <Tooltip placement={tooltip} title={item ? <TooltipContent /> : ''}>
-      <Button className={props.className}>
+      <Button className={props.className} onClick={browseItems}>
         <Image src={imgPath} alt={`${type} background`} width={64} height={64} />
       </Button>
     </Tooltip>

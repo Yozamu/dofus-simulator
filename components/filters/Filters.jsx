@@ -7,11 +7,11 @@ import NameFilter from './NameFilter';
 import StatisticsFilter from './StatisticsFilter';
 import Slide from '@mui/material/Slide';
 
-const Filters = ({ setFilters, availableCategories, ...props }) => {
-  const [name, setName] = useState('');
-  const [levelRange, setLevelRange] = useState([1, 200]);
-  const [categories, setCategories] = useState(props.categories || []);
-  const [stats, setStats] = useState([]);
+const Filters = ({ setFilters, availableCategories, initialFilters = {}, ...props }) => {
+  const [name, setName] = useState(initialFilters.name || '');
+  const [levelRange, setLevelRange] = useState(initialFilters.level || [1, 200]);
+  const [categories, setCategories] = useState(initialFilters.categories?.split(',') || []);
+  const [stats, setStats] = useState(initialFilters.stats || []);
   const [snackbarIsOpened, setSnackbarIsOpened] = useState(false);
 
   useEffect(() => {
