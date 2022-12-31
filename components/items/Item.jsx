@@ -1,7 +1,7 @@
 import { Card, CardActionArea, CardContent, CardMedia, Slide, Snackbar, styled, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useState } from 'react';
-import { setLocalStorageStuffItem } from '../../helpers/utils';
+import { setLocalStorageStuffItem } from '../../helpers/localstorage';
 import ItemContent from './ItemContent';
 
 const Item = (props) => {

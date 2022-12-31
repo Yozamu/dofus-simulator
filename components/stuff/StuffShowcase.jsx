@@ -1,12 +1,12 @@
-import { Button, styled } from '@mui/material';
-import Image from 'next/image';
-import { deleteStuffItemFromLocalStorage } from '../../helpers/utils';
+import { styled } from '@mui/material';
+import { deleteStuffItemFromLocalStorage } from '../../helpers/localstorage';
 import StuffShowcaseSlot from './StuffShowcaseSlot';
+import StuffShowcaseCharacter from './StuffShowcaseCharacter';
 
 const leftRowItems = ['Amulette', 'Bouclier', 'Anneaux', 'Ceinture', 'Bottes'];
 const rightRowItems = ['Chapeau', 'Arme', 'Anneaux', 'Cape', 'Familier'];
 
-const StuffShowcase = ({ items, setItems, ...props }) => {
+const StuffShowcase = ({ items, setItems, characteristics, setCharacteristics, ...props }) => {
   const deleteItem = (type, index) => {
     deleteStuffItemFromLocalStorage(type, index);
     const currentItems = [...items[type]];
@@ -28,10 +28,7 @@ const StuffShowcase = ({ items, setItems, ...props }) => {
             />
           ))}
         </div>
-        <div className="stuff-character">
-          <Image src={`/images/classes/${'pandawa'}.png`} alt="Character background" width={192} height={192} />
-          <Button variant="outlined">Changer classe</Button>
-        </div>
+        <StuffShowcaseCharacter characteristics={characteristics} setCharacteristics={setCharacteristics} />
         <div className="stuff-items">
           {rightRowItems.map((itemType) => (
             <StuffShowcaseSlot
@@ -67,14 +64,6 @@ export default styled(StuffShowcase)`
 
   .stuff-upper {
     display: flex;
-  }
-
-  .stuff-character {
-    flex: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
   }
 
   .stuff-items {

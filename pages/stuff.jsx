@@ -19,6 +19,7 @@ const STUFF_ITEMS = [
 
 const StuffPage = (props) => {
   const [items, setItems] = useState({});
+  const [characteristics, setCharacteristics] = useState({});
 
   const getData = async (stuff, slot) => {
     if (!stuff[slot]) return;
@@ -27,6 +28,8 @@ const StuffPage = (props) => {
   };
 
   useEffect(() => {
+    const characteristics = JSON.parse(localStorage.getItem('characteristics'));
+    setCharacteristics(characteristics);
     const stuff = JSON.parse(localStorage.getItem('stuff'));
     const promises = [];
     for (let slot of STUFF_ITEMS) {
@@ -56,7 +59,12 @@ const StuffPage = (props) => {
       </Grid>
       <Grid item xs={4}>
         <div>xs=6</div>
-        <StuffShowcase items={items} setItems={setItems} />
+        <StuffShowcase
+          items={items}
+          setItems={setItems}
+          characteristics={characteristics}
+          setCharacteristics={setCharacteristics}
+        />
       </Grid>
       <Grid item xs={4}>
         <div>xs=3</div>
