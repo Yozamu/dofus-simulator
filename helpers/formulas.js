@@ -28,3 +28,42 @@ export const computeAddedStatFromCharacteristics = (stat, stats) => {
       return 0;
   }
 };
+
+const getDamageMultiplier = (pow = 0, stat = 0) => (pow + stat + 100) / 100;
+const getFixedDamage = (damage = 0, elemDamage = 0, critDamage = 0, isCrit) =>
+  damage + elemDamage + isCrit ? critDamage : 0;
+const getFixedRes = (fixedRes, critRes, isCrit) => (fixedRes + isCrit ? critRes : 0);
+const getDamageWithRes = (damage, fixedRes, percentRes) => Math.floor(((damage - fixedRes) * (100 - percentRes)) / 100);
+const getFinalDamage = (damage, ...bonuses) =>
+  Math.floor(bonuses.reduce((acc, val) => acc * ((100 + val) / 100), damage));
+
+export const computeDamage = (
+  rawDamageLine = { min: 1, max: 2, type: 'force' },
+  stats = {},
+  targetStats,
+  isCrit = false,
+  isWeapon = false,
+  isMelee = false,
+  percentBonuses = []
+) => {
+  const { type, min, max } = rawDamageLine;
+  const element = getStatCorrespondingElement(type);
+  const multiplier = getDamageMultiplier(stats.puissance, stats[type]);
+  const fixedDamage = getFixedDamage(stats.dommages, stats[`dommages${element}`], stats.dommagescritiques, isCrit);
+  const damage = multiplier * getRandomIntInclusive(min, max) + fixedDamage;
+  let fixedRes = 0,
+    percentRes = 0;
+  if (targetStats) {
+    fixedRes = getFixedRes(targetStats[`résistance${element}`], targetStats['résistancecritique'], isCrit);
+    percentRes = targetStats[`%résistance${element}`];
+  }
+  const damageWithRes = getDamageWithRes(damage, fixedRes, percentRes);
+  const finalDamage = getFinalDamage(
+    damageWithRes,
+    isWeapon ? stats['%dommagesarmes'] : 0,
+    stats['%dommagessorts'],
+    isMelee ? stats['%dommagesmelee'] : stats['%dommagesdistance'],
+    ...percentBonuses
+  );
+  return Math.max(0, finalDamage);
+};

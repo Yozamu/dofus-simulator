@@ -1,7 +1,7 @@
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 import Image from 'next/image';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { normalizeStatName } from '../../helpers/utils';
+import { normalizeImageName } from '../../helpers/utils';
 
 const StuffCharacteristicsAccordion = ({ section, title, stats = [], ...props }) => {
   return (
@@ -15,7 +15,7 @@ const StuffCharacteristicsAccordion = ({ section, title, stats = [], ...props })
           <div key={stat.name} className="stat-line">
             <div>
               <Image
-                src={`/images/ui/stats/${normalizeStatName(stat.name)}.png`}
+                src={`/images/ui/stats/${normalizeImageName(stat.name)}.png`}
                 alt={stat.name}
                 className="icon"
                 width={24}
