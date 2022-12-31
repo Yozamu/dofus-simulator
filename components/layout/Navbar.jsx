@@ -34,7 +34,7 @@ export default styled(Navbar)`
   nav {
     color: var(--foreground);
     background-color: var(--background-light);
-    z-index: 2000;
+    z-index: 1400;
   }
 
   nav > div {
