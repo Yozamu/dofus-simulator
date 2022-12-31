@@ -42,7 +42,7 @@ const StuffShowcase = ({ items, setItems, characteristics, setCharacteristics, .
           ))}
         </div>
       </div>
-      <div>
+      <div className="stuff-lower">
         {[...Array(6)].map((e, i) => (
           <StuffShowcaseSlot
             key={i}
@@ -60,7 +60,7 @@ const StuffShowcase = ({ items, setItems, characteristics, setCharacteristics, .
 
 export default styled(StuffShowcase)`
   width: 432px;
-  margin: auto;
+  margin: 0 auto;
 
   .stuff-upper {
     display: flex;
@@ -69,5 +69,10 @@ export default styled(StuffShowcase)`
   .stuff-items {
     display: flex;
     flex-direction: column;
+  }
+
+  .stuff-lower {
+    display: flex;
+    justify-content: space-between;
   }
 `;

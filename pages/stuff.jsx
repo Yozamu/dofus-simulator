@@ -45,35 +45,33 @@ const StuffPage = (props) => {
   }, []);
 
   return (
-    <Grid container spacing={2} className={props.className}>
-      <Grid item xs={4}>
-        <ul>
-          Stuff page
-          {Object.entries(items).map(([key, val]) => (
-            <li key={key}>
-              {key}:{JSON.stringify(val)}
-            </li>
-          ))}
-        </ul>
-        <StuffCharacteristics />
-      </Grid>
-      <Grid item xs={4}>
-        <div>xs=6</div>
-        <StuffShowcase
-          items={items}
-          setItems={setItems}
-          characteristics={characteristics}
-          setCharacteristics={setCharacteristics}
-        />
-      </Grid>
-      <Grid item xs={4}>
-        <div>xs=3</div>
-        <StuffStats />
-      </Grid>
-    </Grid>
+    <div className={props.className}>
+      <StuffCharacteristics items={items} characteristics={characteristics} />
+      <StuffShowcase
+        items={items}
+        setItems={setItems}
+        characteristics={characteristics}
+        setCharacteristics={setCharacteristics}
+      />
+      <StuffStats />
+    </div>
   );
 };
 
 export default styled(StuffPage)`
   margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+
+  & > *:nth-child(1) {
+    flex-basis: 30%;
+  }
+
+  & > *:nth-child(2) {
+    flex-basis: 20%;
+  }
+
+  & > *:nth-child(3) {
+    flex-basis: 35%;
+  }
 `;
