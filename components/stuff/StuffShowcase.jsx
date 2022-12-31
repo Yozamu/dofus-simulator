@@ -59,9 +59,6 @@ const StuffShowcase = ({ items, setItems, characteristics, setCharacteristics, .
 };
 
 export default styled(StuffShowcase)`
-  width: 432px;
-  margin: 0 auto;
-
   .stuff-upper {
     display: flex;
   }

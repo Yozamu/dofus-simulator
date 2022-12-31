@@ -68,6 +68,10 @@ export default styled(StuffPage)`
   display: flex;
   flex-wrap: wrap;
 
+  & > * {
+    margin: 5px auto;
+  }
+
   & > *:nth-child(1) {
     flex-basis: 30%;
   }
@@ -77,6 +81,6 @@ export default styled(StuffPage)`
   }
 
   & > *:nth-child(3) {
-    flex-basis: 35%;
+    flex-basis: 15%;
   }
 `;
