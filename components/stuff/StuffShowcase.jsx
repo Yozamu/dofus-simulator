@@ -6,12 +6,13 @@ const leftRowItems = ['Amulette', 'Bouclier', 'Anneaux', 'Ceinture', 'Bottes'];
 const rightRowItems = ['Chapeau', 'Arme', 'Anneaux', 'Cape', 'Familier'];
 
 const StuffShowcase = ({ items, ...props }) => {
+  console.log(items);
   return (
     <div className={props.className}>
       <div className="stuff-upper">
         <div className="stuff-items">
           {leftRowItems.map((itemType) => (
-            <StuffShowcaseSlot key={itemType} type={itemType} />
+            <StuffShowcaseSlot key={itemType} type={itemType} item={items[itemType] && items[itemType][0]} />
           ))}
         </div>
         <div className="stuff-character">
@@ -20,13 +21,17 @@ const StuffShowcase = ({ items, ...props }) => {
         </div>
         <div className="stuff-items">
           {rightRowItems.map((itemType) => (
-            <StuffShowcaseSlot key={itemType} type={itemType} />
+            <StuffShowcaseSlot
+              key={itemType}
+              type={itemType}
+              item={items[itemType] && items[itemType][itemType === 'Anneaux' ? 1 : 0]}
+            />
           ))}
         </div>
       </div>
       <div>
         {[...Array(6)].map((e, i) => (
-          <StuffShowcaseSlot key={i} type="Trophées" />
+          <StuffShowcaseSlot key={i} type="Trophées" item={items['Trophées'] && items['Trophées'][i]} />
         ))}
       </div>
     </div>

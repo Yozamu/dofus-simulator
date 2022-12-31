@@ -1,10 +1,14 @@
 import { Button, styled } from '@mui/material';
 import Image from 'next/image';
+import { getTypeFilename } from '../../helpers/utils';
 
-const StuffShowcaseSlot = ({ type, item = {}, ...props }) => {
+const StuffShowcaseSlot = ({ type, item, ...props }) => {
+  const imgPath = item
+    ? `/images/${getTypeFilename(type)}/${item.ankamaId}.png`
+    : `/images/ui/item-backgrounds/${type}.png`;
   return (
-    <Button className={`item-background ${props.className}`}>
-      <Image src={`/images/ui/item-backgrounds/${type}.png`} alt="Amulette background" width={64} height={64} />
+    <Button className={props.className}>
+      <Image src={imgPath} alt={`${type} background`} width={64} height={64} />
     </Button>
   );
 };
@@ -17,6 +21,6 @@ export default styled(StuffShowcaseSlot)`
   margin: 4px;
 
   img {
-    opacity: 50%;
+    opacity: ${(props) => (props.item ? '100' : '20')}%;
   }
 `;
