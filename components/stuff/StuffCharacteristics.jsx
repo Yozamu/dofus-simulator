@@ -3,22 +3,28 @@ import { DAMAGE_STATS, PRIMARY_STATS, RESISTANCE_STATS, SECONDARY_STATS } from '
 import { normalizeStatName } from '../../helpers/utils';
 import { computeAddedStatFromCharacteristics } from '../../helpers/formulas';
 import StuffCharacteristicsAccordion from './StuffCharacteristicsAccordion';
+import { useEffect, useState } from 'react';
 
 const StuffCharacteristics = ({ items, characteristics, ...props }) => {
-  const statsValues = {};
-  Object.entries(items).map(([, items]) => {
-    items.map((item) => {
-      item.statistics?.map((statistic) => {
-        const statRange = statistic[Object.keys(statistic)[0]];
-        const statValue = statRange.max || statRange.min;
-        const statName = normalizeStatName(Object.keys(statistic)[0]);
-        statsValues[statName] ? (statsValues[statName] += statValue) : (statsValues[statName] = statValue);
+  const [statsValues, setStatsValues] = useState({});
+
+  useEffect(() => {
+    const statsCopy = {};
+    Object.entries(items).map(([, items]) => {
+      items.map((item) => {
+        item.statistics?.map((statistic) => {
+          const statRange = statistic[Object.keys(statistic)[0]];
+          const statValue = statRange.max || statRange.min;
+          const statName = normalizeStatName(Object.keys(statistic)[0]);
+          statsCopy[statName] ? (statsCopy[statName] += statValue) : (statsCopy[statName] = statValue);
+        });
       });
     });
-  });
-  Object.entries(characteristics).map(([statistic, statValue]) => {
-    statsValues[statistic] ? (statsValues[statistic] += statValue) : (statsValues[statistic] = statValue);
-  });
+    Object.entries(characteristics).map(([statistic, statValue]) => {
+      statsCopy[statistic] ? (statsCopy[statistic] += statValue) : (statsCopy[statistic] = statValue);
+    });
+    setStatsValues(statsCopy);
+  }, [characteristics, items]);
 
   const computeStatFromItemsAndCharacteristics = (stat) => {
     let characteristicsValue = characteristics.stat || 0;

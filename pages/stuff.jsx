@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import StuffCharacteristics from '../components/stuff/StuffCharacteristics';
 import StuffShowcase from '../components/stuff/StuffShowcase';
 import StuffStats from '../components/stuff/StuffStats';
+import { setLocalStorageCharacteristics } from '../helpers/localstorage';
 
 const STUFF_ITEMS = [
   'Chapeau',
@@ -28,9 +29,13 @@ const StuffPage = (props) => {
   };
 
   useEffect(() => {
-    const characteristics = JSON.parse(localStorage.getItem('characteristics'));
+    let characteristics = JSON.parse(localStorage.getItem('characteristics'));
+    if (!characteristics) {
+      setLocalStorageCharacteristics('classe', 'pandawa');
+      characteristics = { classe: 'pandawa' };
+    }
     setCharacteristics(characteristics);
-    const stuff = JSON.parse(localStorage.getItem('stuff'));
+    const stuff = JSON.parse(localStorage.getItem('stuff')) || {};
     const promises = [];
     for (let slot of STUFF_ITEMS) {
       promises.push(getData(stuff, slot));
@@ -53,7 +58,7 @@ const StuffPage = (props) => {
         characteristics={characteristics}
         setCharacteristics={setCharacteristics}
       />
-      <StuffStats />
+      <StuffStats characteristics={characteristics} setCharacteristics={setCharacteristics} />
     </div>
   );
 };

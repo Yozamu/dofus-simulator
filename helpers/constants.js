@@ -28,6 +28,8 @@ export const DOFUS_CLASSES = [
   'Zobal',
 ];
 
+export const MAIN_STATS = ['Vitalité', 'Sagesse', 'Force', 'Intelligence', 'Chance', 'Agilité'];
+
 export const PRIMARY_STATS = [
   'Vie',
   'PA',
