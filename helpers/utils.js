@@ -22,3 +22,5 @@ export const getItemSlotCategories = (type) => {
       return type;
   }
 };
+
+export const normalizeStatName = (stat) => stat.replace(/[% ]/g, '').toLowerCase();

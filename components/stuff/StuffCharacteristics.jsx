@@ -1,118 +1,75 @@
-import { Accordion, AccordionDetails, AccordionSummary, styled, Typography } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Image from 'next/image';
-
-const StatsAccordion = ({ section, title, stats = [], ...props }) => {
-  return (
-    <Accordion {...props}>
-      <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={`${section}-content`} id={`${section}-header`}>
-        <Typography>{title}</Typography>
-      </AccordionSummary>
-      <AccordionDetails className="stat-section">
-        {stats.map((stat) => (
-          <div key={stat} className="stat-line">
-            <div>
-              <Image
-                src={`/images/ui/stats/${stat.replace(/[% ]/g, '').toLowerCase()}.png`}
-                alt={stat}
-                className="icon"
-                width={24}
-                height={24}
-              />
-              {stat}
-            </div>
-            <div>val</div>
-          </div>
-        ))}
-      </AccordionDetails>
-    </Accordion>
-  );
-};
+import { styled } from '@mui/material';
+import { DAMAGE_STATS, PRIMARY_STATS, RESISTANCE_STATS, SECONDARY_STATS } from '../../helpers/constants';
+import { normalizeStatName } from '../../helpers/utils';
+import { computeAddedStatFromCharacteristics } from '../../helpers/formulas';
+import StuffCharacteristicsAccordion from './StuffCharacteristicsAccordion';
 
 const StuffCharacteristics = ({ items, characteristics, ...props }) => {
+  const statsValues = {};
+  Object.entries(items).map(([, items]) => {
+    items.map((item) => {
+      item.statistics?.map((statistic) => {
+        const statRange = statistic[Object.keys(statistic)[0]];
+        const statValue = statRange.max || statRange.min;
+        const statName = normalizeStatName(Object.keys(statistic)[0]);
+        statsValues[statName] ? (statsValues[statName] += statValue) : (statsValues[statName] = statValue);
+      });
+    });
+  });
+  Object.entries(characteristics).map(([statistic, statValue]) => {
+    statsValues[statistic] ? (statsValues[statistic] += statValue) : (statsValues[statistic] = statValue);
+  });
+
+  const computeStatFromItemsAndCharacteristics = (stat) => {
+    let characteristicsValue = characteristics.stat || 0;
+    let statName = normalizeStatName(stat);
+    let itemsValue = statsValues[statName] || 0;
+    let addedValue = computeAddedStatFromCharacteristics(statName, statsValues);
+    return characteristicsValue + itemsValue + addedValue;
+  };
+
+  const primaryStats = PRIMARY_STATS.map((stat) => ({
+    name: stat,
+    value: computeStatFromItemsAndCharacteristics(stat),
+  }));
+
+  const secondaryStats = SECONDARY_STATS.map((stat) => ({
+    name: stat,
+    value: computeStatFromItemsAndCharacteristics(stat),
+  }));
+
+  const damageStats = DAMAGE_STATS.map((stat) => ({
+    name: stat,
+    value: computeStatFromItemsAndCharacteristics(stat),
+  }));
+
+  const resistanceStats = RESISTANCE_STATS.map((stat) => ({
+    name: stat,
+    value: computeStatFromItemsAndCharacteristics(stat),
+  }));
+
   return (
     <div className={props.className}>
-      <StatsAccordion
+      <StuffCharacteristicsAccordion
         defaultExpanded={true}
         section="primary"
         title="Statistiques primaires"
-        stats={[
-          'Vie',
-          'PA',
-          'PM',
-          'Portée',
-          'Initiative',
-          'Vitalité',
-          'Sagesse',
-          'Force',
-          'Intelligence',
-          'Chance',
-          'Agilité',
-          'Puissance',
-          'Critique',
-        ]}
+        stats={primaryStats}
       />
-      <StatsAccordion
-        section="secondary"
-        title="Statistiques secondaires"
-        stats={[
-          'Fuite',
-          'Tacle',
-          'Invocations',
-          'Soins',
-          'Esquive PA',
-          'Esquive PM',
-          'Retrait PA',
-          'Retrait PM',
-          'Prospection',
-          'Pods',
-        ]}
-      />
-      <StatsAccordion
-        section="damage"
-        title="Dommages"
-        stats={[
-          'Dommages Neutre',
-          'Dommages Terre',
-          'Dommages Feu',
-          'Dommages Eau',
-          'Dommages Air',
-          'Dommages Critiques',
-          'Dommages Poussée',
-          '% Dommages Armes',
-          '% Dommages Sorts',
-          '% Dommages Mêlée',
-          '% Dommages Distance',
-          'Dommages',
-        ]}
-      />
-      <StatsAccordion
-        section="resistance"
-        title="Résistances"
-        stats={[
-          '% Résistance Neutre',
-          '% Résistance Terre',
-          '% Résistance Feu',
-          '% Résistance Eau',
-          '% Résistance Air',
-          'Résistance Neutre',
-          'Résistance Terre',
-          'Résistance Feu',
-          'Résistance Eau',
-          'Résistance Air',
-          'Résistance Critique',
-          'Résistance Poussée',
-          '% Résistance Armes',
-          '% Résistance Mêlée',
-          '% Résistance Distance',
-        ]}
-      />
+      <StuffCharacteristicsAccordion section="secondary" title="Statistiques secondaires" stats={secondaryStats} />
+      <StuffCharacteristicsAccordion section="damage" title="Dommages" stats={damageStats} />
+      <StuffCharacteristicsAccordion section="resistance" title="Résistances" stats={resistanceStats} />
     </div>
   );
 };
 
 export default styled(StuffCharacteristics)`
   width: 500px;
+
+  hr {
+    border: 1px solid var(--background-lighter);
+    width: 90%;
+  }
 
   .stat-section {
     display: flex;
