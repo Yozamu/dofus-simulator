@@ -14,6 +14,8 @@ const computePaValue = (stats) => 6 + (stats.niveau > 99 ? 1 : 0) + (stats.exopa
 const computePmValue = (stats) => 3 + (stats.exopm ? 1 : 0);
 const computePoValue = (stats) => (stats['exoportée'] ? 1 : 0);
 
+const computePodsValue = (stats) => 1000 + 5 * stats.force + 5 * (stats['parchoforce'] || 0);
+
 export const computeAddedStatFromCharacteristics = (stat, stats) => {
   switch (stat) {
     case 'vie':
@@ -43,6 +45,8 @@ export const computeAddedStatFromCharacteristics = (stat, stats) => {
       return computePmValue(stats);
     case 'portée':
       return computePoValue(stats);
+    case 'pods':
+      return computePodsValue(stats);
     default:
       return 0;
   }

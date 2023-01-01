@@ -4,6 +4,7 @@ import { normalizeStatName } from '../../helpers/utils';
 import { computeAddedStatFromCharacteristics } from '../../helpers/formulas';
 import StuffCharacteristicsAccordion from './StuffCharacteristicsAccordion';
 import { useEffect, useState } from 'react';
+import { setLocalStorageFinalStats } from '../../helpers/localstorage';
 
 const StuffCharacteristics = ({ items, characteristics, ...props }) => {
   const [statsValues, setStatsValues] = useState({});
@@ -53,6 +54,12 @@ const StuffCharacteristics = ({ items, characteristics, ...props }) => {
     name: stat,
     value: computeStatFromItemsAndCharacteristics(stat),
   }));
+
+  const mergedStats = [...primaryStats, ...secondaryStats, ...damageStats, ...resistanceStats].map((val) => ({
+    [normalizeStatName(val.name)]: val.value,
+  }));
+  const finalStats = [{ classe: characteristics.classe }, ...mergedStats];
+  setLocalStorageFinalStats(JSON.stringify(Object.assign({}, ...finalStats)));
 
   return (
     <div className={props.className}>

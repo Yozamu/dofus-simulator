@@ -27,3 +27,7 @@ export const setLocalStorageCharacteristics = (key, value) => {
   const character = JSON.parse(localStorage.getItem('characteristics')) || {};
   localStorage.setItem('characteristics', JSON.stringify({ ...character, [key]: value }));
 };
+
+export const setLocalStorageFinalStats = (stats) => {
+  localStorage.setItem('stats', stats);
+};
