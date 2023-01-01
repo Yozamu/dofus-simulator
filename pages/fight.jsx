@@ -21,7 +21,7 @@ const FightPage = ({ monsters, query }) => {
       <Head>
         <title>Dofus Simulator - Combattre</title>
       </Head>
-      {Object.keys(stats).length < 1 ? <div>Pas de données</div> : <Fight monsters={monsters} stats={stats} />}
+      {Object.keys(stats).length < 1 ? <div>Pas de données</div> : <Fight monsters={monsters} character={stats} />}
     </>
   );
 };
