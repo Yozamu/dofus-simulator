@@ -51,7 +51,7 @@ const StuffStats = ({ characteristics, setCharacteristics, ...props }) => {
 
   return (
     <div className={props.className}>
-      <div>
+      <div className="container">
         <div className="charac-level">
           <Typography variant="h6">Caractéristiques</Typography>
           <div>
@@ -122,14 +122,6 @@ const StuffStats = ({ characteristics, setCharacteristics, ...props }) => {
 };
 
 export default styled(StuffStats)`
-  > div {
-    background-color: var(--background-light);
-    padding: 10px;
-    border-radius: 4px;
-    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-      0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-  }
-
   hr {
     border: solid 1px var(--background-lighter);
   }

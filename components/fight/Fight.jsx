@@ -1,13 +1,22 @@
-import { Button, LinearProgress, styled } from '@mui/material';
-import Image from 'next/image';
-import { useCallback, useEffect, useState } from 'react';
+import { styled } from '@mui/material';
+import { useEffect, useState } from 'react';
+import FightButtons from './FightButtons';
 import Fighter from './Fighter';
+import FightNotifications from './FightNotifications';
 
 const Fight = ({ monsters, character, ...props }) => {
   const [isFigthing, setIsFighting] = useState(false);
   const [enemy, setEnemy] = useState({});
   const [turn, setTurn] = useState(0);
   const [fightingEntities, setFightingEntities] = useState([{}, {}]);
+  const [notifications, setNotifications] = useState([]);
+
+  const addNotification = (notification) => {
+    const newNotifications = notifications;
+    newNotifications.length > 100 ?? newNotifications.shift();
+    newNotifications.push(notification);
+    setNotifications(newNotifications);
+  };
 
   const initBaseStats = (stats) => {
     stats.basevie = stats.vie;
@@ -18,9 +27,11 @@ const Fight = ({ monsters, character, ...props }) => {
 
   const initStats = () => {
     const { classe, level, ...stats } = character;
+    stats.name = classe;
     initBaseStats(stats);
     const enemyStats = {
       ...Object.keys(stats).reduce((acc, val) => ({ ...acc, [val]: 0 })),
+      name: enemy.name,
       vie: enemy.statistics[0].PV.min,
       pa: enemy.statistics[1].PA.min,
       pm: enemy.statistics[2].PM.min,
@@ -46,9 +57,10 @@ const Fight = ({ monsters, character, ...props }) => {
 
   const finishTurn = () => {
     setFightingEntities([
-      { ...fightingEntities[0], pa: fightingEntities[0].basePa, pm: fightingEntities[0].basePm },
-      { ...fightingEntities[0], pa: fightingEntities[1].basePa, pm: fightingEntities[1].basePm },
+      { ...fightingEntities[0], pa: fightingEntities[0].basepa, pm: fightingEntities[0].basepm },
+      { ...fightingEntities[1], pa: fightingEntities[1].basepa, pm: fightingEntities[1].basepm },
     ]);
+    addNotification(`Début du tour ${turn + 1}`);
     setTurn(turn + 1);
   };
 
@@ -56,46 +68,22 @@ const Fight = ({ monsters, character, ...props }) => {
     initStats();
     setIsFighting(true);
     setTurn(1);
+    addNotification('<b>Début du combat</b>');
   };
 
   const stopFight = () => {
     setIsFighting(false);
     setTurn(0);
+    addNotification('<b>Fin du combat</b>');
   };
 
   const damageEntity = (entity, percent) => {
     const entities = [...fightingEntities];
-    entities[entity].vie -= Math.floor(entities[entity].maxvie * percent * 0.01);
+    const damage = Math.floor(entities[entity].maxvie * percent * 0.01);
+    entities[entity].vie -= damage;
+    addNotification(`Dommages infligés à <i>${entities[entity].name}</i>: ${damage}`);
     setFightingEntities(entities);
   };
-
-  const NonFightButtons = () => (
-    <div className="fight-buttons">
-      <Button onClick={startFight} variant="contained">
-        Lancer le combat
-      </Button>
-      <Button onClick={chooseEnemy} variant="contained">
-        Choisir monstre
-      </Button>
-    </div>
-  );
-
-  const FightButtons = () => (
-    <div className="fight-buttons">
-      <Button onClick={stopFight} variant="contained">
-        Arrêter le combat
-      </Button>
-      <Button onClick={finishTurn} variant="contained">
-        Finir le tour
-      </Button>
-      <Button onClick={() => damageEntity(0, 10)} variant="contained">
-        -10% personnage
-      </Button>
-      <Button onClick={() => damageEntity(1, 10)} variant="contained">
-        -10% monstre
-      </Button>
-    </div>
-  );
 
   return (
     <div className={props.className}>
@@ -113,7 +101,15 @@ const Fight = ({ monsters, character, ...props }) => {
           imagePath={`/images/monsters/${enemy.ankamaId}.png`}
         />
       </div>
-      {isFigthing ? <FightButtons /> : <NonFightButtons />}
+      <FightButtons
+        isFighting={isFigthing}
+        startFight={startFight}
+        stopFight={stopFight}
+        finishTurn={finishTurn}
+        chooseEnemy={chooseEnemy}
+        damageEntity={damageEntity}
+      />
+      <FightNotifications notifications={notifications} setNotifications={setNotifications} />
     </div>
   );
 };
@@ -125,14 +121,5 @@ export default styled(Fight)`
     margin-top: 50px;
     display: flex;
     justify-content: space-evenly;
-  }
-
-  .fight-buttons {
-    margin-top: 20px;
-    text-align: center;
-  }
-
-  button {
-    margin: 4px;
   }
 `;
