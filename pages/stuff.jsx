@@ -3,20 +3,8 @@ import { useEffect, useState } from 'react';
 import StuffCharacteristics from '../components/stuff/StuffCharacteristics';
 import StuffShowcase from '../components/stuff/StuffShowcase';
 import StuffStats from '../components/stuff/StuffStats';
+import { MAIN_STATS, STUFF_ITEMS } from '../helpers/constants';
 import { setLocalStorageCharacteristics } from '../helpers/localstorage';
-
-const STUFF_ITEMS = [
-  'Chapeau',
-  'Cape',
-  'Ceinture',
-  'Bottes',
-  'Amulette',
-  'Anneaux',
-  'Bouclier',
-  'Arme',
-  'Trophées',
-  'Familier',
-];
 
 const StuffPage = (props) => {
   const [items, setItems] = useState({});
@@ -32,7 +20,11 @@ const StuffPage = (props) => {
     let characteristics = JSON.parse(localStorage.getItem('characteristics'));
     if (!characteristics) {
       setLocalStorageCharacteristics('classe', 'pandawa');
-      characteristics = { classe: 'pandawa' };
+      setLocalStorageCharacteristics('niveau', 200);
+      for (let stat of MAIN_STATS) {
+        setLocalStorageCharacteristics(stat.toLowerCase(), 0);
+      }
+      characteristics = JSON.parse(localStorage.getItem('characteristics'));
     }
     setCharacteristics(characteristics);
     const stuff = JSON.parse(localStorage.getItem('stuff')) || {};
@@ -72,15 +64,15 @@ export default styled(StuffPage)`
     margin: 5px auto;
   }
 
-  & > *:nth-child(1) {
+  & > *:nth-of-type(1) {
     flex-basis: 30%;
   }
 
-  & > *:nth-child(2) {
+  & > *:nth-of-type(2) {
     flex-basis: 20%;
   }
 
-  & > *:nth-child(3) {
+  & > *:nth-of-type(3) {
     flex-basis: 15%;
   }
 `;

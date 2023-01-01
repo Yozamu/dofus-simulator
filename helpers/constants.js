@@ -28,6 +28,19 @@ export const DOFUS_CLASSES = [
   'Zobal',
 ];
 
+export const STUFF_ITEMS = [
+  'Chapeau',
+  'Cape',
+  'Ceinture',
+  'Bottes',
+  'Amulette',
+  'Anneaux',
+  'Bouclier',
+  'Arme',
+  'Trophées',
+  'Familier',
+];
+
 export const MAIN_STATS = ['Vitalité', 'Sagesse', 'Force', 'Intelligence', 'Chance', 'Agilité'];
 
 export const PRIMARY_STATS = [

@@ -1,4 +1,6 @@
-const computeVieValue = (stats) => (stats.niveau || 200) * 5 + 50 + stats['vitalité'];
+const computeVieValue = (stats) => (stats.niveau || 200) * 5 + 50 + stats['vitalité'] + (stats['parchovitalité'] || 0);
+
+const computeMainStatValue = (stat, stats) => stats[`parcho${stat}`] || 0;
 
 const computeInitiativeValue = (stats) => stats.force + stats.chance + stats.intelligence + stats['agilité'];
 
@@ -8,10 +10,21 @@ const computeRetraitValue = (stats) => Math.floor(stats.sagesse / 10);
 
 const computeProspectionValue = (stats) => Math.floor(100 + stats.chance / 100);
 
+const computePaValue = (stats) => 6 + (stats.niveau > 99 ? 1 : 0) + (stats.exopa ? 1 : 0);
+const computePmValue = (stats) => 3 + (stats.exopm ? 1 : 0);
+const computePoValue = (stats) => (stats['exoportée'] ? 1 : 0);
+
 export const computeAddedStatFromCharacteristics = (stat, stats) => {
   switch (stat) {
     case 'vie':
       return computeVieValue(stats);
+    case 'vitalité':
+    case 'sagesse':
+    case 'force':
+    case 'intelligence':
+    case 'chance':
+    case 'agilité':
+      return computeMainStatValue(stat, stats);
     case 'initiative':
       return computeInitiativeValue(stats);
     case 'tacle':
@@ -24,6 +37,12 @@ export const computeAddedStatFromCharacteristics = (stat, stats) => {
       return computeRetraitValue(stats);
     case 'prospection':
       return computeProspectionValue(stats);
+    case 'pa':
+      return computePaValue(stats);
+    case 'pm':
+      return computePmValue(stats);
+    case 'portée':
+      return computePoValue(stats);
     default:
       return 0;
   }
