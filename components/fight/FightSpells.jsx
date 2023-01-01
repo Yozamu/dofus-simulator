@@ -3,8 +3,13 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { getSpellActionTypeName } from '../../helpers/utils';
 
-const FightSpells = ({ character, ...props }) => {
+const FightSpells = ({ character, fightingEntities, castSpell, isFighting, ...props }) => {
   const [spells, setSpells] = useState([]);
+
+  const handleSpellClick = (spell) => {
+    if (!isFighting) return;
+    castSpell(fightingEntities[0], fightingEntities[1], spell);
+  };
 
   useEffect(() => {
     fetch(`/api/spells?classe=${character.classe}`)
@@ -19,7 +24,8 @@ const FightSpells = ({ character, ...props }) => {
         <hr />
       </Typography>
       <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center' }}>
-        Coût: {spell.cost} <Image src="/images/ui/stats/pa.png" alt="PA" width={32} height={32} />
+        Coût: {spell.cost} <Image src="/images/ui/stats/pa.png" alt="PA" width={32} height={32} /> Critique:{' '}
+        {spell.critique}%
       </Typography>
       <ul>
         {spell.effects.map((effect, i) => (
@@ -41,7 +47,12 @@ const FightSpells = ({ character, ...props }) => {
           {spells.map((spell) => (
             <div key={spell._id}>
               <Tooltip placement="top" enterDelay={500} disableInteractive title={<TooltipContent spell={spell} />}>
-                <Button>
+                <Button
+                  disabled={spell.cost > fightingEntities[0].pa}
+                  onClick={() => {
+                    handleSpellClick(spell);
+                  }}
+                >
                   <Image
                     src={`/images/spells/${character.classe}/${spell._id}.png`}
                     alt={spell.name}
@@ -69,5 +80,9 @@ export default styled(FightSpells)`
 
   button {
     padding: 0;
+  }
+
+  button:disabled {
+    opacity: 20%;
   }
 `;

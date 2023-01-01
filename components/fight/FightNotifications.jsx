@@ -52,4 +52,8 @@ export default styled(FightNotifications)`
     padding-left: 8px;
     list-style-type: none;
   }
+
+  li {
+    padding: 1px;
+  }
 `;

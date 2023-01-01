@@ -1,3 +1,5 @@
+import { getRandomIntInclusive, getStatCorrespondingElement } from './utils';
+
 const computeVieValue = (stats) => (stats.niveau || 200) * 5 + 50 + stats['vitalité'] + (stats['parchovitalité'] || 0);
 
 const computeMainStatValue = (stat, stats) => stats[`parcho${stat}`] || 0;

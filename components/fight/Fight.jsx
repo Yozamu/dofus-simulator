@@ -1,5 +1,7 @@
 import { styled } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { computeDamage } from '../../helpers/formulas';
+import { getRandomIntInclusive } from '../../helpers/utils';
 import FightButtons from './FightButtons';
 import Fighter from './Fighter';
 import FightNotifications from './FightNotifications';
@@ -28,7 +30,7 @@ const Fight = ({ monsters, character, ...props }) => {
 
   const initStats = () => {
     const { classe, level, ...stats } = character;
-    stats.name = classe;
+    stats.name = classe[0].toUpperCase() + classe.slice(1);
     initBaseStats(stats);
     const enemyStats = {
       ...Object.keys(stats).reduce((acc, val) => ({ ...acc, [val]: 0 })),
@@ -61,7 +63,7 @@ const Fight = ({ monsters, character, ...props }) => {
       { ...fightingEntities[0], pa: fightingEntities[0].basepa, pm: fightingEntities[0].basepm },
       { ...fightingEntities[1], pa: fightingEntities[1].basepa, pm: fightingEntities[1].basepm },
     ]);
-    addNotification(`Début du tour ${turn + 1}`);
+    addNotification(`<b style="color:var(--main)">Début du tour ${turn + 1}</b>`);
     setTurn(turn + 1);
   };
 
@@ -69,13 +71,13 @@ const Fight = ({ monsters, character, ...props }) => {
     initStats();
     setIsFighting(true);
     setTurn(1);
-    addNotification('<b>Début du combat</b>');
+    addNotification('<b style="color:var(--main)">Début du combat</b>');
   };
 
   const stopFight = () => {
     setIsFighting(false);
     setTurn(0);
-    addNotification('<b>Fin du combat</b>');
+    addNotification('<b style="color:var(--main)">Fin du combat</b>');
   };
 
   const damageEntity = (entity, percent) => {
@@ -84,6 +86,36 @@ const Fight = ({ monsters, character, ...props }) => {
     entities[entity].vie -= damage;
     addNotification(`Dommages infligés à <i>${entities[entity].name}</i>: ${damage}`);
     setFightingEntities(entities);
+  };
+
+  const castSpell = (caster, target, spell) => {
+    let totalDamage = 0;
+    let totalSteal = 0;
+    let totalHeal = 0;
+    const isCrit = getRandomIntInclusive(1, 100) <= caster.critique + spell.critique;
+    console.log(isCrit, caster.critique, spell.critique);
+    let castedSpellNotif = `${caster.name} lance ${spell.name}`;
+    if (isCrit) castedSpellNotif += ' <b>(Coup Critique!)</b>';
+    addNotification(castedSpellNotif);
+    spell.effects.forEach((effect) => {
+      const { type, element, amount } = effect;
+      const rawDamageLine = { type: element, min: amount.min, max: amount.max };
+      const damage = computeDamage(rawDamageLine, caster, target, isCrit, false, false, []);
+      addNotification(
+        `<span style='padding-left: 20px'>${target.name} <span style='color: var(--element-${element})'>-${damage}</span> PV</span>`
+      );
+      if (type == 'damage' || type == 'steal') totalDamage += damage;
+      else if (type == 'heal') totalHeal += damage;
+      if (type == 'steal') totalHeal += Math.floor(damage / 2);
+    });
+    const casterCopy = { ...caster };
+    const targetCopy = { ...target };
+    casterCopy.vie += totalSteal + totalHeal;
+    casterCopy.pa -= spell.cost;
+    targetCopy.vie -= totalDamage;
+    target === fightingEntities[1]
+      ? setFightingEntities([casterCopy, targetCopy])
+      : setFightingEntities([targetCopy, casterCopy]);
   };
 
   return (
@@ -111,7 +143,12 @@ const Fight = ({ monsters, character, ...props }) => {
         damageEntity={damageEntity}
       />
       <div className="spells-and-notif">
-        <FightSpells character={character} />
+        <FightSpells
+          character={character}
+          fightingEntities={fightingEntities}
+          castSpell={castSpell}
+          isFighting={isFigthing}
+        />
         <FightNotifications notifications={notifications} setNotifications={setNotifications} />
       </div>
     </div>
