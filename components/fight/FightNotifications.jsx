@@ -1,5 +1,5 @@
 import { Button, styled, Typography } from '@mui/material';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 const FightNotifications = ({ notifications, setNotifications, ...props }) => {
   const notificationsEnd = useRef(null);
@@ -30,7 +30,6 @@ const FightNotifications = ({ notifications, setNotifications, ...props }) => {
 export default styled(FightNotifications)`
   display: flex;
   justify-content: center;
-  margin: 10px;
 
   & > div {
     width: 500px;

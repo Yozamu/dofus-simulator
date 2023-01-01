@@ -5,6 +5,12 @@
     --background-lighter: #646464;
     --foreground: #f6f6f6;
 
+    --element-neutre: #746a62;
+    --element-terre: #885529;
+    --element-feu: #a12500;
+    --element-eau: #5592a1;
+    --element-air: #83944c;
+
     color: var(--foreground);
     background-color: var(--background);
     margin-top: 64px;

@@ -47,3 +47,16 @@ export const getRandomIntInclusive = (min, max) => {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
+
+export const getSpellActionTypeName = (type) => {
+  switch (type) {
+    case 'damage':
+      return 'dommages';
+    case 'steal':
+      return 'vol';
+    case 'heal':
+      return 'soins';
+    default:
+      return type;
+  }
+};

@@ -132,6 +132,11 @@ export const getItemData = async (type, id) => {
   return data.find((element) => +element.ankamaId === +id);
 };
 
+export const getSpellsData = async (classe) => {
+  const json = await getJsonData('spells.json');
+  return json.data[classe];
+};
+
 // Updaters
 
 export const updateEquipment = async () => await updateData(EQUIPMENT_FILE, EQUIPMENT_API);

@@ -15,7 +15,7 @@ export const getMonsters = async (req) => {
 export default async function handler(req, res) {
   let data;
   if (req.method === 'GET') {
-    await getMonsters(req);
+    data = await getMonsters(req);
   }
   res.status(200).json(data);
 }

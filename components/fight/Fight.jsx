@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import FightButtons from './FightButtons';
 import Fighter from './Fighter';
 import FightNotifications from './FightNotifications';
+import FightSpells from './FightSpells';
 
 const Fight = ({ monsters, character, ...props }) => {
   const [isFigthing, setIsFighting] = useState(false);
@@ -109,7 +110,10 @@ const Fight = ({ monsters, character, ...props }) => {
         chooseEnemy={chooseEnemy}
         damageEntity={damageEntity}
       />
-      <FightNotifications notifications={notifications} setNotifications={setNotifications} />
+      <div className="spells-and-notif">
+        <FightSpells character={character} />
+        <FightNotifications notifications={notifications} setNotifications={setNotifications} />
+      </div>
     </div>
   );
 };
@@ -121,5 +125,15 @@ export default styled(Fight)`
     margin-top: 50px;
     display: flex;
     justify-content: space-evenly;
+  }
+
+  .spells-and-notif {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .spells-and-notif > * {
+    margin: 10px;
   }
 `;
