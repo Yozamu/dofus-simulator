@@ -13,9 +13,9 @@ const AdminPage = () => {
       <Head>
         <title>Dofus Simulator - Admin</title>
       </Head>
-      <Button onClick={updateData} variant="outlined">
+      {/* <Button onClick={updateData} variant="outlined">
         Update data
-      </Button>
+      </Button> */}
     </>
   );
 };

@@ -55,11 +55,13 @@ const StuffCharacteristics = ({ items, characteristics, ...props }) => {
     value: computeStatFromItemsAndCharacteristics(stat),
   }));
 
-  const mergedStats = [...primaryStats, ...secondaryStats, ...damageStats, ...resistanceStats].map((val) => ({
-    [normalizeStatName(val.name)]: val.value,
-  }));
-  const finalStats = [{ classe: characteristics.classe }, ...mergedStats];
-  setLocalStorageFinalStats(JSON.stringify(Object.assign({}, ...finalStats)));
+  useEffect(() => {
+    const mergedStats = [...primaryStats, ...secondaryStats, ...damageStats, ...resistanceStats].map((val) => ({
+      [normalizeStatName(val.name)]: val.value,
+    }));
+    const finalStats = [{ classe: characteristics.classe }, ...mergedStats];
+    setLocalStorageFinalStats(JSON.stringify(Object.assign({}, ...finalStats)));
+  });
 
   return (
     <div className={props.className}>

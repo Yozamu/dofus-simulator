@@ -14511,6 +14511,27 @@
       ]
     },
     {
+      "_id": 494,
+      "ankamaId": 494,
+      "name": "Poutch Ingball",
+      "level": null,
+      "type": "Poutch",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PV": { "min": 10000, "max": null } },
+        { "PA": { "min": 6, "max": null } },
+        { "PM": { "min": 3, "max": null } }
+      ],
+      "resistances": [
+        { "Terre": { "min": 0, "max": null } },
+        { "Air": { "min": 0, "max": null } },
+        { "Feu": { "min": 0, "max": null } },
+        { "Eau": { "min": 0, "max": null } },
+        { "Neutre": { "min": 0, "max": null } }
+      ]
+    },
+    {
       "_id": 675,
       "ankamaId": 675,
       "name": "Saphira",
