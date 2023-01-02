@@ -93,7 +93,6 @@ const Fight = ({ monsters, character, ...props }) => {
     let totalSteal = 0;
     let totalHeal = 0;
     const isCrit = getRandomIntInclusive(1, 100) <= caster.critique + spell.critique;
-    console.log(isCrit, caster.critique, spell.critique);
     let castedSpellNotif = `${caster.name} lance ${spell.name}`;
     if (isCrit) castedSpellNotif += ' <b>(Coup Critique!)</b>';
     addNotification(castedSpellNotif);

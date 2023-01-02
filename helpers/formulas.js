@@ -1,4 +1,4 @@
-import { getRandomIntInclusive, getStatCorrespondingElement } from './utils';
+import { getRandomIntInclusive, getStatFromElement } from './utils';
 
 const computeVieValue = (stats) => (stats.niveau || 200) * 5 + 50 + stats['vitalité'] + (stats['parchovitalité'] || 0);
 
@@ -71,8 +71,8 @@ export const computeDamage = (
   isMelee = false,
   percentBonuses = []
 ) => {
-  const { type, min, max } = rawDamageLine;
-  const element = getStatCorrespondingElement(type);
+  const { type: element, min, max } = rawDamageLine;
+  const type = getStatFromElement(element);
   const multiplier = getDamageMultiplier(stats.puissance, stats[type]);
   const fixedDamage = getFixedDamage(stats.dommages, stats[`dommages${element}`], stats.dommagescritiques, isCrit);
   const damage = multiplier * getRandomIntInclusive(min, max) + fixedDamage;

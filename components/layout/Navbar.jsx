@@ -1,8 +1,10 @@
 import { AppBar, Box, Button, styled, Toolbar } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Navbar = (props) => {
+  const router = useRouter();
   const buttons = [
     { link: '/', name: 'Accueil', icon: 'dofus' },
     { link: '/stuff', name: 'Stuff', icon: 'character' },
@@ -11,6 +13,7 @@ const Navbar = (props) => {
     { link: '/pets', name: 'Familiers & Montures', icon: 'pets' },
     { link: '/fight', name: 'Combattre !', icon: 'monsters' },
   ];
+  console.log(router?.route);
 
   return (
     <Box className={props.className} sx={{ flexGrow: 1 }}>
@@ -18,7 +21,7 @@ const Navbar = (props) => {
         <Toolbar>
           {buttons.map((button) => (
             <Link key={button.link} href={button.link}>
-              <Button>
+              <Button sx={router?.route === button.link ? { backgroundColor: 'rgba(var(--main), 0.2)' } : {}}>
                 <Image src={`/images/ui/${button.icon}.png`} alt="menu icon" width={32} height={32} />
                 {button.name}
               </Button>

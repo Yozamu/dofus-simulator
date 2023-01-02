@@ -42,6 +42,21 @@ export const getStatCorrespondingElement = (stat) => {
   }
 };
 
+export const getStatFromElement = (element) => {
+  switch (element) {
+    case 'terre':
+      return 'force';
+    case 'feu':
+      return 'intelligence';
+    case 'eau':
+      return 'chance';
+    case 'air':
+      return 'agilité';
+    default:
+      return element;
+  }
+};
+
 export const getRandomIntInclusive = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
