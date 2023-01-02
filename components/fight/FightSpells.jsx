@@ -47,19 +47,21 @@ const FightSpells = ({ character, fightingEntities, castSpell, isFighting, ...pr
           {spells.map((spell) => (
             <div key={spell._id}>
               <Tooltip placement="top" enterDelay={500} disableInteractive title={<TooltipContent spell={spell} />}>
-                <Button
-                  disabled={spell.cost > fightingEntities[0].pa}
-                  onClick={() => {
-                    handleSpellClick(spell);
-                  }}
-                >
-                  <Image
-                    src={`/images/spells/${character.classe}/${spell._id}.png`}
-                    alt={spell.name}
-                    width={55}
-                    height={55}
-                  />
-                </Button>
+                <span>
+                  <Button
+                    disabled={spell.cost > fightingEntities[0].pa}
+                    onClick={() => {
+                      handleSpellClick(spell);
+                    }}
+                  >
+                    <Image
+                      src={`/images/spells/${character.classe}/${spell._id}.png`}
+                      alt={spell.name}
+                      width={55}
+                      height={55}
+                    />
+                  </Button>
+                </span>
               </Tooltip>
             </div>
           ))}

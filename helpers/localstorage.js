@@ -3,6 +3,7 @@ export const setLocalStorageStuffItem = (item, category) => {
   let [key, value] = [item.type, item.ankamaId];
   if (category === 'pets') key = 'Familier';
   else if (category === 'weapons') key = 'Arme';
+  else if (item.type === 'Sac à dos') key = 'Cape';
   else if (item.type === 'Anneau') {
     const current = stuff['Anneaux'] || [];
     const rings = current.length > 1 ? current.slice(1) : current;

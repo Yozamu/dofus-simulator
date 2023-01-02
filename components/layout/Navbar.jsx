@@ -13,7 +13,6 @@ const Navbar = (props) => {
     { link: '/pets', name: 'Familiers & Montures', icon: 'pets' },
     { link: '/fight', name: 'Combattre !', icon: 'monsters' },
   ];
-  console.log(router?.route);
 
   return (
     <Box className={props.className} sx={{ flexGrow: 1 }}>
