@@ -6,6 +6,7 @@
         "name": "Flèche Magique",
         "cost": 3,
         "critique": 15,
+        "target": 1,
         "effects": [{ "type": "damage", "amount": { "min": 23, "max": 27 }, "element": "air" }],
         "critEffects": [{ "type": "damage", "amount": { "min": 28, "max": 32 }, "element": "air" }]
       }
@@ -16,6 +17,7 @@
         "name": "Paume Explosive",
         "cost": 3,
         "critique": 10,
+        "target": 1,
         "effects": [{ "type": "damage", "amount": { "min": 24, "max": 27 }, "element": "feu" }],
         "critEffects": [{ "type": "damage", "amount": { "min": 29, "max": 32 }, "element": "feu" }]
       },
@@ -24,6 +26,7 @@
         "name": "Gueule de Bois",
         "cost": 3,
         "critique": 10,
+        "target": 1,
         "effects": [{ "type": "damage", "amount": { "min": 24, "max": 27 }, "element": "terre" }],
         "critEffects": [{ "type": "damage", "amount": { "min": 29, "max": 32 }, "element": "terre" }]
       },
@@ -32,6 +35,7 @@
         "name": "Schnaps",
         "cost": 3,
         "critique": 10,
+        "target": 1,
         "effects": [{ "type": "damage", "amount": { "min": 21, "max": 24 }, "element": "air" }],
         "critEffects": [{ "type": "damage", "amount": { "min": 25, "max": 29 }, "element": "air" }]
       },
@@ -40,6 +44,7 @@
         "name": "Ethylo",
         "cost": 3,
         "critique": 10,
+        "target": 1,
         "effects": [{ "type": "damage", "amount": { "min": 24, "max": 27 }, "element": "eau" }],
         "critEffects": [{ "type": "damage", "amount": { "min": 30, "max": 34 }, "element": "eau" }]
       },
@@ -48,8 +53,16 @@
         "name": "Vague à lame",
         "cost": 4,
         "critique": 15,
+        "target": 1,
         "effects": [{ "type": "damage", "amount": { "min": 36, "max": 40 }, "element": "eau" }],
         "critEffects": [{ "type": "damage", "amount": { "min": 43, "max": 48 }, "element": "eau" }]
+      },
+      {
+        "_id": 704,
+        "name": "Pandanlku",
+        "cost": 2,
+        "target": 0,
+        "effects": [{ "type": "buff", "stat": "pm", "amount": 3, "duration": 2 }]
       }
     ]
   }

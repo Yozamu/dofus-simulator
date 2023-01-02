@@ -8,7 +8,7 @@ const FightSpells = ({ character, fightingEntities, castSpell, isFighting, ...pr
 
   const handleSpellClick = (spell) => {
     if (!isFighting) return;
-    castSpell(fightingEntities[0], fightingEntities[1], spell);
+    castSpell(fightingEntities[0], fightingEntities[spell.target], spell);
   };
 
   useEffect(() => {

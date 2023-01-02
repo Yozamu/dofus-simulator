@@ -30,6 +30,7 @@ const Fight = ({ monsters, character, ...props }) => {
     stats.maxvie = stats.vie;
     stats.basepa = stats.pa;
     stats.basepm = stats.pm;
+    stats.buffs = [];
   };
 
   const initStats = () => {
@@ -79,6 +80,7 @@ const Fight = ({ monsters, character, ...props }) => {
   };
 
   const stopFight = () => {
+    initStats();
     setIsFighting(false);
     setTurn(0);
     addNotification('<b style="color:var(--main)">Fin du combat</b>');
@@ -104,7 +106,7 @@ const Fight = ({ monsters, character, ...props }) => {
     let totalDamage = 0,
       totalSteal = 0,
       totalHeal = 0;
-    const isCrit = getRandomIntInclusive(1, 100) <= caster['%critique'] + spell.critique;
+    const isCrit = getRandomIntInclusive(1, 100) <= caster['%critique'] + (spell.critique || -1000);
     let castedSpellNotif = `${caster.name} lance ${spell.name}`;
     let usedEffects = spell.effects;
     if (isCrit) {
@@ -112,28 +114,41 @@ const Fight = ({ monsters, character, ...props }) => {
       usedEffects = spell.critEffects;
     }
     addNotification(castedSpellNotif);
-    usedEffects.forEach((effect) => {
-      const { type, element, amount } = effect;
-      const rawDamageLine = { type: element, min: amount.min, max: amount.max };
-      const damage = computeDamage(rawDamageLine, caster, target, isCrit, false, false, []);
-      addNotification(
-        `<span style='padding-left: 20px'>${target.name} <span style='color: var(--element-${element})'>-${damage}</span> PV</span>`
-      );
-      if (type == 'damage' || type == 'steal') totalDamage += damage;
-      else if (type == 'heal') totalHeal += damage;
-      if (type == 'steal') totalHeal += Math.floor(damage / 2);
-    });
     const casterCopy = { ...caster };
-    const targetCopy = { ...target };
+    const targetCopy = caster === target ? casterCopy : { ...target };
+    usedEffects.forEach((effect) => {
+      const { type, element, amount, duration, stat } = effect;
+      if (type === 'buff') {
+        target.buffs.push({ duration, stat: stat, amount });
+        addNotification(
+          `<span style='padding-left: 20px'>${target.name} ${amount > 0 ? '+' : '-'}${Math.abs(
+            amount
+          )} ${stat} (${duration} tour(s))</span>`
+        );
+        target === caster ? (casterCopy[stat] += amount) : (targetCopy[stat] += amount);
+      } else {
+        const rawDamageLine = { type: element, min: amount.min, max: amount.max };
+        const damage = computeDamage(rawDamageLine, caster, target, isCrit, false, false, []);
+        addNotification(
+          `<span style='padding-left: 20px'>${target.name} <span style='color: var(--element-${element})'>-${damage}</span> PV</span>`
+        );
+        if (type == 'damage' || type == 'steal') totalDamage += damage;
+        else if (type == 'heal') totalHeal += damage;
+        if (type == 'steal') totalHeal += Math.floor(damage / 2);
+      }
+    });
     casterCopy.vie += totalSteal + totalHeal;
     casterCopy.pa -= spell.cost;
     targetCopy.vie -= Math.min(targetCopy.vie, totalDamage);
     checkForDeath(targetCopy);
-    if (target === fightingEntities[1]) {
-      setFightingEntities([casterCopy, targetCopy]);
-    } else {
-      setFightingEntities([targetCopy, casterCopy]);
-    }
+    const newFightingEntities = [];
+    newFightingEntities.push(
+      fightingEntities[0] === target ? targetCopy : fightingEntities[0] === caster ? casterCopy : fightingEntities[0]
+    );
+    newFightingEntities.push(
+      fightingEntities[1] === target ? targetCopy : fightingEntities[1] === caster ? casterCopy : fightingEntities[1]
+    );
+    setFightingEntities(newFightingEntities);
   };
 
   return (
