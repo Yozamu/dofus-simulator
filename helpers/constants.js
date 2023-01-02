@@ -55,7 +55,7 @@ export const PRIMARY_STATS = [
   'Chance',
   'Agilité',
   'Puissance',
-  'Critique',
+  '% Critique',
 ];
 
 export const SECONDARY_STATS = [

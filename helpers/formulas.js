@@ -56,8 +56,8 @@ export const computeAddedStatFromCharacteristics = (stat, stats) => {
 
 const getDamageMultiplier = (pow = 0, stat = 0) => (pow + stat + 100) / 100;
 const getFixedDamage = (damage = 0, elemDamage = 0, critDamage = 0, isCrit) =>
-  damage + elemDamage + isCrit ? critDamage : 0;
-const getFixedRes = (fixedRes, critRes, isCrit) => (fixedRes + isCrit ? critRes : 0);
+  damage + elemDamage + (isCrit ? critDamage : 0);
+const getFixedRes = (fixedRes, critRes, isCrit) => fixedRes + (isCrit ? critRes : 0);
 const getDamageWithRes = (damage, fixedRes, percentRes) => Math.floor(((damage - fixedRes) * (100 - percentRes)) / 100);
 const getFinalDamage = (damage, ...bonuses) =>
   Math.floor(bonuses.reduce((acc, val) => acc * ((100 + val) / 100), damage));

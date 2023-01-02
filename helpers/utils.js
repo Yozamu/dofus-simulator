@@ -15,6 +15,8 @@ export const getItemSlotCategories = (type) => {
       return 'Anneau';
     case 'Trophées':
       return 'Trophée,Dofus';
+    case 'Cape':
+      return 'Cape,Sac à dos';
     case 'Arme':
     case 'Familier':
       return null;

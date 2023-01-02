@@ -92,11 +92,15 @@ const Fight = ({ monsters, character, ...props }) => {
     let totalDamage = 0;
     let totalSteal = 0;
     let totalHeal = 0;
-    const isCrit = getRandomIntInclusive(1, 100) <= caster.critique + spell.critique;
+    const isCrit = getRandomIntInclusive(1, 100) <= caster['%critique'] + spell.critique;
     let castedSpellNotif = `${caster.name} lance ${spell.name}`;
-    if (isCrit) castedSpellNotif += ' <b>(Coup Critique!)</b>';
+    let usedEffects = spell.effects;
+    if (isCrit) {
+      castedSpellNotif += ' <b>(Coup Critique!)</b>';
+      usedEffects = spell.critEffects;
+    }
     addNotification(castedSpellNotif);
-    spell.effects.forEach((effect) => {
+    usedEffects.forEach((effect) => {
       const { type, element, amount } = effect;
       const rawDamageLine = { type: element, min: amount.min, max: amount.max };
       const damage = computeDamage(rawDamageLine, caster, target, isCrit, false, false, []);

@@ -6,7 +6,8 @@
         "name": "Flèche Magique",
         "cost": 3,
         "critique": 15,
-        "effects": [{ "type": "damage", "amount": { "min": 23, "max": 27 }, "element": "air" }]
+        "effects": [{ "type": "damage", "amount": { "min": 23, "max": 27 }, "element": "air" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 28, "max": 32 }, "element": "air" }]
       }
     ],
     "pandawa": [
@@ -15,35 +16,40 @@
         "name": "Paume Explosive",
         "cost": 3,
         "critique": 10,
-        "effects": [{ "type": "damage", "amount": { "min": 24, "max": 27 }, "element": "feu" }]
+        "effects": [{ "type": "damage", "amount": { "min": 24, "max": 27 }, "element": "feu" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 29, "max": 32 }, "element": "feu" }]
       },
       {
         "_id": 692,
         "name": "Gueule de Bois",
         "cost": 3,
         "critique": 10,
-        "effects": [{ "type": "damage", "amount": { "min": 24, "max": 27 }, "element": "terre" }]
+        "effects": [{ "type": "damage", "amount": { "min": 24, "max": 27 }, "element": "terre" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 29, "max": 32 }, "element": "terre" }]
       },
       {
         "_id": 688,
         "name": "Schnaps",
         "cost": 3,
         "critique": 10,
-        "effects": [{ "type": "damage", "amount": { "min": 21, "max": 24 }, "element": "air" }]
+        "effects": [{ "type": "damage", "amount": { "min": 21, "max": 24 }, "element": "air" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 25, "max": 29 }, "element": "air" }]
       },
       {
         "_id": 697,
         "name": "Ethylo",
         "cost": 3,
         "critique": 10,
-        "effects": [{ "type": "damage", "amount": { "min": 24, "max": 27 }, "element": "eau" }]
+        "effects": [{ "type": "damage", "amount": { "min": 24, "max": 27 }, "element": "eau" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 30, "max": 34 }, "element": "eau" }]
       },
       {
         "_id": 700,
         "name": "Vague à lame",
         "cost": 4,
         "critique": 15,
-        "effects": [{ "type": "damage", "amount": { "min": 36, "max": 40 }, "element": "eau" }]
+        "effects": [{ "type": "damage", "amount": { "min": 36, "max": 40 }, "element": "eau" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 43, "max": 48 }, "element": "eau" }]
       }
     ]
   }
