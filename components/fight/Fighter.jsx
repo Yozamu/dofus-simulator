@@ -1,7 +1,7 @@
 import { LinearProgress, styled } from '@mui/material';
 import Image from 'next/image';
 
-const Fighter = ({ entity, isFighting, imagePath, ...props }) => {
+const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
   const FightingUI = () => (
     <div>
       <LinearProgress variant="determinate" value={(entity.vie / entity.maxvie) * 100} sx={{ width: '200px' }} />
@@ -27,5 +27,9 @@ export default styled(Fighter)`
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  img {
+    transform: scaleX(${(props) => props.scaleX});
   }
 `;

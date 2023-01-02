@@ -1,6 +1,16 @@
 import { Button, styled } from '@mui/material';
 
-const FightButtons = ({ isFighting, startFight, stopFight, finishTurn, chooseEnemy, damageEntity, ...props }) => {
+const FightButtons = ({
+  isFighting,
+  startFight,
+  stopFight,
+  finishTurn,
+  chooseEnemy,
+  damageEntity,
+  importData,
+  exportData,
+  ...props
+}) => {
   const NotFighting = () => (
     <div className="fight-buttons">
       <Button onClick={startFight} variant="contained">
@@ -8,6 +18,12 @@ const FightButtons = ({ isFighting, startFight, stopFight, finishTurn, chooseEne
       </Button>
       <Button onClick={chooseEnemy} variant="contained">
         Choisir monstre
+      </Button>
+      <Button onClick={importData} variant="contained">
+        Importer données
+      </Button>
+      <Button onClick={exportData} variant="contained">
+        Exporter données
       </Button>
     </div>
   );
@@ -35,6 +51,11 @@ export default styled(FightButtons)`
   .fight-buttons {
     margin-top: 20px;
     text-align: center;
+  }
+
+  .fight-buttons > button:first-of-type {
+    margin-right: 30px;
+    font-weight: bold;
   }
 
   button {

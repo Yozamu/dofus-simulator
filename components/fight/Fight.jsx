@@ -21,6 +21,10 @@ const Fight = ({ monsters, character, ...props }) => {
     setNotifications(newNotifications);
   };
 
+  const importData = () => {};
+
+  const exportData = () => {};
+
   const initBaseStats = (stats) => {
     stats.basevie = stats.vie;
     stats.maxvie = stats.vie;
@@ -86,12 +90,20 @@ const Fight = ({ monsters, character, ...props }) => {
     entities[entity].vie -= damage;
     addNotification(`Dommages infligés à <i>${entities[entity].name}</i>: ${damage}`);
     setFightingEntities(entities);
+    checkForDeath(entities[entity]);
+  };
+
+  const checkForDeath = (entity) => {
+    if (entity.vie < 1) {
+      addNotification(`${entity.name} est mort !`);
+      stopFight();
+    }
   };
 
   const castSpell = (caster, target, spell) => {
-    let totalDamage = 0;
-    let totalSteal = 0;
-    let totalHeal = 0;
+    let totalDamage = 0,
+      totalSteal = 0,
+      totalHeal = 0;
     const isCrit = getRandomIntInclusive(1, 100) <= caster['%critique'] + spell.critique;
     let castedSpellNotif = `${caster.name} lance ${spell.name}`;
     let usedEffects = spell.effects;
@@ -115,10 +127,13 @@ const Fight = ({ monsters, character, ...props }) => {
     const targetCopy = { ...target };
     casterCopy.vie += totalSteal + totalHeal;
     casterCopy.pa -= spell.cost;
-    targetCopy.vie -= totalDamage;
-    target === fightingEntities[1]
-      ? setFightingEntities([casterCopy, targetCopy])
-      : setFightingEntities([targetCopy, casterCopy]);
+    targetCopy.vie -= Math.min(targetCopy.vie, totalDamage);
+    checkForDeath(targetCopy);
+    if (target === fightingEntities[1]) {
+      setFightingEntities([casterCopy, targetCopy]);
+    } else {
+      setFightingEntities([targetCopy, casterCopy]);
+    }
   };
 
   return (
@@ -135,6 +150,7 @@ const Fight = ({ monsters, character, ...props }) => {
           entity={fightingEntities[1]}
           isFighting={isFigthing}
           imagePath={`/images/monsters/${enemy.ankamaId}.png`}
+          scaleX={-1}
         />
       </div>
       <FightButtons
@@ -144,6 +160,8 @@ const Fight = ({ monsters, character, ...props }) => {
         finishTurn={finishTurn}
         chooseEnemy={chooseEnemy}
         damageEntity={damageEntity}
+        importData={importData}
+        exportData={exportData}
       />
       <div className="spells-and-notif">
         <FightSpells
