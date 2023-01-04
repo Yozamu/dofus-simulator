@@ -143,7 +143,7 @@ export default styled(StuffStats)`
     align-items: center;
   }
 
-  .character-stats > div > div:first-child {
+  .character-stats > div > div:first-of-type {
     width: 150px;
   }
 

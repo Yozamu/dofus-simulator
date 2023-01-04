@@ -35,7 +35,7 @@ export default styled(FightNotifications)`
     width: 500px;
   }
 
-  .container > div:first-child {
+  .container > div:first-of-type {
     display: flex;
     justify-content: space-between;
     align-items: center;

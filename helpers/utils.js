@@ -77,3 +77,14 @@ export const getSpellActionTypeName = (type) => {
       return type;
   }
 };
+
+export const getFormattedStatName = (rawStatName) => {
+  switch (rawStatName) {
+    case 'pa':
+      return 'PA';
+    case 'pm':
+      return 'PM';
+    default:
+      return rawStatName[0].toUpperCase() + rawStatName.slice(1);
+  }
+};

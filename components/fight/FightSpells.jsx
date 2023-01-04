@@ -1,7 +1,7 @@
 import { Button, styled, Tooltip, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { getSpellActionTypeName } from '../../helpers/utils';
+import { getFormattedStatName, getSpellActionTypeName } from '../../helpers/utils';
 
 const FightSpells = ({ character, fightingEntities, castSpell, isFighting, ...props }) => {
   const [spells, setSpells] = useState([]);
@@ -17,6 +17,22 @@ const FightSpells = ({ character, fightingEntities, castSpell, isFighting, ...pr
       .then((json) => setSpells(json.data));
   }, [character]);
 
+  const TooltipEffectList = ({ effects }) => (
+    <ul>
+      {effects.map((effect, i) => (
+        <li key={i}>
+          <Typography variant="body2">
+            {effect.type === 'buff'
+              ? `${effect.amount} ${getFormattedStatName(effect.stat)} (${effect.duration} tours)`
+              : `${effect.amount.min} - ${effect.amount.max} (${getSpellActionTypeName(effect.type)} ${
+                  effect.element
+                })`}
+          </Typography>
+        </li>
+      ))}
+    </ul>
+  );
+
   const TooltipContent = ({ spell }) => (
     <div>
       <Typography variant="h6">
@@ -24,18 +40,16 @@ const FightSpells = ({ character, fightingEntities, castSpell, isFighting, ...pr
         <hr />
       </Typography>
       <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center' }}>
-        Coût: {spell.cost} <Image src="/images/ui/stats/pa.png" alt="PA" width={32} height={32} /> Critique:{' '}
-        {spell.critique}%
+        Coût: {spell.cost} <Image src="/images/ui/stats/pa.png" alt="PA" width={32} height={32} />
+        {spell.critique ? `Critique: ${spell.critique}%` : ''}
       </Typography>
-      <ul>
-        {spell.effects.map((effect, i) => (
-          <li key={i}>
-            <Typography variant="body2">
-              {effect.amount.min} - {effect.amount.max} ({getSpellActionTypeName(effect.type)} {effect.element})
-            </Typography>
-          </li>
-        ))}
-      </ul>
+      <TooltipEffectList effects={spell.effects} />
+      {spell.critEffects && (
+        <>
+          <Typography variant="body1">Effets critiques</Typography>
+          <TooltipEffectList effects={spell.critEffects} />
+        </>
+      )}
     </div>
   );
 

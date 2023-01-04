@@ -98,7 +98,7 @@ export default styled(StuffCharacteristics)`
     flex-basis: 45%;
   }
 
-  .stat-line:nth-child(odd) {
+  .stat-line:nth-of-type(odd) {
     margin-right: auto;
   }
 `;
