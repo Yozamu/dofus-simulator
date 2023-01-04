@@ -20,7 +20,7 @@ const Navbar = (props) => {
         <Toolbar>
           {buttons.map((button) => (
             <Link key={button.link} href={button.link}>
-              <Button sx={router?.route === button.link ? { backgroundColor: 'rgba(var(--main), 0.2)' } : {}}>
+              <Button sx={router?.route === button.link ? { backgroundColor: 'rgba(var(--main-rgb), 0.2)' } : {}}>
                 <Image src={`/images/ui/${button.icon}.png`} alt="menu icon" width={32} height={32} />
                 {button.name}
               </Button>

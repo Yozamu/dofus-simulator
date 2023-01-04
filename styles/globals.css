@@ -5,7 +5,8 @@
     --background-lighter: #646464;
     --foreground: #f6f6f6;
 
-    --main: 176, 222, 0;/*#b0de00;*/
+    --main: #b0de00;
+    --main-rgb: 176, 222, 0;
 
     --element-neutre: #746a62;
     --element-terre: #885529;
