@@ -63,6 +63,13 @@
         "cost": 2,
         "target": 0,
         "effects": [{ "type": "buff", "stat": "pm", "amount": 3, "duration": 2 }]
+      },
+      {
+        "_id": 689,
+        "name": "Epouvante",
+        "cost": 2,
+        "target": 1,
+        "effects": [{ "type": "buff", "stat": "%critique", "amount": -15, "duration": 2 }]
       }
     ]
   }

@@ -84,6 +84,8 @@ export const getFormattedStatName = (rawStatName) => {
       return 'PA';
     case 'pm':
       return 'PM';
+    case '%critique':
+      return '% Critique';
     default:
       return rawStatName[0].toUpperCase() + rawStatName.slice(1);
   }

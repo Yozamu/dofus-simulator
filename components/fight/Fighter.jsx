@@ -1,10 +1,12 @@
-import { LinearProgress, styled } from '@mui/material';
+import { Info } from '@mui/icons-material';
+import { LinearProgress, styled, Tooltip, Typography } from '@mui/material';
 import Image from 'next/image';
+import { getFormattedStatName } from '../../helpers/utils';
 
 const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
   const FightingUI = () => (
     <div>
-      <LinearProgress variant="determinate" value={(entity.vie / entity.maxvie) * 100} sx={{ width: '200px' }} />
+      <LinearProgress variant="determinate" value={(entity.vie / entity.viemax) * 100} sx={{ width: '200px' }} />
       <div className="pa-pm-po">
         <Image src="/images/ui/stats/vie.png" alt="Vie" width={32} height={32} /> {entity.vie}
         <Image src="/images/ui/stats/pa.png" alt="PA" width={32} height={32} /> {entity.pa}
@@ -14,9 +16,34 @@ const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
     </div>
   );
 
+  const TooltipContent = () => {
+    return (
+      <div>
+        <Typography variant="h6">
+          Buffs actifs
+          <hr />
+        </Typography>
+        <ul>
+          {entity.buffs.map((buff, i) => (
+            <li key={i}>
+              <Typography variant="body2">
+                {buff.name}: {buff.amount} {getFormattedStatName(buff.stat)} ({buff.duration} tour(s))
+              </Typography>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
   return (
     <div className={props.className}>
       <Image src={imagePath} alt={entity.name || 'fighter'} width={200} height={200} />
+      {entity.buffs?.length > 0 && (
+        <Tooltip placement="bottom" disableInteractive title={<TooltipContent />}>
+          <Info sx={{ position: 'absolute' }} />
+        </Tooltip>
+      )}
       {isFighting && <FightingUI />}
     </div>
   );

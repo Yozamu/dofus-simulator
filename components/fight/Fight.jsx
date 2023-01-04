@@ -49,7 +49,6 @@ const Fight = ({ monsters, character, ...props }) => {
   const initStats = () => {
     const { classe, level, ...stats } = character;
     stats.name = classe[0].toUpperCase() + classe.slice(1);
-    initBaseStats(stats);
     const enemyStats = {
       ...Object.keys(stats).reduce((acc, val) => ({ ...acc, [val]: 0 })),
       name: enemy.name,
@@ -62,6 +61,7 @@ const Fight = ({ monsters, character, ...props }) => {
       '%résistanceeau': enemy.resistances[3].Eau.min,
       '%résistanceneutre': enemy.resistances[4].Neutre.min,
     };
+    initBaseStats(stats);
     initBaseStats(enemyStats);
     setFightingEntities([stats, enemyStats]);
   };
@@ -76,11 +76,11 @@ const Fight = ({ monsters, character, ...props }) => {
 
   const resetEntityStatsAfterTurn = (entity) => {
     const entityCopy = { ...entity };
+    entityCopy.buffs = entityCopy.buffs.filter((buff) => --buff.duration > 0);
     for (let [stat, value] of Object.entries(entity.basestats)) {
-      if (stat.includes('vie') || stat === 'buffs') continue;
+      if (stat.includes('vie') || stat === 'buffs' || stat == 'name') continue;
       entityCopy[stat] = value + getBuffsForStat(entityCopy.buffs, stat);
     }
-    entityCopy.buffs = entityCopy.buffs.filter((buff) => --buff.duration > 0);
     return entityCopy;
   };
 
@@ -139,7 +139,12 @@ const Fight = ({ monsters, character, ...props }) => {
     usedEffects.forEach((effect) => {
       const { type, element, amount, duration, stat } = effect;
       if (type === 'buff') {
-        target.buffs.push({ duration: caster === target ? duration - 1 : duration, stat: stat, amount });
+        target.buffs.push({
+          duration,
+          stat: stat,
+          amount,
+          name: spell.name,
+        });
         addNotification(
           `<span style='padding-left: 20px'>${target.name} ${amount > 0 ? '+' : '-'}${Math.abs(
             amount
