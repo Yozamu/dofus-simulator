@@ -5,8 +5,11 @@
         "_id": 161,
         "name": "Flèche Magique",
         "cost": 3,
-        "critique": 15,
+        "crit": 15,
         "target": 1,
+        "timesPerTurn": 3,
+        "timesPerTarget": 2,
+        "cooldown": 0,
         "effects": [{ "type": "damage", "amount": { "min": 23, "max": 27 }, "element": "air" }],
         "critEffects": [{ "type": "damage", "amount": { "min": 28, "max": 32 }, "element": "air" }]
       }
@@ -16,8 +19,11 @@
         "_id": 687,
         "name": "Paume Explosive",
         "cost": 3,
-        "critique": 10,
+        "crit": 10,
         "target": 1,
+        "timesPerTurn": 3,
+        "timesPerTarget": 3,
+        "cooldown": 0,
         "effects": [{ "type": "damage", "amount": { "min": 24, "max": 27 }, "element": "feu" }],
         "critEffects": [{ "type": "damage", "amount": { "min": 29, "max": 32 }, "element": "feu" }]
       },
@@ -25,8 +31,11 @@
         "_id": 692,
         "name": "Gueule de Bois",
         "cost": 3,
-        "critique": 10,
+        "crit": 10,
         "target": 1,
+        "timesPerTurn": 3,
+        "timesPerTarget": 2,
+        "cooldown": 0,
         "effects": [{ "type": "damage", "amount": { "min": 24, "max": 27 }, "element": "terre" }],
         "critEffects": [{ "type": "damage", "amount": { "min": 29, "max": 32 }, "element": "terre" }]
       },
@@ -34,8 +43,11 @@
         "_id": 688,
         "name": "Schnaps",
         "cost": 3,
-        "critique": 10,
+        "crit": 10,
         "target": 1,
+        "timesPerTurn": 2,
+        "timesPerTarget": 2,
+        "cooldown": 0,
         "effects": [{ "type": "damage", "amount": { "min": 21, "max": 24 }, "element": "air" }],
         "critEffects": [{ "type": "damage", "amount": { "min": 25, "max": 29 }, "element": "air" }]
       },
@@ -43,8 +55,11 @@
         "_id": 697,
         "name": "Ethylo",
         "cost": 3,
-        "critique": 10,
+        "crit": 10,
         "target": 1,
+        "timesPerTurn": 3,
+        "timesPerTarget": 2,
+        "cooldown": 0,
         "effects": [{ "type": "damage", "amount": { "min": 24, "max": 27 }, "element": "eau" }],
         "critEffects": [{ "type": "damage", "amount": { "min": 30, "max": 34 }, "element": "eau" }]
       },
@@ -52,8 +67,11 @@
         "_id": 700,
         "name": "Vague à lame",
         "cost": 4,
-        "critique": 15,
+        "crit": 15,
         "target": 1,
+        "timesPerTurn": 2,
+        "timesPerTarget": 2,
+        "cooldown": 0,
         "effects": [{ "type": "damage", "amount": { "min": 36, "max": 40 }, "element": "eau" }],
         "critEffects": [{ "type": "damage", "amount": { "min": 43, "max": 48 }, "element": "eau" }]
       },
@@ -62,6 +80,9 @@
         "name": "Pandanlku",
         "cost": 2,
         "target": 0,
+        "timesPerTurn": 0,
+        "timesPerTarget": 0,
+        "cooldown": 4,
         "effects": [{ "type": "buff", "stat": "pm", "amount": 3, "duration": 2 }]
       },
       {
@@ -69,6 +90,9 @@
         "name": "Epouvante",
         "cost": 2,
         "target": 1,
+        "timesPerTurn": 3,
+        "timesPerTarget": 1,
+        "cooldown": 0,
         "effects": [{ "type": "buff", "stat": "%critique", "amount": -15, "duration": 2 }]
       }
     ]

@@ -126,7 +126,7 @@ const Fight = ({ monsters, character, ...props }) => {
     let totalDamage = 0,
       totalSteal = 0,
       totalHeal = 0;
-    const isCrit = getRandomIntInclusive(1, 100) <= caster['%critique'] + (spell.critique || -1000);
+    const isCrit = getRandomIntInclusive(1, 100) <= caster['%critique'] + (spell.crit || -1000);
     let castedSpellNotif = `${caster.name} lance ${spell.name}`;
     let usedEffects = spell.effects;
     if (isCrit) {
@@ -209,6 +209,7 @@ const Fight = ({ monsters, character, ...props }) => {
           fightingEntities={fightingEntities}
           castSpell={castSpell}
           isFighting={isFigthing}
+          turn={turn}
         />
         <FightNotifications notifications={notifications} setNotifications={setNotifications} />
       </div>
