@@ -14,6 +14,11 @@ const Fight = ({ monsters, character, ...props }) => {
   const [fightingEntities, setFightingEntities] = useState([{}, {}]);
   const [notifications, setNotifications] = useState([]);
 
+  useEffect(() => {
+    const enemy = monsters.find((monster) => monster.ankamaId === 494);
+    setEnemy(enemy);
+  }, [monsters]);
+
   const addNotification = (notification) => {
     const newNotifications = notifications;
     newNotifications.length > 100 ?? newNotifications.shift();
@@ -21,15 +26,23 @@ const Fight = ({ monsters, character, ...props }) => {
     setNotifications(newNotifications);
   };
 
-  const importData = () => {};
+  const importData = () => {
+    console.log('TODO: import data');
+  };
 
-  const exportData = () => {};
+  const exportData = () => {
+    console.log('TODO: export data');
+  };
+
+  const chooseEnemy = () => {
+    console.log('choose enemy', monsters, character, enemy);
+    console.log('and ', fightingEntities[0], fightingEntities[1]);
+  };
 
   const initBaseStats = (stats) => {
-    stats.basevie = stats.vie;
-    stats.maxvie = stats.vie;
-    stats.basepa = stats.pa;
-    stats.basepm = stats.pm;
+    const baseStats = { ...stats };
+    stats.basestats = baseStats;
+    stats.viemax = stats.vie;
     stats.buffs = [];
   };
 
@@ -53,21 +66,28 @@ const Fight = ({ monsters, character, ...props }) => {
     setFightingEntities([stats, enemyStats]);
   };
 
-  useEffect(() => {
-    const enemy = monsters.find((monster) => monster.ankamaId === 494);
-    setEnemy(enemy);
-  }, [monsters]);
+  const getBuffsForStat = (buffs, stat) => {
+    let res = 0;
+    buffs.forEach((buff) => {
+      if (stat === buff.stat) res += buff.amount;
+    });
+    return res;
+  };
 
-  const chooseEnemy = () => {
-    console.log('choose enemy', monsters, character, enemy);
-    console.log('and ', fightingEntities[0], fightingEntities[1]);
+  const resetEntityStatsAfterTurn = (entity) => {
+    const entityCopy = { ...entity };
+    for (let [stat, value] of Object.entries(entity.basestats)) {
+      if (stat.includes('vie') || stat === 'buffs') continue;
+      entityCopy[stat] = value + getBuffsForStat(entityCopy.buffs, stat);
+    }
+    entityCopy.buffs = entityCopy.buffs.filter((buff) => --buff.duration > 0);
+    return entityCopy;
   };
 
   const finishTurn = () => {
-    setFightingEntities([
-      { ...fightingEntities[0], pa: fightingEntities[0].basepa, pm: fightingEntities[0].basepm },
-      { ...fightingEntities[1], pa: fightingEntities[1].basepa, pm: fightingEntities[1].basepm },
-    ]);
+    const characterCopy = resetEntityStatsAfterTurn(fightingEntities[0]);
+    const enemyCopy = resetEntityStatsAfterTurn(fightingEntities[1]);
+    setFightingEntities([characterCopy, enemyCopy]);
     addNotification(`<b style="color:var(--main)">Début du tour ${turn + 1}</b>`);
     setTurn(turn + 1);
   };
@@ -88,7 +108,7 @@ const Fight = ({ monsters, character, ...props }) => {
 
   const damageEntity = (entity, percent) => {
     const entities = [...fightingEntities];
-    const damage = Math.floor(entities[entity].maxvie * percent * 0.01);
+    const damage = Math.floor(entities[entity].viemax * percent * 0.01);
     entities[entity].vie -= damage;
     addNotification(`Dommages infligés à <i>${entities[entity].name}</i>: ${damage}`);
     setFightingEntities(entities);
@@ -119,7 +139,7 @@ const Fight = ({ monsters, character, ...props }) => {
     usedEffects.forEach((effect) => {
       const { type, element, amount, duration, stat } = effect;
       if (type === 'buff') {
-        target.buffs.push({ duration, stat: stat, amount });
+        target.buffs.push({ duration: caster === target ? duration - 1 : duration, stat: stat, amount });
         addNotification(
           `<span style='padding-left: 20px'>${target.name} ${amount > 0 ? '+' : '-'}${Math.abs(
             amount
