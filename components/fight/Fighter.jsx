@@ -1,9 +1,11 @@
 import { Info } from '@mui/icons-material';
 import { LinearProgress, styled, Tooltip, Typography } from '@mui/material';
 import Image from 'next/image';
-import { getFormattedStatName } from '../../helpers/utils';
+import { getFormattedStatName, normalizeImageName } from '../../helpers/utils';
 
 const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
+  const resStats = Object.keys(entity).filter((stat) => stat.includes('%résistance')) || [];
+
   const FightingUI = () => (
     <div>
       <LinearProgress variant="determinate" value={(entity.vie / entity.viemax) * 100} sx={{ width: '200px' }} />
@@ -16,7 +18,7 @@ const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
     </div>
   );
 
-  const TooltipContent = () => {
+  const BuffsTooltip = () => {
     return (
       <div>
         <Typography variant="h6">
@@ -36,11 +38,34 @@ const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
     );
   };
 
+  const ResTooltip = () => {
+    return (
+      <div>
+        <Typography variant="h6">
+          Résistances
+          <hr />
+        </Typography>
+        <ul style={{ listStyleType: 'none', padding: '0px' }}>
+          {resStats.map((stat, i) => (
+            <li key={i}>
+              <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center' }}>
+                <Image src={`/images/ui/stats/${normalizeImageName(stat)}.png`} alt={stat} width={24} height={24} />
+                {entity[stat]} {getFormattedStatName(stat)}
+              </Typography>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
   return (
     <div className={props.className}>
-      <Image src={imagePath} alt={entity.name || 'fighter'} width={200} height={200} />
+      <Tooltip placement="bottom" enterDelay={500} disableInteractive title={resStats.length > 0 ? <ResTooltip /> : ''}>
+        <Image src={imagePath} alt={entity.name || 'fighter'} width={200} height={200} />
+      </Tooltip>
       {entity.buffs?.length > 0 && (
-        <Tooltip placement="bottom" disableInteractive title={<TooltipContent />}>
+        <Tooltip placement="bottom" disableInteractive title={<BuffsTooltip />}>
           <Info sx={{ position: 'absolute' }} />
         </Tooltip>
       )}

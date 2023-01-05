@@ -123,7 +123,7 @@ const FightSpells = ({ character, fightingEntities, castSpell, isFighting, turn,
                     />
                   </Button>
                   {spell.currentValues.cooldown > 0 && (
-                    <Typography variant="h5" className="spell-cooldown">
+                    <Typography variant="h6" className="spell-cooldown">
                       {spell.currentValues.cooldown}
                     </Typography>
                   )}

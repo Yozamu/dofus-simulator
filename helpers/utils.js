@@ -84,8 +84,12 @@ export const getFormattedStatName = (rawStatName) => {
       return 'PA';
     case 'pm':
       return 'PM';
-    case '%critique':
-      return '% Critique';
+    case rawStatName.match(/%résistance[A-z]+/)?.input:
+      return '% Résistance ' + rawStatName.split('résistance')[1];
+    case rawStatName.match(/%dommages[A-z]+/)?.input:
+      return '% Dommages ' + rawStatName.split('dommages')[1];
+    case rawStatName.match(/%[A-z]*/)?.input:
+      return '% ' + rawStatName[1].toUpperCase() + rawStatName.slice(2);
     default:
       return rawStatName[0].toUpperCase() + rawStatName.slice(1);
   }

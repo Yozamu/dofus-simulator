@@ -35,8 +35,8 @@ const Fight = ({ monsters, character, ...props }) => {
   };
 
   const chooseEnemy = () => {
-    console.log('choose enemy', monsters, character, enemy);
-    console.log('and ', fightingEntities[0], fightingEntities[1]);
+    console.log('TODO choose enemy', monsters, character, enemy);
+    console.log('TODO and ', fightingEntities[0], fightingEntities[1]);
   };
 
   const initBaseStats = (stats) => {
