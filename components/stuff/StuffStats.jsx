@@ -10,8 +10,13 @@ const StuffStats = ({ characteristics, setCharacteristics, ...props }) => {
 
   useEffect(() => {
     let points = characteristics.niveau * 5 - 5;
-    Object.entries(characteristics).forEach(([stat, value]) => {
+    const { classe, niveau, ...characs } = characteristics;
+    Object.entries(characs).forEach(([stat, value]) => {
       switch (stat) {
+        case stat.match(/^exo|parcho/)?.input:
+          break;
+        case 'niveau':
+          break;
         case 'vitalité':
           points -= value;
           break;
