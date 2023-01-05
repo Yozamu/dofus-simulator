@@ -8,7 +8,11 @@ const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
 
   const FightingUI = () => (
     <div>
-      <LinearProgress variant="determinate" value={(entity.vie / entity.viemax) * 100} sx={{ width: '200px' }} />
+      <LinearProgress
+        variant="determinate"
+        value={(entity.vie / entity.viemax) * 100}
+        sx={{ width: '200px', marginTop: '10px' }}
+      />
       <div className="pa-pm-po">
         <Image src="/images/ui/stats/vie.png" alt="Vie" width={32} height={32} /> {entity.vie}
         <Image src="/images/ui/stats/pa.png" alt="PA" width={32} height={32} /> {entity.pa}
@@ -61,14 +65,24 @@ const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
 
   return (
     <div className={props.className}>
-      <Tooltip placement="bottom" enterDelay={500} disableInteractive title={resStats.length > 0 ? <ResTooltip /> : ''}>
-        <Image src={imagePath} alt={entity.name || 'fighter'} width={200} height={200} />
-      </Tooltip>
       {entity.buffs?.length > 0 && (
         <Tooltip placement="bottom" disableInteractive title={<BuffsTooltip />}>
-          <Info sx={{ position: 'absolute' }} />
+          <Info sx={{ position: 'absolute', zIndex: 1 }} />
         </Tooltip>
       )}
+      <Tooltip placement="bottom" enterDelay={500} disableInteractive title={resStats.length > 0 ? <ResTooltip /> : ''}>
+        <div style={{ position: 'relative' }}>
+          <Image src={imagePath} alt={entity.name || 'fighter'} width={200} height={200} />
+          <Image
+            src="/images/ui/pedestal.png"
+            alt={entity.name || 'fighter'}
+            width={200}
+            height={98}
+            style={{ position: 'absolute', bottom: '-10px', right: '0px', zIndex: '-1' }}
+          />
+        </div>
+      </Tooltip>
+
       {isFighting && <FightingUI />}
     </div>
   );
