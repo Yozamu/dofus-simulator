@@ -1,4 +1,3 @@
-import { Button } from '@mui/material';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Fight from '../components/fight/Fight';

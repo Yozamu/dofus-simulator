@@ -42,7 +42,7 @@ const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
     return (
       <div>
         <Typography variant="h6">
-          Résistances
+          {entity.name}
           <hr />
         </Typography>
         <ul style={{ listStyleType: 'none', padding: '0px' }}>

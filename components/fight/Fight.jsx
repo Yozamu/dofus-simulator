@@ -6,18 +6,33 @@ import FightButtons from './FightButtons';
 import Fighter from './Fighter';
 import FightNotifications from './FightNotifications';
 import FightSpells from './FightSpells';
+import MonsterChoice from './MonsterChoice';
 
 const Fight = ({ monsters, character, ...props }) => {
   const [isFigthing, setIsFighting] = useState(false);
-  const [enemy, setEnemy] = useState({});
+  const [enemy, setEnemy] = useState(null);
   const [turn, setTurn] = useState(0);
   const [fightingEntities, setFightingEntities] = useState([{}, {}]);
   const [notifications, setNotifications] = useState([]);
+  const [monsterDialogOpen, setMonsterDialogOpen] = useState(false);
+
+  useEffect(() => {
+    if (!enemy) return;
+    console.log(enemy);
+    initStats();
+  }, [enemy]);
 
   useEffect(() => {
     const enemy = monsters.find((monster) => monster.ankamaId === 494);
     setEnemy(enemy);
   }, [monsters]);
+
+  const handleMonsterChoiceClose = (value) => {
+    if (!value) return;
+    setEnemy(value);
+    initStats();
+    setMonsterDialogOpen(false);
+  };
 
   const addNotification = (notification) => {
     const newNotifications = notifications;
@@ -35,8 +50,7 @@ const Fight = ({ monsters, character, ...props }) => {
   };
 
   const chooseEnemy = () => {
-    console.log('TODO choose enemy', monsters, character, enemy);
-    console.log('TODO and ', fightingEntities[0], fightingEntities[1]);
+    setMonsterDialogOpen(true);
   };
 
   const initBaseStats = (stats) => {
@@ -189,7 +203,7 @@ const Fight = ({ monsters, character, ...props }) => {
         <Fighter
           entity={fightingEntities[1]}
           isFighting={isFigthing}
-          imagePath={`/images/monsters/${enemy.ankamaId}.png`}
+          imagePath={`/images/monsters/${enemy?.ankamaId}.png`}
           scaleX={-1}
         />
       </div>
@@ -212,6 +226,12 @@ const Fight = ({ monsters, character, ...props }) => {
           turn={turn}
         />
         <FightNotifications notifications={notifications} setNotifications={setNotifications} />
+        <MonsterChoice
+          monsters={monsters}
+          open={monsterDialogOpen}
+          onClose={handleMonsterChoiceClose}
+          selectedValue={enemy}
+        />
       </div>
     </div>
   );

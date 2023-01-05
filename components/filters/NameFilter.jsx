@@ -1,6 +1,6 @@
 import { TextField } from '@mui/material';
 
-const NameFilter = ({ name, setName }) => {
+const NameFilter = ({ name, setName, ...props }) => {
   return (
     <div>
       <TextField
@@ -11,6 +11,7 @@ const NameFilter = ({ name, setName }) => {
         onChange={(e) => {
           setName(e.target.value);
         }}
+        {...props}
       />
     </div>
   );
