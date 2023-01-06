@@ -79,7 +79,7 @@ export const computeDamage = (
   let fixedRes = 0,
     percentRes = 0;
   if (targetStats) {
-    fixedRes = getFixedRes(targetStats[`résistance${element}`], targetStats['résistancecritique'], isCrit);
+    fixedRes = getFixedRes(targetStats[`résistance${element}`], targetStats['résistancecritiques'], isCrit);
     percentRes = targetStats[`%résistance${element}`];
   }
   const damageWithRes = getDamageWithRes(damage, fixedRes, percentRes);
