@@ -1,6 +1,7 @@
 import { Grid, styled } from '@mui/material';
 import { useEffect, useState } from 'react';
 import StuffCharacteristics from '../components/stuff/StuffCharacteristics';
+import StuffSets from '../components/stuff/StuffSets';
 import StuffShowcase from '../components/stuff/StuffShowcase';
 import StuffStats from '../components/stuff/StuffStats';
 import { MAIN_STATS, STUFF_ITEMS } from '../helpers/constants';
@@ -74,7 +75,7 @@ const StuffPage = (props) => {
             const statName = normalizeStatName(stat.slice(separatorIndex).trim());
             return [statName, amount];
           });
-          newSets[ankamaId] = { ...set, bonus: actualBonus };
+          newSets[ankamaId] = { ...set, bonus: actualBonus, amountEquipped: setIds[ankamaId] };
         }
       });
       setSets(newSets);
@@ -82,16 +83,19 @@ const StuffPage = (props) => {
   }, [items]);
 
   return (
-    <div className={props.className}>
-      <StuffCharacteristics items={items} sets={sets} characteristics={characteristics} />
-      <StuffShowcase
-        items={items}
-        sets={sets}
-        setItems={setItems}
-        characteristics={characteristics}
-        setCharacteristics={setCharacteristics}
-      />
-      <StuffStats characteristics={characteristics} setCharacteristics={setCharacteristics} />
+    <div>
+      <div className={props.className}>
+        <StuffCharacteristics items={items} sets={sets} characteristics={characteristics} />
+        <StuffShowcase
+          items={items}
+          sets={sets}
+          setItems={setItems}
+          characteristics={characteristics}
+          setCharacteristics={setCharacteristics}
+        />
+        <StuffStats characteristics={characteristics} setCharacteristics={setCharacteristics} />
+      </div>
+      <StuffSets sets={sets} />
     </div>
   );
 };

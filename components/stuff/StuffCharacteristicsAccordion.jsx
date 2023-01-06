@@ -7,7 +7,7 @@ const StuffCharacteristicsAccordion = ({ section, title, stats = [], ...props })
   return (
     <Accordion {...props}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={`${section}-content`} id={`${section}-header`}>
-        <Typography>{title}</Typography>
+        <Typography variant="h6">{title}</Typography>
       </AccordionSummary>
       <hr />
       <AccordionDetails className="stat-section">
