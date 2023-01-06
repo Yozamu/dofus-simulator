@@ -6,7 +6,7 @@ import StuffCharacteristicsAccordion from './StuffCharacteristicsAccordion';
 import { useEffect, useState } from 'react';
 import { setLocalStorageFinalStats } from '../../helpers/localstorage';
 
-const StuffCharacteristics = ({ items, characteristics, ...props }) => {
+const StuffCharacteristics = ({ items, sets, characteristics, ...props }) => {
   const [statsValues, setStatsValues] = useState({});
 
   useEffect(() => {
@@ -21,11 +21,17 @@ const StuffCharacteristics = ({ items, characteristics, ...props }) => {
         });
       });
     });
+    Object.values(sets).map((set) => {
+      set.bonus.map((statistic) => {
+        const [statName, statValue] = statistic;
+        statsCopy[statName] ? (statsCopy[statName] += +statValue) : (statsCopy[statName] = +statValue);
+      });
+    });
     Object.entries(characteristics).map(([statistic, statValue]) => {
       statsCopy[statistic] ? (statsCopy[statistic] += statValue) : (statsCopy[statistic] = statValue);
     });
     setStatsValues(statsCopy);
-  }, [characteristics, items]);
+  }, [characteristics, items, sets]);
 
   const computeStatFromItemsAndCharacteristics = (stat) => {
     let characteristicsValue = characteristics.stat || 0;

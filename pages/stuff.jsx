@@ -5,14 +5,21 @@ import StuffShowcase from '../components/stuff/StuffShowcase';
 import StuffStats from '../components/stuff/StuffStats';
 import { MAIN_STATS, STUFF_ITEMS } from '../helpers/constants';
 import { setLocalStorageCharacteristics } from '../helpers/localstorage';
+import { normalizeStatName } from '../helpers/utils';
 
 const StuffPage = (props) => {
   const [items, setItems] = useState({});
+  const [sets, setSets] = useState({});
   const [characteristics, setCharacteristics] = useState({});
 
-  const getData = async (stuff, slot) => {
+  const getItemData = async (stuff, slot) => {
     if (!stuff[slot]) return;
     const res = await fetch(`/api/items/${slot}/${stuff[slot]}`);
+    return res.json();
+  };
+
+  const getSetData = async (setId) => {
+    const res = await fetch(`/api/sets?setId=${setId}`);
     return res.json();
   };
 
@@ -30,7 +37,7 @@ const StuffPage = (props) => {
     const stuff = JSON.parse(localStorage.getItem('stuff')) || {};
     const promises = [];
     for (let slot of STUFF_ITEMS) {
-      promises.push(getData(stuff, slot));
+      promises.push(getItemData(stuff, slot));
     }
     Promise.all(promises).then((values) => {
       const newItems = {};
@@ -41,11 +48,45 @@ const StuffPage = (props) => {
     });
   }, []);
 
+  useEffect(() => {
+    const setIds = {};
+    for (let [, slotArray] of Object.entries(items)) {
+      for (let item of slotArray) {
+        const setId = item.setId;
+        if (!setId) continue;
+        setIds[setId] = setIds[setId] ? setIds[setId] + 1 : 1;
+      }
+    }
+    const promises = [];
+    for (let [setId, count] of Object.entries(setIds)) {
+      if (count <= 1) continue;
+      promises.push(getSetData(setId));
+    }
+    Promise.all(promises).then((values) => {
+      const newSets = {};
+      values.forEach((value) => {
+        if (value.data && setIds[value.data.ankamaId] > 1) {
+          const { ankamaId, bonus, ...set } = value.data;
+          let actualBonus = bonus[setIds[ankamaId] - 2];
+          actualBonus = actualBonus.map((stat) => {
+            const separatorIndex = stat.indexOf('%') >= 0 ? stat.indexOf('%') : stat.indexOf(' ');
+            const amount = stat.slice(0, separatorIndex);
+            const statName = normalizeStatName(stat.slice(separatorIndex).trim());
+            return [statName, amount];
+          });
+          newSets[ankamaId] = { ...set, bonus: actualBonus };
+        }
+      });
+      setSets(newSets);
+    });
+  }, [items]);
+
   return (
     <div className={props.className}>
-      <StuffCharacteristics items={items} characteristics={characteristics} />
+      <StuffCharacteristics items={items} sets={sets} characteristics={characteristics} />
       <StuffShowcase
         items={items}
+        sets={sets}
         setItems={setItems}
         characteristics={characteristics}
         setCharacteristics={setCharacteristics}
