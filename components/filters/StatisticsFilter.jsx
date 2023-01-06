@@ -8,6 +8,7 @@ const availableStatistics = [
   { name: 'intelligence' },
   { name: 'chance' },
   { name: 'agilité' },
+  { name: 'puissance' },
   { name: 'pa' },
   { name: 'pm' },
   { name: 'portée' },
