@@ -98,7 +98,7 @@ export const RESISTANCE_STATS = [
   'Résistance Feu',
   'Résistance Eau',
   'Résistance Air',
-  'Résistance Critique',
+  'Résistance Critiques',
   'Résistance Poussée',
   '% Résistance Armes',
   '% Résistance Mêlée',
