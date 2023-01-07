@@ -185,9 +185,9 @@
       "name": "Panoplie du Valet Veinard",
       "level": "200",
       "items": [
-        [["1278"], "Collier du Valet Veinard"],
-        [["9314"], "Gant du Valet Veinard"],
-        [["17363"], "Cape du Valet Veinard"]
+        [["17581"], "Collier du Valet Veinard"],
+        [["17582"], "Gant du Valet Veinard"],
+        [["17583"], "Cape du Valet Veinard"]
       ],
       "bonus": [
         ["50 Agilité", "15 Dommages Air"],
@@ -1188,9 +1188,9 @@
       "name": "Panoplie d'Allister",
       "level": "197",
       "items": [
-        [["16328"], "Couronne d'Allister"],
-        [["9248"], "Anneau d'Allister"],
-        [["11214"], "Bottes d'Allister"]
+        [["13123"], "Couronne d'Allister"],
+        [["13124"], "Anneau d'Allister"],
+        [["13125"], "Bottes d'Allister"]
       ],
       "bonus": [
         ["20 Agilité", "1 Portée", "5 Esquive PM"],

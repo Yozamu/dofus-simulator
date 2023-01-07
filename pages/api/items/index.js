@@ -9,7 +9,7 @@ export const retrieveItems = async (req) => {
   return await getFilteredData(
     type,
     {
-      name: name,
+      name: name.toLowerCase(),
       level: { min: level[0], max: level[1] },
       type: categories,
       statistics: computedStats,

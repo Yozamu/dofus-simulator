@@ -55,7 +55,7 @@ const StuffPage = (props) => {
       for (let item of slotArray) {
         const setId = item.setId;
         if (!setId) continue;
-        setIds[setId] = setIds[setId] ? setIds[setId] + 1 : 1;
+        setIds[setId] ? setIds[setId].push(item.ankamaId) : (setIds[setId] = [item.ankamaId]);
       }
     }
     const promises = [];
@@ -66,16 +66,23 @@ const StuffPage = (props) => {
     Promise.all(promises).then((values) => {
       const newSets = {};
       values.forEach((value) => {
-        if (value.data && setIds[value.data.ankamaId] > 1) {
-          const { ankamaId, bonus, ...set } = value.data;
-          let actualBonus = bonus[setIds[ankamaId] - 2];
+        if (value.data && setIds[value.data.ankamaId].length > 1) {
+          const { ankamaId, bonus, items, ...set } = value.data;
+          const currentSet = setIds[ankamaId];
+          let actualBonus = bonus[currentSet.length - 2];
           actualBonus = actualBonus.map((stat) => {
             const separatorIndex = stat.indexOf('%') >= 0 ? stat.indexOf('%') : stat.indexOf(' ');
             const amount = stat.slice(0, separatorIndex);
             const statName = normalizeStatName(stat.slice(separatorIndex).trim());
             return [statName, amount];
           });
-          newSets[ankamaId] = { ...set, bonus: actualBonus, amountEquipped: setIds[ankamaId] };
+          const updatedItems = items.map((item) => [...item, currentSet.indexOf(+item[0][0]) >= 0]);
+          newSets[ankamaId] = {
+            ...set,
+            items: updatedItems,
+            bonus: actualBonus,
+            amountEquipped: currentSet.length,
+          };
         }
       });
       setSets(newSets);

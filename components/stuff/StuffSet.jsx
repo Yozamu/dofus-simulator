@@ -1,5 +1,6 @@
 import { styled, Typography } from '@mui/material';
 import Image from 'next/image';
+import Link from 'next/link';
 import { normalizeImageName } from '../../helpers/utils';
 
 const StuffSet = ({ set, ...props }) => {
@@ -14,7 +15,19 @@ const StuffSet = ({ set, ...props }) => {
           const category = 'equipment';
           const itemId = item[0][0];
           const itemName = item[1];
-          return <Image key={itemId} src={`/images/${category}/${itemId}.png`} alt={itemName} width={96} height={96} />;
+          const itemIsEquipped = item[2];
+          return (
+            <Link key={itemId} href={`/equipment?name=${itemName}`}>
+              <Image
+                className={itemIsEquipped ? '' : 'not-equiped'}
+                key={itemId}
+                src={`/images/${category}/${itemId}.png`}
+                alt={itemName}
+                width={64}
+                height={64}
+              />
+            </Link>
+          );
         })}
         <div className="set-bonus">
           <div>Bonus:</div>
@@ -52,5 +65,9 @@ export default styled(StuffSet)`
 
   .set-bonus > div {
     margin: 5px;
+  }
+
+  .not-equiped {
+    opacity: 20%;
   }
 `;
