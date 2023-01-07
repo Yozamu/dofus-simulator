@@ -168,20 +168,25 @@ const Fight = ({ monsters, character, ...props }) => {
           )} ${stat} (${duration} tour(s))</span>`
         );
         target === caster ? (casterCopy[stat] += amount) : (targetCopy[stat] += amount);
-      } else {
+      } else if (totalDamage < target.vie) {
         const rawDamageLine = { type: element, min: amount.min, max: amount.max };
-        const damage = computeDamage(rawDamageLine, caster, target, isCrit, false, damageType === 'melee', []);
+        const damage = Math.min(
+          target.vie,
+          computeDamage(rawDamageLine, caster, target, isCrit, false, damageType === 'melee', [])
+        );
         addNotification(
           `<span style='padding-left: 20px'>${target.name} <span style='color: var(--element-${element})'>-${damage}</span> PV</span>`
         );
         if (type == 'damage' || type == 'steal') totalDamage += damage;
         else if (type == 'heal') totalHeal += damage;
         if (type == 'steal') totalHeal += Math.floor(damage / 2);
+        totalHeal = Math.min(totalHeal, caster.viemax - caster.vie);
+        if (totalHeal > 0) addNotification(`<span style='padding-left: 20px'>${caster.name} +${totalHeal} PV</span>`);
       }
     });
     casterCopy.vie += totalSteal + totalHeal;
     casterCopy.pa -= spell.cost;
-    targetCopy.vie -= Math.min(targetCopy.vie, totalDamage);
+    targetCopy.vie -= totalDamage;
     checkForDeath(targetCopy);
     const newFightingEntities = [];
     newFightingEntities.push(

@@ -78,6 +78,19 @@ export const getSpellActionTypeName = (type) => {
   }
 };
 
+export const getSpellActionTypeFromName = (type) => {
+  switch (type) {
+    case 'dommages':
+      return 'damage';
+    case 'vol':
+      return 'steal';
+    case 'soins':
+      return 'heal';
+    default:
+      return type;
+  }
+};
+
 export const getFormattedStatName = (rawStatName) => {
   switch (rawStatName) {
     case 'pa':

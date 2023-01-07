@@ -1,6 +1,6 @@
 import { styled } from '@mui/material';
 import { DAMAGE_STATS, PRIMARY_STATS, RESISTANCE_STATS, SECONDARY_STATS } from '../../helpers/constants';
-import { normalizeStatName } from '../../helpers/utils';
+import { getSpellActionTypeFromName, normalizeStatName } from '../../helpers/utils';
 import { computeAddedStatFromCharacteristics } from '../../helpers/formulas';
 import StuffCharacteristicsAccordion from './StuffCharacteristicsAccordion';
 import { useEffect, useState } from 'react';
@@ -61,11 +61,46 @@ const StuffCharacteristics = ({ items, sets, characteristics, ...props }) => {
     value: computeStatFromItemsAndCharacteristics(stat),
   }));
 
+  const getFormatedWeapon = (weapon) => {
+    const { characteristics, statistics } = weapon;
+    let [cost, , crit] = characteristics.map((characteristic) => Object.values(characteristic)[0]);
+    cost = cost.split(' ');
+    crit = crit.split(' ');
+    const timesPerTurn = +cost[1].replace('(', '');
+    cost = +cost[0];
+    const critChance = (crit[0].split('/')[0] / crit[0].split('/')[1]) * 100;
+    const critBonus = +crit[1].replace(/[()+]/g, '');
+    const effectLines = statistics
+      .filter((stat) => Object.keys(stat)[0].startsWith('('))
+      .map((line) => {
+        const [rawName, rawValue] = Object.entries(line)[0];
+        const name = rawName.replace(/[()]/g, '');
+        const type = getSpellActionTypeFromName(name.split(' ')[0]);
+        const element = name.split(' ')[1].toLowerCase();
+        return { type, element, amount: { min: rawValue.min, max: rawValue.max } };
+      });
+    const critEffects = effectLines.map((line) => {
+      const { min, max } = line.amount;
+      return { ...line, amount: { min: min + critBonus, max: max + critBonus } };
+    });
+    const formatedWeapon = {
+      name: weapon.name,
+      ankamaId: weapon.ankamaId,
+      cost,
+      timesPerTurn,
+      critChance,
+      effects: effectLines,
+      critEffects,
+    };
+    return formatedWeapon;
+  };
+
   useEffect(() => {
     const mergedStats = [...primaryStats, ...secondaryStats, ...damageStats, ...resistanceStats].map((val) => ({
       [normalizeStatName(val.name)]: val.value,
     }));
-    const finalStats = [{ classe: characteristics.classe }, ...mergedStats];
+    const weapon = items.Arme?.length > 0 ? getFormatedWeapon(items.Arme[0]) : null;
+    const finalStats = [{ classe: characteristics.classe }, { arme: weapon }, ...mergedStats];
     setLocalStorageFinalStats(JSON.stringify(Object.assign({}, ...finalStats)));
   });
 

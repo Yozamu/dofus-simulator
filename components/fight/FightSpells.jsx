@@ -41,18 +41,42 @@ const FightSpells = ({ character, fightingEntities, castSpell, isFighting, turn,
   };
 
   useEffect(() => {
+    const { ankamaId, cost, critChance, effects, critEffects, name, timesPerTurn } = character.arme;
+    const commonSpells = [
+      {
+        _id: ankamaId,
+        name,
+        icon: `/images/weapons/${ankamaId}.png`,
+        cost,
+        crit: critChance,
+        target: 1,
+        timesPerTurn,
+        timesPerTarget: timesPerTurn,
+        cooldown: 0,
+        effects,
+        critEffects,
+        currentValues: {
+          timesPerTurn: 0,
+          timesPerTarget: 0,
+          cooldown: 0,
+        },
+      },
+    ];
     fetch(`/api/spells?classe=${character.classe}`)
       .then((res) => res.json())
       .then((json) =>
         setSpells(
-          json.data.map((spell) => ({
-            ...spell,
-            currentValues: {
-              timesPerTurn: 0,
-              timesPerTarget: 0,
-              cooldown: 0,
-            },
-          }))
+          commonSpells.concat(
+            json.data.map((spell) => ({
+              ...spell,
+              icon: `/images/spells/${character.classe}/${spell._id}.png`,
+              currentValues: {
+                timesPerTurn: 0,
+                timesPerTarget: 0,
+                cooldown: 0,
+              },
+            }))
+          )
         )
       );
   }, [character]);
@@ -115,12 +139,7 @@ const FightSpells = ({ character, fightingEntities, castSpell, isFighting, turn,
                       handleSpellClick(spell);
                     }}
                   >
-                    <Image
-                      src={`/images/spells/${character.classe}/${spell._id}.png`}
-                      alt={spell.name}
-                      width={55}
-                      height={55}
-                    />
+                    <Image src={spell.icon} alt={spell.name} width={55} height={55} />
                   </Button>
                   {spell.currentValues.cooldown > 0 && (
                     <Typography variant="h6" className="spell-cooldown">
