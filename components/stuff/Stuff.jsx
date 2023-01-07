@@ -15,7 +15,6 @@ const Stuff = ({ localStuff, localCharacteristics, ...props }) => {
   const [stuff, setStuff] = useState(localStuff);
 
   const getItemData = async (stuff, slot) => {
-    if (!stuff[slot]) return;
     const res = await fetch(`/api/items/${slot}/${stuff[slot]}`);
     return res.json();
   };
@@ -32,7 +31,7 @@ const Stuff = ({ localStuff, localCharacteristics, ...props }) => {
   useEffect(() => {
     const promises = [];
     for (let slot of STUFF_ITEMS) {
-      promises.push(getItemData(stuff, slot));
+      if (stuff[slot]) promises.push(getItemData(stuff, slot));
     }
     Promise.all(promises).then((values) => {
       const newItems = {};

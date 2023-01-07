@@ -3,36 +3,29 @@ import { useEffect, useState } from 'react';
 import Fight from '../components/fight/Fight';
 import { getMonsters } from './api/monsters';
 
-const FightPage = ({ monsters, query }) => {
-  const [stats, setStats] = useState({});
+const FightPage = ({ monsters }) => {
+  const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    if (Object.keys(query).length > 0) {
-      setStats(query);
-    } else {
-      const storageStats = JSON.parse(localStorage.getItem('stats'));
-      storageStats && setStats(storageStats);
-    }
-  }, [query]);
+    const storageStats = JSON.parse(localStorage.getItem('stats'));
+    storageStats && setStats(storageStats);
+  }, []);
 
   return (
     <>
       <Head>
         <title>Dofus Simulator - Combattre</title>
       </Head>
-      {Object.keys(stats).length < 1 ? <div>Pas de données</div> : <Fight monsters={monsters} character={stats} />}
+      {stats ? <Fight monsters={monsters} character={stats} /> : <div>Pas de données</div>}
     </>
   );
 };
 
-export async function getServerSideProps(context) {
-  const query = context.query;
-  const req = { ...context.req, ...context.query };
-  const res = await getMonsters(req);
+export async function getServerSideProps() {
+  const res = await getMonsters();
   return {
     props: {
       monsters: res.data,
-      query,
     },
   };
 }

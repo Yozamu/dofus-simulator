@@ -3,7 +3,8 @@ import { useRef } from 'react';
 
 const FightNotifications = ({ notifications, setNotifications, ...props }) => {
   const notificationsEnd = useRef(null);
-  notificationsEnd.current && notificationsEnd.current.scrollIntoView({ behaviour: 'smooth' });
+  //notificationsEnd.current && notificationsEnd.current.scrollIntoView({ behaviour: 'smooth' });
+  notificationsEnd.current && notificationsEnd.current.scrollTo(0, notificationsEnd.current.scrollHeight);
 
   return (
     <div className={props.className}>

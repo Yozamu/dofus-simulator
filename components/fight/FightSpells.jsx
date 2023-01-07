@@ -41,9 +41,11 @@ const FightSpells = ({ character, fightingEntities, castSpell, isFighting, turn,
   };
 
   useEffect(() => {
-    const { ankamaId, cost, critChance, effects, critEffects, name, timesPerTurn } = character.arme;
-    const commonSpells = [
-      {
+    if (!character.classe) return;
+    const commonSpells = [];
+    if (character.arme) {
+      const { ankamaId, cost, critChance, effects, critEffects, name, timesPerTurn } = character.arme;
+      commonSpells.push({
         _id: ankamaId,
         name,
         icon: `/images/weapons/${ankamaId}.png`,
@@ -60,8 +62,9 @@ const FightSpells = ({ character, fightingEntities, castSpell, isFighting, turn,
           timesPerTarget: 0,
           cooldown: 0,
         },
-      },
-    ];
+      });
+    }
+
     fetch(`/api/spells?classe=${character.classe}`)
       .then((res) => res.json())
       .then((json) =>

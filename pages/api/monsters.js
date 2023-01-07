@@ -1,6 +1,6 @@
 import { getFilteredData } from '../../helpers/data';
 
-export const getMonsters = async (req) => {
+export const getMonsters = async () => {
   const monsters = await getFilteredData('monsters', {}, 2000);
   const filteredMonsters = monsters.data.filter((monster) => monster.type !== 'Archi-monstres');
   const updatedData = filteredMonsters.map((monster) => ({
@@ -15,7 +15,7 @@ export const getMonsters = async (req) => {
 export default async function handler(req, res) {
   let data;
   if (req.method === 'GET') {
-    data = await getMonsters(req);
+    data = await getMonsters();
   }
   res.status(200).json(data);
 }

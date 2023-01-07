@@ -58,7 +58,7 @@ const Fight = ({ monsters, character, ...props }) => {
 
   const initStats = () => {
     const { classe, level, ...stats } = usedCharacter;
-    stats.name = classe[0].toUpperCase() + classe.slice(1);
+    if (classe) stats.name = classe[0].toUpperCase() + classe.slice(1);
     const enemyStats = {
       ...Object.keys(stats).reduce((acc, val) => ({ ...acc, [val]: 0 })),
       name: enemy.name,

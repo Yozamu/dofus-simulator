@@ -102,7 +102,7 @@ const StuffCharacteristics = ({ items, sets, characteristics, ...props }) => {
     const weapon = items.Arme?.length > 0 ? getFormatedWeapon(items.Arme[0]) : null;
     const finalStats = [{ classe: characteristics.classe }, { arme: weapon }, ...mergedStats];
     setLocalStorageFinalStats(JSON.stringify(Object.assign({}, ...finalStats)));
-  });
+  }, [primaryStats, secondaryStats, damageStats, resistanceStats, characteristics.classe, items.Arme]);
 
   return (
     <div className={props.className}>
