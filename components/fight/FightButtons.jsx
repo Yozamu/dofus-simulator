@@ -65,7 +65,7 @@ const FightButtons = ({
       <Button onClick={exportData} variant="contained" startIcon={<FileDownload />}>
         Exporter données
       </Button>
-      <a className="hidden" download="data.json" href={fileDownloadUrl} ref={doFileDownload}>
+      <a className="hidden" download="stats.json" href={fileDownloadUrl} ref={doFileDownload}>
         download
       </a>
     </div>
@@ -133,9 +133,5 @@ export default styled(FightButtons)`
 
   .checked-damage-type {
     background-color: rgba(var(--main-rgb), 0.25);
-  }
-
-  .hidden {
-    display: none;
   }
 `;

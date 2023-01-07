@@ -26,7 +26,7 @@ const StuffShowcaseSlot = ({ type, index = 0, item, tooltip, deleteItem, ...prop
   };
 
   return (
-    <Tooltip placement={tooltip} title={item ? <TooltipContent /> : ''}>
+    <Tooltip enterDelay={250} placement={tooltip} title={item ? <TooltipContent /> : ''}>
       <Button className={props.className} onClick={browseItems}>
         <Image src={imgPath} alt={`${type} background`} width={64} height={64} />
       </Button>

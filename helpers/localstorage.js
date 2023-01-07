@@ -24,6 +24,27 @@ export const deleteStuffItemFromLocalStorage = (type, index) => {
   localStorage.setItem('stuff', JSON.stringify({ ...stuff }));
 };
 
+export const setLocalStorageStuff = (stuff) => {
+  localStorage.removeItem('stuff');
+  let category = 'equipment';
+  for (let [slotType, items] of Object.entries(stuff)) {
+    for (let item of items) {
+      switch (slotType) {
+        case 'Arme':
+          category = 'weapons';
+          break;
+        case 'Familier':
+          category = 'pets';
+          break;
+        default:
+          category = 'equipment';
+          break;
+      }
+      setLocalStorageStuffItem(item, category);
+    }
+  }
+};
+
 export const setLocalStorageCharacteristics = (key, value) => {
   const character = JSON.parse(localStorage.getItem('characteristics')) || {};
   localStorage.setItem('characteristics', JSON.stringify({ ...character, [key]: value }));

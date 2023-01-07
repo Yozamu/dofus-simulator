@@ -2,11 +2,12 @@ import { styled } from '@mui/material';
 import { deleteStuffItemFromLocalStorage } from '../../helpers/localstorage';
 import StuffShowcaseSlot from './StuffShowcaseSlot';
 import StuffShowcaseCharacter from './StuffShowcaseCharacter';
+import StuffImportExport from './StuffImportExport';
 
 const leftRowItems = ['Amulette', 'Bouclier', 'Anneaux', 'Ceinture', 'Bottes'];
 const rightRowItems = ['Chapeau', 'Arme', 'Anneaux', 'Cape', 'Familier'];
 
-const StuffShowcase = ({ items, setItems, characteristics, setCharacteristics, ...props }) => {
+const StuffShowcase = ({ items, setItems, characteristics, setCharacteristics, importData, stuff, ...props }) => {
   const deleteItem = (type, index) => {
     deleteStuffItemFromLocalStorage(type, index);
     const currentItems = [...items[type]];
@@ -28,7 +29,10 @@ const StuffShowcase = ({ items, setItems, characteristics, setCharacteristics, .
             />
           ))}
         </div>
-        <StuffShowcaseCharacter characteristics={characteristics} setCharacteristics={setCharacteristics} />
+        <div className="stuff-character">
+          <StuffShowcaseCharacter characteristics={characteristics} setCharacteristics={setCharacteristics} />
+          <StuffImportExport importData={importData} stuff={stuff} />
+        </div>
         <div className="stuff-items">
           {rightRowItems.map((itemType) => (
             <StuffShowcaseSlot
@@ -61,6 +65,13 @@ const StuffShowcase = ({ items, setItems, characteristics, setCharacteristics, .
 export default styled(StuffShowcase)`
   .stuff-upper {
     display: flex;
+  }
+
+  .stuff-character {
+    flex: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
 
   .stuff-items {
