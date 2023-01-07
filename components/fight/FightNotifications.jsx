@@ -3,8 +3,7 @@ import { useRef } from 'react';
 
 const FightNotifications = ({ notifications, setNotifications, ...props }) => {
   const notificationsEnd = useRef(null);
-  //notificationsEnd.current && notificationsEnd.current.scrollIntoView({ behaviour: 'smooth' });
-  notificationsEnd.current && notificationsEnd.current.scrollTo(0, notificationsEnd.current.scrollHeight);
+  if (notificationsEnd.current) notificationsEnd.current.scrollTop = notificationsEnd.current.scrollHeight;
 
   return (
     <div className={props.className}>
@@ -15,13 +14,12 @@ const FightNotifications = ({ notifications, setNotifications, ...props }) => {
             Effacer l'historique
           </Button>
         </div>
-        <div className="messages">
+        <div className="messages" ref={notificationsEnd}>
           <ul>
             {notifications.map((notification, i) => (
               <li key={i} dangerouslySetInnerHTML={{ __html: notification }} />
             ))}
           </ul>
-          <div ref={notificationsEnd}></div>
         </div>
       </div>
     </div>
@@ -51,6 +49,7 @@ export default styled(FightNotifications)`
 
   ul {
     padding-left: 8px;
+    margin-bottom: 20px;
     list-style-type: none;
   }
 
