@@ -3,7 +3,7 @@ import ItemsPage from '../components/items/ItemsPage';
 import { PETS } from '../helpers/constants';
 
 const PetsPage = ({ items, query }) => {
-  const availableCategories = ['Dragodinde', 'Muldo', 'Familier', 'Montilier'];
+  const availableCategories = ['Dragodinde', 'Muldo', 'Volkorne', 'Familier', 'Montilier'];
 
   return (
     <ItemsPage

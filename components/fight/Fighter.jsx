@@ -5,7 +5,6 @@ import { getFormattedStatName, normalizeImageName } from '../../helpers/utils';
 
 const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
   const resStats = Object.keys(entity).filter((stat) => stat.includes('%résistance')) || [];
-  console.log(imagePath);
 
   const FightingUI = () => (
     <div>

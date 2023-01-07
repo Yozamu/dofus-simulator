@@ -10,6 +10,7 @@ import MonsterChoice from './MonsterChoice';
 
 const Fight = ({ monsters, character, ...props }) => {
   const [isFigthing, setIsFighting] = useState(false);
+  const [usedCharacter, setUsedCharacter] = useState(character);
   const [enemy, setEnemy] = useState(null);
   const [turn, setTurn] = useState(0);
   const [fightingEntities, setFightingEntities] = useState([{}, {}]);
@@ -29,7 +30,6 @@ const Fight = ({ monsters, character, ...props }) => {
   const handleMonsterChoiceClose = (value) => {
     if (!value) return;
     setEnemy(value);
-    initStats();
     setMonsterDialogOpen(false);
   };
 
@@ -42,10 +42,13 @@ const Fight = ({ monsters, character, ...props }) => {
 
   const importData = () => {
     console.log('TODO: import data');
+    // import all stats as query
+    // setUsedCharacter, setEnemy
   };
 
   const exportData = () => {
     console.log('TODO: export data');
+    console.log(usedCharacter, enemy);
   };
 
   const chooseEnemy = () => {
@@ -60,7 +63,7 @@ const Fight = ({ monsters, character, ...props }) => {
   };
 
   const initStats = () => {
-    const { classe, level, ...stats } = character;
+    const { classe, level, ...stats } = usedCharacter;
     stats.name = classe[0].toUpperCase() + classe.slice(1);
     const enemyStats = {
       ...Object.keys(stats).reduce((acc, val) => ({ ...acc, [val]: 0 })),
@@ -196,7 +199,7 @@ const Fight = ({ monsters, character, ...props }) => {
         <Fighter
           entity={fightingEntities[0]}
           isFighting={isFigthing}
-          imagePath={`/images/classes/${character.classe}.png`}
+          imagePath={`/images/classes/${usedCharacter.classe}.png`}
         />
         {isFigthing ? <div>Tour {turn}</div> : <div>Combat arrêté</div>}
         <Fighter
@@ -218,7 +221,7 @@ const Fight = ({ monsters, character, ...props }) => {
       />
       <div className="spells-and-notif">
         <FightSpells
-          character={character}
+          character={usedCharacter}
           fightingEntities={fightingEntities}
           castSpell={castSpell}
           isFighting={isFigthing}

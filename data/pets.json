@@ -3358,6 +3358,842 @@
       "imgUrl": "https://s.ankama.com/www/static.ankama.com/dofus/renderer/look/7b333538387c7c313d31343331353733342c333d31343331353733342c323d31343331353733347c3131357d/full/1/200_200-10.png",
       "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/montures/171-muldo-orchidee-sauvage",
       "statistics": [{ "% Résistance Feu": { "min": 22, "max": null } }]
+    },
+    {
+      "_id": 19832,
+      "ankamaId": 19832,
+      "name": "Volkorne Prune et Roux",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Dommages Poussée": { "min": 40, "max": null } },
+        { "Résistance Critiques": { "min": 35, "max": null } }
+      ]
+    },
+    {
+      "_id": 19833,
+      "ankamaId": 19833,
+      "name": "Volkorne Prune et Ivoire",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Retrait PA": { "min": 20, "max": null } },
+        { "Résistance Critiques": { "min": 35, "max": null } }
+      ]
+    },
+    {
+      "_id": 19848,
+      "ankamaId": 19848,
+      "name": "Volkorne Doré et Ebène",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Vitalité": { "min": 100, "max": null } },
+        { "Agilité": { "min": 50, "max": null } }
+      ]
+    },
+    {
+      "_id": 19849,
+      "ankamaId": 19849,
+      "name": "Volkorne Jade et Pourpre",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Force": { "min": 50, "max": null } },
+        { "% Résistance Terre": { "min": 6, "max": null } }
+      ]
+    },
+    {
+      "_id": 19850,
+      "ankamaId": 19850,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19851,
+      "ankamaId": 19851,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19852,
+      "ankamaId": 19852,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19853,
+      "ankamaId": 19853,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19854,
+      "ankamaId": 19854,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19855,
+      "ankamaId": 19855,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19856,
+      "ankamaId": 19856,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19857,
+      "ankamaId": 19857,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19858,
+      "ankamaId": 19858,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19859,
+      "ankamaId": 19859,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19860,
+      "ankamaId": 19860,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19861,
+      "ankamaId": 19861,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19862,
+      "ankamaId": 19862,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19863,
+      "ankamaId": 19863,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19864,
+      "ankamaId": 19864,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19865,
+      "ankamaId": 19865,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19866,
+      "ankamaId": 19866,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19867,
+      "ankamaId": 19867,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19868,
+      "ankamaId": 19868,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19869,
+      "ankamaId": 19869,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19870,
+      "ankamaId": 19870,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19871,
+      "ankamaId": 19871,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19872,
+      "ankamaId": 19872,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19873,
+      "ankamaId": 19873,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19874,
+      "ankamaId": 19874,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19875,
+      "ankamaId": 19875,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19876,
+      "ankamaId": 19876,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19877,
+      "ankamaId": 19877,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19878,
+      "ankamaId": 19878,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19879,
+      "ankamaId": 19879,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19880,
+      "ankamaId": 19880,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19881,
+      "ankamaId": 19881,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19882,
+      "ankamaId": 19882,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19883,
+      "ankamaId": 19883,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19884,
+      "ankamaId": 19884,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19885,
+      "ankamaId": 19885,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19886,
+      "ankamaId": 19886,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19887,
+      "ankamaId": 19887,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19888,
+      "ankamaId": 19888,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19889,
+      "ankamaId": 19889,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19890,
+      "ankamaId": 19890,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19891,
+      "ankamaId": 19891,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19892,
+      "ankamaId": 19892,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19893,
+      "ankamaId": 19893,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19894,
+      "ankamaId": 19894,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19895,
+      "ankamaId": 19895,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19896,
+      "ankamaId": 19896,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19897,
+      "ankamaId": 19897,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19898,
+      "ankamaId": 19898,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19899,
+      "ankamaId": 19899,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19900,
+      "ankamaId": 19900,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19901,
+      "ankamaId": 19901,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19902,
+      "ankamaId": 19902,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19903,
+      "ankamaId": 19903,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19904,
+      "ankamaId": 19904,
+      "name": "Volkorne XXXXX",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": [
+        { "PA": { "min": 1, "max": null } },
+        { "Initiative": { "min": 1000, "max": null } },
+        { "% Critique": { "min": 8, "max": null } }
+      ]
+    },
+    {
+      "_id": 19791,
+      "ankamaId": 19791,
+      "name": "Volkorne Caméléon",
+      "level": 100,
+      "type": "Volkorne",
+      "imgUrl": "-",
+      "url": "-",
+      "statistics": []
     }
   ]
 }
