@@ -1,11 +1,11 @@
-import { Button } from '@mui/material';
+//import { Button } from '@mui/material';
 import Head from 'next/head';
 
 const AdminPage = () => {
   const updateData = () => {
-    fetch('/api/update-data', {
+    /*fetch('/api/update-data', {
       method: 'PUT',
-    });
+    });*/
   };
 
   return (

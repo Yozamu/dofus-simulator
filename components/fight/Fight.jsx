@@ -13,6 +13,7 @@ const Fight = ({ monsters, character, ...props }) => {
   const [usedCharacter, setUsedCharacter] = useState(character);
   const [enemy, setEnemy] = useState(null);
   const [turn, setTurn] = useState(0);
+  const [damageType, setDamageType] = useState('distance');
   const [fightingEntities, setFightingEntities] = useState([{}, {}]);
   const [notifications, setNotifications] = useState([]);
   const [monsterDialogOpen, setMonsterDialogOpen] = useState(false);
@@ -169,7 +170,7 @@ const Fight = ({ monsters, character, ...props }) => {
         target === caster ? (casterCopy[stat] += amount) : (targetCopy[stat] += amount);
       } else {
         const rawDamageLine = { type: element, min: amount.min, max: amount.max };
-        const damage = computeDamage(rawDamageLine, caster, target, isCrit, false, false, []);
+        const damage = computeDamage(rawDamageLine, caster, target, isCrit, false, damageType === 'melee', []);
         addNotification(
           `<span style='padding-left: 20px'>${target.name} <span style='color: var(--element-${element})'>-${damage}</span> PV</span>`
         );
@@ -218,6 +219,8 @@ const Fight = ({ monsters, character, ...props }) => {
         damageEntity={damageEntity}
         importData={importData}
         exportData={exportData}
+        damageType={damageType}
+        setDamageType={setDamageType}
       />
       <div className="spells-and-notif">
         <FightSpells

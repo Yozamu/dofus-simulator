@@ -87,7 +87,7 @@ export const computeDamage = (
     damageWithRes,
     isWeapon ? stats['%dommagesarmes'] : 0,
     stats['%dommagessorts'],
-    isMelee ? stats['%dommagesmelee'] : stats['%dommagesdistance'],
+    isMelee ? stats['%dommagesmêlée'] : stats['%dommagesdistance'],
     ...percentBonuses
   );
   return Math.max(0, finalDamage);
