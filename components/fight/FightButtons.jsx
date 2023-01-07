@@ -95,7 +95,7 @@ const FightButtons = ({
         <Button onClick={() => damageEntity(0, 10)} variant="contained">
           -10% personnage
         </Button>
-        <div>
+        <div className="damage-type">
           {damageTypes.map((dmgType) => (
             <Radio
               key={dmgType.name}
@@ -129,6 +129,10 @@ export default styled(FightButtons)`
 
   button {
     margin: 4px;
+  }
+
+  .damage-type {
+    height: 42px;
   }
 
   .checked-damage-type {

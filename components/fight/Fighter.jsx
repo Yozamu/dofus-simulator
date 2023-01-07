@@ -6,8 +6,8 @@ import { getFormattedStatName, normalizeImageName } from '../../helpers/utils';
 const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
   const resStats = Object.keys(entity).filter((stat) => stat.includes('%résistance')) || [];
 
-  const FightingUI = () => (
-    <div>
+  const FightingUI = (props) => (
+    <div className={props.className}>
       <LinearProgress
         variant="determinate"
         value={(entity.vie / entity.viemax) * 100}
@@ -83,7 +83,7 @@ const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
         </div>
       </Tooltip>
 
-      {isFighting && <FightingUI />}
+      <FightingUI className={!isFighting ? 'is-not-fighting' : ''} />
     </div>
   );
 };
@@ -97,5 +97,9 @@ export default styled(Fighter)`
 
   img {
     transform: scaleX(${(props) => props.scaleX});
+  }
+
+  .is-not-fighting {
+    visibility: hidden;
   }
 `;

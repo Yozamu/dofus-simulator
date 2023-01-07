@@ -200,7 +200,7 @@ const Fight = ({ monsters, character, ...props }) => {
           isFighting={isFigthing}
           imagePath={`/images/classes/${usedCharacter.classe}.png`}
         />
-        {isFigthing ? <div>Tour {turn}</div> : <div>Combat arrêté</div>}
+        <div className="between-fighters">{isFigthing ? <>Tour {turn}</> : <>Combat arrêté</>}</div>
         <Fighter
           entity={fightingEntities[1]}
           isFighting={isFigthing}
@@ -247,6 +247,11 @@ export default styled(Fight)`
     margin-top: 50px;
     display: flex;
     justify-content: space-evenly;
+  }
+
+  .between-fighters {
+    width: 150px;
+    text-align: center;
   }
 
   .spells-and-notif {
