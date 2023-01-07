@@ -1,4 +1,4 @@
-import { Grid, styled } from '@mui/material';
+import { styled } from '@mui/material';
 import { useEffect, useState } from 'react';
 import StuffCharacteristics from '../components/stuff/StuffCharacteristics';
 import StuffSets from '../components/stuff/StuffSets';

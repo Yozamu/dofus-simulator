@@ -13,7 +13,8 @@ const StuffSet = ({ set, ...props }) => {
         {set.items.map((item) => {
           const category = 'equipment';
           const itemId = item[0][0];
-          return <Image key={itemId} src={`/images/${category}/${itemId}.png`} alt={itemId} width={96} height={96} />;
+          const itemName = item[1];
+          return <Image key={itemId} src={`/images/${category}/${itemId}.png`} alt={itemName} width={96} height={96} />;
         })}
         <div className="set-bonus">
           <div>Bonus:</div>

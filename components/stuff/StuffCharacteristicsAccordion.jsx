@@ -23,7 +23,7 @@ const StuffCharacteristicsAccordion = ({ section, title, stats = [], ...props })
               />
               {stat.name}
             </div>
-            <div>{stat.value}</div>
+            <div>{stat.value + ''}</div>
           </div>
         ))}
       </AccordionDetails>

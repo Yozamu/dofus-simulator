@@ -1,7 +1,7 @@
-import { getItemData } from '../../helpers/data';
+import { getSpecificData } from '../../helpers/data';
 
 export const getSets = async (req) => {
-  const set = await getItemData('sets', req.query.setId);
+  const set = await getSpecificData('sets', req.query.setId);
   return { data: set };
 };
 

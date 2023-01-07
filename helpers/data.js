@@ -126,7 +126,7 @@ export const getFilteredData = async (type, filters = {}, size = 24, offset = 0)
   return { data, count };
 };
 
-export const getItemData = async (type, id) => {
+export const getSpecificData = async (type, id) => {
   const json = await getJsonData(`${type}.json`);
   let data = extractMeaningfulData(json);
   return data.find((element) => +element.ankamaId === +id);

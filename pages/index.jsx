@@ -10,7 +10,7 @@ export default function HomePage() {
         <title>Dofus Simulator</title>
       </Head>
       <main className={styles.main}>
-        <div>Todo</div>
+        <div>Rien à voir par ici</div>
       </main>
     </>
   );

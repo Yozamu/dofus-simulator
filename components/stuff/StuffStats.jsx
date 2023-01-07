@@ -67,7 +67,7 @@ const StuffStats = ({ characteristics, setCharacteristics, ...props }) => {
               size="small"
               sx={{ minWidth: '80px', maxWidth: '80px' }}
               type="number"
-              value={characteristics['niveau']}
+              value={characteristics['niveau'] ?? 200}
             />
           </div>
         </div>
@@ -106,7 +106,7 @@ const StuffStats = ({ characteristics, setCharacteristics, ...props }) => {
                   size="small"
                   sx={{ minWidth: '80px', maxWidth: '80px' }}
                   type="number"
-                  value={characteristics[statName]}
+                  value={characteristics[statName] ?? 0}
                 />
                 <div className="stat-scroll">
                   <Image src={`/images/ui/parchemins/${statName}Parchemin.png`} alt={stat} width={32} height={32} />

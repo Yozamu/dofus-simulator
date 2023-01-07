@@ -18,7 +18,6 @@ const Fight = ({ monsters, character, ...props }) => {
 
   useEffect(() => {
     if (!enemy) return;
-    console.log(enemy);
     initStats();
   }, [enemy]);
 
@@ -203,7 +202,7 @@ const Fight = ({ monsters, character, ...props }) => {
         <Fighter
           entity={fightingEntities[1]}
           isFighting={isFigthing}
-          imagePath={`/images/monsters/${enemy?.ankamaId}.png`}
+          imagePath={`/images/monsters/${enemy?.ankamaId || '494'}.png`}
           scaleX={-1}
         />
       </div>
