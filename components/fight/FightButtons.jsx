@@ -1,5 +1,7 @@
+import { FileDownload, UploadFile } from '@mui/icons-material';
 import { Button, Radio, styled } from '@mui/material';
 import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 
 const FightButtons = ({
   isFighting,
@@ -9,11 +11,45 @@ const FightButtons = ({
   chooseEnemy,
   damageEntity,
   importData,
-  exportData,
+  character,
   damageType,
   setDamageType,
   ...props
 }) => {
+  const [fileDownloadUrl, setFileDownloadUrl] = useState('');
+  const doFileDownload = useRef(null);
+
+  useEffect(() => {
+    if (fileDownloadUrl !== '') {
+      doFileDownload.current.click();
+      URL.revokeObjectURL(fileDownloadUrl);
+      setFileDownloadUrl('');
+    }
+  }, [fileDownloadUrl]);
+
+  const handleFileUpload = (e) => {
+    if (!e.target.files) {
+      return;
+    }
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      if (!evt?.target?.result) {
+        return;
+      }
+      const { result } = evt.target;
+      importData(JSON.parse(result));
+    };
+    reader.readAsText(file);
+  };
+
+  const exportData = () => {
+    const data = JSON.stringify(character);
+    const blob = new Blob([data]);
+    const fileDownloadUrl = URL.createObjectURL(blob);
+    setFileDownloadUrl(fileDownloadUrl);
+  };
+
   const NotFighting = () => (
     <div className="fight-buttons">
       <Button onClick={startFight} variant="contained">
@@ -22,12 +58,16 @@ const FightButtons = ({
       <Button onClick={chooseEnemy} variant="contained">
         Choisir monstre
       </Button>
-      <Button onClick={importData} variant="contained">
+      <Button variant="contained" component="label" startIcon={<UploadFile />} sx={{ margin: '4px' }}>
         Importer données
+        <input type="file" accept=".json" hidden onChange={handleFileUpload} />
       </Button>
-      <Button onClick={exportData} variant="contained">
+      <Button onClick={exportData} variant="contained" startIcon={<FileDownload />}>
         Exporter données
       </Button>
+      <a className="hidden" download="data.json" href={fileDownloadUrl} ref={doFileDownload}>
+        download
+      </a>
     </div>
   );
 
@@ -93,5 +133,9 @@ export default styled(FightButtons)`
 
   .checked-damage-type {
     background-color: rgba(var(--main-rgb), 0.25);
+  }
+
+  .hidden {
+    display: none;
   }
 `;

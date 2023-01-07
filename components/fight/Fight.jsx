@@ -41,15 +41,8 @@ const Fight = ({ monsters, character, ...props }) => {
     setNotifications(newNotifications);
   };
 
-  const importData = () => {
-    console.log('TODO: import data');
-    // import all stats as query
-    // setUsedCharacter, setEnemy
-  };
-
-  const exportData = () => {
-    console.log('TODO: export data');
-    console.log(usedCharacter, enemy);
+  const importData = (data) => {
+    setUsedCharacter(data);
   };
 
   const chooseEnemy = () => {
@@ -223,7 +216,7 @@ const Fight = ({ monsters, character, ...props }) => {
         chooseEnemy={chooseEnemy}
         damageEntity={damageEntity}
         importData={importData}
-        exportData={exportData}
+        character={usedCharacter}
         damageType={damageType}
         setDamageType={setDamageType}
       />
