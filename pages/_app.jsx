@@ -9,14 +9,11 @@ const theme = createTheme({
     mode: 'dark',
     primary: {
       main: fontColor,
-      contrastText: '#303030',
     },
     background: {
-      default: '#303030',
       paper: '#424242',
     },
     text: {
-      primary: '#fff',
       secondary: '#fff',
     },
   },
