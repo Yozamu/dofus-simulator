@@ -1,0 +1,54 @@
+{
+  "data": {
+    "1047": [
+      {
+        "ankamaId": 1068,
+        "name": "Radicule",
+        "cost": 6,
+        "crit": 5,
+        "target": 0,
+        "timesPerTurn": 3,
+        "timesPerTarget": 3,
+        "cooldown": 0,
+        "effects": [{ "type": "damage", "amount": { "min": 179, "max": 290 }, "element": "terre" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 353, "max": 580 }, "element": "terre" }]
+      },
+      {
+        "ankamaId": 1069,
+        "name": "Radicelle",
+        "cost": 3,
+        "crit": 5,
+        "target": 1,
+        "timesPerTurn": 0,
+        "timesPerTarget": 0,
+        "cooldown": 2,
+        "effects": [
+          { "type": "buff", "stat": "puissance", "amount": 200, "duration": 2 },
+          { "type": "buff", "stat": "dommages", "amount": 10, "duration": 2 }
+        ],
+        "critEffects": [
+          { "type": "buff", "stat": "puissance", "amount": 500, "duration": 2 },
+          { "type": "buff", "stat": "dommages", "amount": 20, "duration": 2 }
+        ]
+      },
+      {
+        "ankamaId": 1070,
+        "name": "Pédoncule perfide",
+        "cost": 4,
+        "crit": 5,
+        "target": 0,
+        "timesPerTurn": 0,
+        "timesPerTarget": 0,
+        "cooldown": 3,
+        "effects": [
+          { "type": "buff", "stat": "pm", "amount": -3, "duration": 1 },
+          { "type": "steal", "amount": { "min": 179, "max": 290 }, "element": "terre" }
+        ],
+        "critEffects": [
+          { "type": "buff", "stat": "pm", "amount": -6, "duration": 1 },
+          { "type": "steal", "amount": { "min": 353, "max": 580 }, "element": "terre" }
+        ]
+      }
+    ]
+  }
+}

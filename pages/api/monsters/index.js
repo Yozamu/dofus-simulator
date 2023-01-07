@@ -1,4 +1,4 @@
-import { getFilteredData } from '../../helpers/data';
+import { getFilteredData } from '../../../helpers/data';
 
 export const getMonsters = async () => {
   const monsters = await getFilteredData('monsters', {}, 2000);

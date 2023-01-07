@@ -137,6 +137,11 @@ export const getSpellsData = async (classe) => {
   return json.data[classe];
 };
 
+export const getMonsterSpellsData = async (monsterId) => {
+  const json = await getJsonData('monsterSpells.json');
+  return json.data[monsterId];
+};
+
 // Updaters
 
 export const updateEquipment = async () => await updateData(EQUIPMENT_FILE, EQUIPMENT_API);

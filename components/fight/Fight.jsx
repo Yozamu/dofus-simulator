@@ -12,6 +12,7 @@ const Fight = ({ monsters, character, ...props }) => {
   const [isFigthing, setIsFighting] = useState(false);
   const [usedCharacter, setUsedCharacter] = useState(character);
   const [enemy, setEnemy] = useState(null);
+  const [enemySpells, setEnemySpells] = useState([]);
   const [turn, setTurn] = useState(0);
   const [damageType, setDamageType] = useState('distance');
   const [fightingEntities, setFightingEntities] = useState([{}, {}]);
@@ -21,6 +22,9 @@ const Fight = ({ monsters, character, ...props }) => {
   useEffect(() => {
     if (!enemy) return;
     initStats();
+    fetch(`/api/monsters/${enemy.ankamaId}/spells`)
+      .then((res) => res.json())
+      .then((json) => setEnemySpells(json.data));
   }, [enemy]);
 
   useEffect(() => {
@@ -219,6 +223,9 @@ const Fight = ({ monsters, character, ...props }) => {
         character={usedCharacter}
         damageType={damageType}
         setDamageType={setDamageType}
+        enemySpells={enemySpells}
+        castSpell={castSpell}
+        fightingEntities={fightingEntities}
       />
       <div className="spells-and-notif">
         <FightSpells

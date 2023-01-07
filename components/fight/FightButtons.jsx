@@ -1,5 +1,5 @@
 import { FileDownload, UploadFile } from '@mui/icons-material';
-import { Button, Radio, styled } from '@mui/material';
+import { Button, InputLabel, MenuItem, Radio, Select, styled } from '@mui/material';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
@@ -14,9 +14,13 @@ const FightButtons = ({
   character,
   damageType,
   setDamageType,
+  enemySpells,
+  castSpell,
+  fightingEntities,
   ...props
 }) => {
   const [fileDownloadUrl, setFileDownloadUrl] = useState('');
+  const [selectedEnemySpell, setSelectedEnemySpell] = useState(0);
   const doFileDownload = useRef(null);
 
   useEffect(() => {
@@ -48,6 +52,12 @@ const FightButtons = ({
     const blob = new Blob([data]);
     const fileDownloadUrl = URL.createObjectURL(blob);
     setFileDownloadUrl(fileDownloadUrl);
+  };
+
+  const castEnemySpell = () => {
+    const spell = enemySpells.find((spell) => spell.ankamaId === selectedEnemySpell);
+    if (fightingEntities[1].pa < spell.cost) return;
+    castSpell(fightingEntities[1], fightingEntities[spell.target], spell);
   };
 
   const NotFighting = () => (
@@ -84,6 +94,27 @@ const FightButtons = ({
       },
     ];
 
+    const EnemySpells = () => (
+      <div className="enemy-spells">
+        <Select value={selectedEnemySpell} onChange={(e) => setSelectedEnemySpell(e.target.value)}>
+          {enemySpells.map((spell) => (
+            <MenuItem key={spell.ankamaId} value={spell.ankamaId}>
+              {spell.name}
+            </MenuItem>
+          ))}
+        </Select>
+        <Button onClick={() => castEnemySpell()} variant="contained">
+          <Image src="/images/ui/weapons.png" alt="Attaque ennemie" width={32} height={32} />
+        </Button>
+      </div>
+    );
+
+    const NoEnemySpellButton = () => (
+      <Button onClick={() => damageEntity(0, 10)} variant="contained">
+        -10% personnage
+      </Button>
+    );
+
     return (
       <div className="fight-buttons">
         <Button onClick={stopFight} variant="contained">
@@ -92,9 +123,7 @@ const FightButtons = ({
         <Button onClick={finishTurn} variant="contained">
           Finir le tour
         </Button>
-        <Button onClick={() => damageEntity(0, 10)} variant="contained">
-          -10% personnage
-        </Button>
+        {enemySpells ? <EnemySpells /> : <NoEnemySpellButton />}
         <div className="damage-type">
           {damageTypes.map((dmgType) => (
             <Radio
@@ -137,5 +166,20 @@ export default styled(FightButtons)`
 
   .checked-damage-type {
     background-color: rgba(var(--main-rgb), 0.25);
+  }
+
+  .enemy-spells {
+    display: flex;
+    align-items: center;
+    height: 42px;
+    div {
+      width: 200px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+    }
+    button {
+      height: 40px;
+    }
   }
 `;

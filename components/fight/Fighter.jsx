@@ -65,7 +65,7 @@ const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
 
   return (
     <div className={props.className}>
-      {entity.buffs?.length > 0 && (
+      {isFighting && entity.buffs?.length > 0 && (
         <Tooltip placement="bottom" disableInteractive title={<BuffsTooltip />}>
           <Info sx={{ position: 'absolute', zIndex: 1 }} />
         </Tooltip>
