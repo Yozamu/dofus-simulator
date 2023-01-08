@@ -1,6 +1,7 @@
 import { FileDownload, UploadFile } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
+import { generateDownloadURL, handleFileUpload } from '../../helpers/files';
 
 const StuffImportExport = ({ importData, stuff = {} }) => {
   const [fileDownloadUrl, setFileDownloadUrl] = useState('');
@@ -14,34 +15,15 @@ const StuffImportExport = ({ importData, stuff = {} }) => {
     }
   }, [fileDownloadUrl]);
 
-  const handleFileUpload = (e) => {
-    if (!e.target.files) {
-      return;
-    }
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onload = (evt) => {
-      if (!evt?.target?.result) {
-        return;
-      }
-      const { result } = evt.target;
-      importData(JSON.parse(result));
-    };
-    reader.readAsText(file);
-  };
-
   const exportData = () => {
-    const data = JSON.stringify(stuff);
-    const blob = new Blob([data]);
-    const fileDownloadUrl = URL.createObjectURL(blob);
-    setFileDownloadUrl(fileDownloadUrl);
+    setFileDownloadUrl(generateDownloadURL(stuff));
   };
 
   return (
     <div>
       <Button variant="outlined" component="label" startIcon={<UploadFile />} sx={{ margin: '4px' }}>
         Importer
-        <input type="file" accept=".json" hidden onChange={handleFileUpload} />
+        <input type="file" accept=".json" hidden onChange={(e) => handleFileUpload(e, importData)} />
       </Button>
       <Button onClick={exportData} variant="outlined" startIcon={<FileDownload />}>
         Exporter
