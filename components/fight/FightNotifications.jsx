@@ -11,7 +11,7 @@ const FightNotifications = ({ notifications, setNotifications, ...props }) => {
         <div>
           <Typography variant="h6">Notifications</Typography>
           <Button onClick={() => setNotifications([])} variant="outlined">
-            Effacer l'historique
+            Effacer l&apos;historique
           </Button>
         </div>
         <div className="messages" ref={notificationsEnd}>
