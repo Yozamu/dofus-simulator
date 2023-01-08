@@ -20,7 +20,7 @@ const FightButtons = ({
   ...props
 }) => {
   const [fileDownloadUrl, setFileDownloadUrl] = useState('');
-  const [selectedEnemySpell, setSelectedEnemySpell] = useState(0);
+  const [selectedEnemySpell, setSelectedEnemySpell] = useState('');
   const doFileDownload = useRef(null);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const FightButtons = ({
 
   const castEnemySpell = () => {
     const spell = enemySpells.find((spell) => spell.ankamaId === selectedEnemySpell);
-    if (fightingEntities[1].pa < spell.cost) return;
+    if (!spell || fightingEntities[1].pa < spell.cost) return;
     castSpell(fightingEntities[1], fightingEntities[spell.target], spell);
   };
 
