@@ -12,7 +12,7 @@ const ClassSelectionDialog = (props) => {
   };
 
   const handleClassClick = (value) => {
-    onClose(value);
+    onClose(value.toLowerCase());
   };
 
   return (
