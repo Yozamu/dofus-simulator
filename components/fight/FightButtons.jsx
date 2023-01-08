@@ -2,6 +2,7 @@ import { FileDownload, UploadFile } from '@mui/icons-material';
 import { Button, MenuItem, Radio, Select, styled } from '@mui/material';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import { generateDownloadURL, handleFileUpload } from '../../helpers/files';
 
 const FightButtons = ({
   isFighting,
@@ -31,27 +32,8 @@ const FightButtons = ({
     }
   }, [fileDownloadUrl]);
 
-  const handleFileUpload = (e) => {
-    if (!e.target.files) {
-      return;
-    }
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onload = (evt) => {
-      if (!evt?.target?.result) {
-        return;
-      }
-      const { result } = evt.target;
-      importData(JSON.parse(result));
-    };
-    reader.readAsText(file);
-  };
-
   const exportData = () => {
-    const data = JSON.stringify(character);
-    const blob = new Blob([data]);
-    const fileDownloadUrl = URL.createObjectURL(blob);
-    setFileDownloadUrl(fileDownloadUrl);
+    setFileDownloadUrl(generateDownloadURL(character));
   };
 
   const castEnemySpell = () => {
@@ -70,7 +52,7 @@ const FightButtons = ({
       </Button>
       <Button variant="contained" component="label" startIcon={<UploadFile />} sx={{ margin: '4px' }}>
         Importer données
-        <input type="file" accept=".json" hidden onChange={handleFileUpload} />
+        <input type="file" accept=".json" hidden onChange={(e) => handleFileUpload(e, importData)} />
       </Button>
       <Button onClick={exportData} variant="contained" startIcon={<FileDownload />}>
         Exporter données
