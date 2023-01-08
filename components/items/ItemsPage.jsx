@@ -1,9 +1,9 @@
-import { ArrowUpward } from '@mui/icons-material';
-import { CircularProgress, Fab, styled } from '@mui/material';
+import { CircularProgress, styled } from '@mui/material';
 import Head from 'next/head';
 import { useCallback, useEffect, useState } from 'react';
 import usePrevious from '../../hooks/usePrevious';
 import Filters from '../filters/Filters';
+import BackToTop from '../layout/BackToTop';
 import ItemList from './ItemList';
 
 const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...props }) => {
@@ -48,10 +48,6 @@ const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...prop
     }
   }, [fetchItems, items, itemCount]);
 
-  const backToTop = () => {
-    window.scrollTo(0, 0);
-  };
-
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -60,7 +56,7 @@ const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...prop
   useEffect(() => {
     if (prevFilters && prevFilters !== filters) {
       fetchItems(true);
-      backToTop();
+      window.scrollTo(0, 0);
     }
   }, [fetchItems, prevFilters, filters]);
 
@@ -77,9 +73,7 @@ const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...prop
             <CircularProgress />
           </div>
         )}
-        <Fab color="primary" aria-label="Revenir en haut" className="back-to-top" onClick={backToTop}>
-          <ArrowUpward />
-        </Fab>
+        <BackToTop />
       </div>
     </>
   );
@@ -92,11 +86,5 @@ export default styled(ItemsPage)`
 
   .progress {
     text-align: center;
-  }
-
-  .back-to-top {
-    position: fixed;
-    bottom: 32px;
-    right: 8px;
   }
 `;

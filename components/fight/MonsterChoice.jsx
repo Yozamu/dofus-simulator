@@ -1,11 +1,11 @@
-import { Button, Dialog } from '@mui/material';
+import { Button, Dialog, styled } from '@mui/material';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import NameFilter from '../filters/NameFilter';
 
-const PAGE_SIZE = 50;
+const PAGE_SIZE = 60;
 
-const MonsterChoice = ({ monsters, open, onClose, selectedValue }) => {
+const MonsterChoice = ({ monsters, open, onClose, selectedValue, ...props }) => {
   const [filteredMonsters, setFilteredMonsters] = useState(monsters.slice(0, PAGE_SIZE));
   const [nameFilter, setNameFilter] = useState('');
 
@@ -28,9 +28,14 @@ const MonsterChoice = ({ monsters, open, onClose, selectedValue }) => {
   };
 
   return (
-    <Dialog onClose={handleClose} open={open} fullScreen sx={{ marginTop: '64px' }}>
-      <div style={{ display: 'flex', position: 'sticky', top: 0, zIndex: 1 }}>
-        <NameFilter name={nameFilter} setName={setNameFilter} variant="filled" />
+    <Dialog className={props.className} onClose={handleClose} open={open} sx={{ marginTop: '48px' }}>
+      <div className="top-buttons">
+        <NameFilter
+          name={nameFilter}
+          setName={setNameFilter}
+          variant="filled"
+          sx={{ backgroundColor: 'var(--background-light)' }}
+        />
         <Button onClick={handleClose} variant="contained">
           Close
         </Button>
@@ -59,4 +64,19 @@ const MonsterChoice = ({ monsters, open, onClose, selectedValue }) => {
   );
 };
 
-export default MonsterChoice;
+export default styled(MonsterChoice)`
+  > div > div {
+    max-width: 75%;
+    min-width: 75%;
+    min-height: 75%;
+    max-height: 75%;
+  }
+
+  .top-buttons {
+    display: flex;
+    position: sticky;
+    top: 0px;
+    left: 0;
+    z-index: 1;
+  }
+`;
