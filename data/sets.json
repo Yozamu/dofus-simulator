@@ -5,9 +5,9 @@
       "name": "Panoplie du Comte Harebourg",
       "level": "200",
       "items": [
-        [["16362"], "Coiffe du Comte Harebourg"],
-        [["9270"], "Anneau du Comte Harebourg"],
-        [["11238"], "Bottes du Comte Harebourg"]
+        [["14076"], "Coiffe du Comte Harebourg"],
+        [["14077"], "Anneau du Comte Harebourg"],
+        [["14078"], "Bottes du Comte Harebourg"]
       ],
       "bonus": [
         ["100 Vitalité", "50 Force", "10 Tacle"],
@@ -19,9 +19,9 @@
       "name": "Panoplie du Lévitrof",
       "level": "200",
       "items": [
-        [["16413"], "Coiffe du Lévitrof"],
-        [["9290"], "Alliance du Lévitrof"],
-        [["11260"], "Bottes du Lévitrof"]
+        [["15192"], "Coiffe du Lévitrof"],
+        [["15193"], "Alliance du Lévitrof"],
+        [["15194"], "Bottes du Lévitrof"]
       ],
       "bonus": [
         ["30 Force", "30 Intelligence", "1 Portée", "10 Fuite", "30 Chance"],
@@ -33,9 +33,9 @@
       "name": "Harpinoplie",
       "level": "200",
       "items": [
-        [["1263"], "Harpendentif"],
-        [["17333"], "Capille"],
-        [["11279"], "Bottarpille"]
+        [["15746"], "Harpendentif"],
+        [["15747"], "Capille"],
+        [["15748"], "Bottarpille"]
       ],
       "bonus": [["1 PM"], ["1 PA", "1 PM"]]
     },
@@ -44,9 +44,9 @@
       "name": "Panoplie de la Dame du Hasard",
       "level": "200",
       "items": [
-        [["11305"], "Bottes de la Dame du Hasard"],
-        [["1277"], "Collier de la Dame du Hasard"],
-        [["17361"], "Cape de la Dame du Hasard"]
+        [["17575"], "Bottes de la Dame du Hasard"],
+        [["17576"], "Collier de la Dame du Hasard"],
+        [["17577"], "Cape de la Dame du Hasard"]
       ],
       "bonus": [
         ["40 Intelligence", "40 Chance", "15 Dommages Critiques", "5 Fuite"],
@@ -58,9 +58,9 @@
       "name": "Panoplie Séculaire",
       "level": "200",
       "items": [
-        [["16363"], "Coiffe Séculaire"],
-        [["1230"], "Amulette Séculaire"],
-        [["10243"], "Ceinture Séculaire"]
+        [["14079"], "Coiffe Séculaire"],
+        [["14080"], "Amulette Séculaire"],
+        [["14081"], "Ceinture Séculaire"]
       ],
       "bonus": [
         ["50 Intelligence", "5% Critique", "10 Dommages Critiques"],
@@ -72,9 +72,9 @@
       "name": "Panoplie du Kamasterisk",
       "level": "200",
       "items": [
-        [["1253"], "Amulette du Kamasterisk"],
-        [["11261"], "Bottes du Kamasterisk"],
-        [["17299"], "Cape du Kamasterisk"]
+        [["15195"], "Amulette du Kamasterisk"],
+        [["15196"], "Bottes du Kamasterisk"],
+        [["15197"], "Cape du Kamasterisk"]
       ],
       "bonus": [
         ["40 Force", "40 Agilité", "6% Critique"],
@@ -86,9 +86,9 @@
       "name": "Panoplie Pnose",
       "level": "200",
       "items": [
-        [["1264"], "Talisman Igans"],
-        [["10283"], "Ceintrigue"],
-        [["11280"], "Bottes Owesli"]
+        [["15749"], "Talisman Igans"],
+        [["15750"], "Ceintrigue"],
+        [["15751"], "Bottes Owesli"]
       ],
       "bonus": [
         ["40 Intelligence", "40 Chance", "10 Soins", "15 Dommages Poussée"],
@@ -100,9 +100,9 @@
       "name": "Panoplie du Chalœil",
       "level": "200",
       "items": [
-        [["11306"], "Bottes du Chalœil"],
-        [["16492"], "Casque du Chalœil"],
-        [["17362"], "Cape du Chalœil"]
+        [["17578"], "Bottes du Chalœil"],
+        [["17579"], "Casque du Chalœil"],
+        [["17580"], "Cape du Chalœil"]
       ],
       "bonus": [
         ["30 Force", "30 Intelligence", "30 Agilité", "30 Chance", "20 Résistance Critiques", "1 Portée"],
@@ -114,9 +114,9 @@
       "name": "Panoplie de Tal Kasha",
       "level": "200",
       "items": [
-        [["16509"], "Némès de Tal Kasha"],
-        [["17377"], "Chevelure de Tal Kasha"],
-        [["11319"], "Sandales de Tal Kasha"]
+        [["18590"], "Némès de Tal Kasha"],
+        [["18591"], "Chevelure de Tal Kasha"],
+        [["18592"], "Sandales de Tal Kasha"]
       ],
       "bonus": [
         ["15 Dommages Air", "15 Dommages Eau", "15 Dommages Critiques"],
@@ -128,9 +128,9 @@
       "name": "Panoplie d'Anerice",
       "level": "200",
       "items": [
-        [["16524"], "Masque d'Anerice"],
-        [["17389"], "Cape d'Anerice"],
-        [["82173"], "Bouclier d'Anerice"]
+        [["19075"], "Masque d'Anerice"],
+        [["19076"], "Cape d'Anerice"],
+        [["19077"], "Bouclier d'Anerice"]
       ],
       "bonus": [
         [
@@ -157,9 +157,9 @@
       "name": "Panoplie Cryochrone",
       "level": "200",
       "items": [
-        [["16365"], "Coiffe Cryochrone"],
-        [["9271"], "Anneau Cryochrone"],
-        [["1233"], "Amulette Cryochrone"]
+        [["14088"], "Coiffe Cryochrone"],
+        [["14089"], "Anneau Cryochrone"],
+        [["14090"], "Amulette Cryochrone"]
       ],
       "bonus": [
         ["50 Intelligence", "50 Chance", "300 Initiative", "15 Esquive PA"],
@@ -171,9 +171,9 @@
       "name": "Panoplie de la Cour Sombre",
       "level": "200",
       "items": [
-        [["11268"], "Bottes de la Cour Sombre"],
-        [["10276"], "Ceinture de la Cour Sombre"],
-        [["17326"], "Cape de la Cour Sombre"]
+        [["15428"], "Bottes de la Cour Sombre"],
+        [["15429"], "Ceinture de la Cour Sombre"],
+        [["15430"], "Cape de la Cour Sombre"]
       ],
       "bonus": [
         ["500 Initiative", "30 Force", "5 Retrait PA"],
@@ -199,9 +199,9 @@
       "name": "Panoplistik",
       "level": "200",
       "items": [
-        [["11320"], "Bottistik"],
-        [["9322"], "Baguistik"],
-        [["1289"], "Torquistik"]
+        [["18593"], "Bottistik"],
+        [["18594"], "Baguistik"],
+        [["18595"], "Torquistik"]
       ],
       "bonus": [
         ["30 Résistance Critiques", "20 Dommages Poussée", "10 Soins"],
@@ -213,9 +213,9 @@
       "name": "Panoplie de la goule",
       "level": "200",
       "items": [
-        [["9328"], "Goulano"],
-        [["11326"], "Goulbottes"],
-        [["82172"], "Goulclier"]
+        [["19078"], "Goulano"],
+        [["19079"], "Goulbottes"],
+        [["19080"], "Goulclier"]
       ],
       "bonus": [
         ["40 Résistance Critiques", "15 Esquive PA"],
@@ -227,9 +227,9 @@
       "name": "Panoplie d'Ilyzaelle",
       "level": "200",
       "items": [
-        [["1297"], "Amulette d'Ilyzaelle"],
-        [["16527"], "Casque d'Ilyzaelle"],
-        [["82181"], "Bouclier d'Ilyzaelle"]
+        [["19261"], "Amulette d'Ilyzaelle"],
+        [["19262"], "Casque d'Ilyzaelle"],
+        [["19263"], "Bouclier d'Ilyzaelle"]
       ],
       "bonus": [
         ["15 Dommages Air", "15 Dommages Eau", "-10% Critique", "60 Soins"],
@@ -241,9 +241,9 @@
       "name": "Panoplie du Cycloïde",
       "level": "200",
       "items": [
-        [["1234"], "Amulette du Cycloïde"],
-        [["9272"], "Anneau du Cycloïde"],
-        [["11240"], "Bottes du Cycloïde"]
+        [["14091"], "Amulette du Cycloïde"],
+        [["14092"], "Anneau du Cycloïde"],
+        [["14093"], "Bottes du Cycloïde"]
       ],
       "bonus": [
         ["40 Force", "40 Intelligence", "30 Prospection", "40 Agilité"],
