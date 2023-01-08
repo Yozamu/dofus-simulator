@@ -255,9 +255,9 @@
       "name": "Panoplie de Gein",
       "level": "200",
       "items": [
-        [["16440"], "Chapeau de Gein"],
-        [["10277"], "Ceinture de Gein"],
-        [["1259"], "Amulette de Gein"]
+        [["15431"], "Chapeau de Gein"],
+        [["15432"], "Ceinture de Gein"],
+        [["15433"], "Amulette de Gein"]
       ],
       "bonus": [
         ["40 Force", "40 Intelligence", "10 Dommages Critiques"],
@@ -269,9 +269,9 @@
       "name": "Panoplie des Fonds marins",
       "level": "200",
       "items": [
-        [["9303"], "Bracelet des Fonds marins"],
-        [["11285"], "Sandales des Fonds marins"],
-        [["16458"], "Masque des Fonds marins"]
+        [["16005"], "Bracelet des Fonds marins"],
+        [["16006"], "Sandales des Fonds marins"],
+        [["16007"], "Masque des Fonds marins"]
       ],
       "bonus": [
         ["30 Chance", "10 Tacle", "5 Esquive PM"],
@@ -283,9 +283,9 @@
       "name": "Panoplie d'Atcham",
       "level": "200",
       "items": [
-        [["17360"], "Cape d'Atcham"],
-        [["11300"], "Sandales d'Atcham"],
-        [["6732"], "Sabres d'Atcham"]
+        [["17584"], "Cape d'Atcham"],
+        [["17585"], "Sandales d'Atcham"],
+        [["17586"], "Sabres d'Atcham"]
       ],
       "bonus": [
         ["30 Intelligence", "30 Agilité", "30 Chance", "5 Retrait PA", "10 Dommages Critiques"],
@@ -297,9 +297,9 @@
       "name": "Poulplie",
       "level": "200",
       "items": [
-        [["10310"], "Ceintouse"],
-        [["11310"], "Tentassons"],
-        [["16495"], "Chapoulpe"]
+        [["18019"], "Ceintouse"],
+        [["18020"], "Tentassons"],
+        [["18021"], "Chapoulpe"]
       ],
       "bonus": [
         ["40 Force", "40 Agilité", "5 Retrait PA"],
@@ -311,9 +311,9 @@
       "name": "Panoplie du Cœur Vaillant",
       "level": "200",
       "items": [
-        [["1298"], "Amulette du Cœur Vaillant"],
-        [["11328"], "Bottes du Cœur Vaillant"],
-        [["17392"], "Cape du Cœur Vaillant"]
+        [["19241"], "Amulette du Cœur Vaillant"],
+        [["19242"], "Bottes du Cœur Vaillant"],
+        [["19243"], "Cape du Cœur Vaillant"]
       ],
       "bonus": [
         ["10 Retrait PA", "4% Critique"],
@@ -325,9 +325,9 @@
       "name": "Panoplie Brûlâme",
       "level": "200",
       "items": [
-        [["9329"], "Alliance Brûlâme"],
-        [["11327"], "Pompes Funèbres"],
-        [["16528"], "Masque Brûlâme"]
+        [["19264"], "Alliance Brûlâme"],
+        [["19265"], "Pompes Funèbres"],
+        [["19266"], "Masque Brûlâme"]
       ],
       "bonus": [
         ["20 Résistance Critiques", "1 Invocations", "1 Portée"],
@@ -339,9 +339,9 @@
       "name": "Panoplie du Strigide",
       "level": "200",
       "items": [
-        [["1235"], "Amulette du Strigide"],
-        [["10244"], "Ceinture du Strigide"],
-        [["11241"], "Bottes du Strigide"]
+        [["14094"], "Amulette du Strigide"],
+        [["14095"], "Ceinture du Strigide"],
+        [["14096"], "Bottes du Strigide"]
       ],
       "bonus": [
         ["100 Vitalité", "50 Puissance", "20 Dommages Critiques"],
@@ -353,9 +353,9 @@
       "name": "Panoplie des Abysses",
       "level": "200",
       "items": [
-        [["16396"], "Dorabysses"],
-        [["1248"], "Talisman Glouti"],
-        [["9283"], "Anneau Tique"]
+        [["14877"], "Dorabysses"],
+        [["14878"], "Talisman Glouti"],
+        [["14879"], "Anneau Tique"]
       ],
       "bonus": [
         ["100 Vitalité", "20 Agilité", "20 Intelligence", "20 Chance", "10 Tacle", "30 Résistance Poussée"],
@@ -367,9 +367,9 @@
       "name": "Panoplie de la Reine des Voleurs",
       "level": "200",
       "items": [
-        [["10279"], "Ceinture de la Reine des Voleurs"],
-        [["11274"], "Bottes de la Reine des Voleurs"],
-        [["16444"], "Coiffe de la Reine des Voleurs"]
+        [["15434"], "Ceinture de la Reine des Voleurs"],
+        [["15435"], "Bottes de la Reine des Voleurs"],
+        [["15436"], "Coiffe de la Reine des Voleurs"]
       ],
       "bonus": [
         [
@@ -400,9 +400,9 @@
       "name": "Panoplie Trithon",
       "level": "200",
       "items": [
-        [["9317"], "Bague Trithon"],
-        [["11313"], "Bottes Trithon"],
-        [["16497"], "Masque Trithon"]
+        [["18029"], "Bague Trithon"],
+        [["18030"], "Bottes Trithon"],
+        [["18031"], "Masque Trithon"]
       ],
       "bonus": [["100 Puissance"], ["100 Puissance", "1 PA"]]
     },
@@ -411,9 +411,9 @@
       "name": "Panoplie du Cœur Saignant",
       "level": "200",
       "items": [
-        [["1299"], "Amulette du Cœur Saignant"],
-        [["11329"], "Bottes du Cœur Saignant"],
-        [["17393"], "Cape du Cœur Saignant"]
+        [["19244"], "Amulette du Cœur Saignant"],
+        [["19245"], "Bottes du Cœur Saignant"],
+        [["19246"], "Cape du Cœur Saignant"]
       ],
       "bonus": [["20 Dommages Critiques"], ["20 Dommages Critiques", "1 PA"]]
     },
@@ -422,9 +422,9 @@
       "name": "Panoplie du Sinistrofu",
       "level": "200",
       "items": [
-        [["17268"], "Cape du Sinistrofu"],
-        [["1232"], "Amulette du Sinistrofu"],
-        [["11239"], "Bottes du Sinistrofu"]
+        [["14085"], "Cape du Sinistrofu"],
+        [["14086"], "Amulette du Sinistrofu"],
+        [["14087"], "Bottes du Sinistrofu"]
       ],
       "bonus": [
         ["50 Chance", "15 Résistance Critiques", "30 Résistance Poussée"],
@@ -436,9 +436,9 @@
       "name": "Panoplie des Malveilleurs",
       "level": "200",
       "items": [
-        [["11272"], "Bottes des Malveilleurs"],
-        [["16443"], "Chapeau des Malveilleurs"],
-        [["17328"], "Cape des Malveilleurs"]
+        [["15437"], "Bottes des Malveilleurs"],
+        [["15438"], "Chapeau des Malveilleurs"],
+        [["15439"], "Cape des Malveilleurs"]
       ],
       "bonus": [
         ["30 Intelligence", "30 Agilité", "10 Dommages Poussée", "5 Tacle", "30 Chance"],
@@ -450,9 +450,9 @@
       "name": "Panoplie de Voldelor",
       "level": "200",
       "items": [
-        [["1271"], "Amulette Voldelor"],
-        [["10297"], "Ceinture Voldelor"],
-        [["11291"], "Bottes Voldelor"]
+        [["17103"], "Amulette Voldelor"],
+        [["17104"], "Ceinture Voldelor"],
+        [["17105"], "Bottes Voldelor"]
       ],
       "bonus": [
         ["40 Agilité", "40 Chance", "5% Critique"],
@@ -464,9 +464,9 @@
       "name": "Panoplie de Meno",
       "level": "200",
       "items": [
-        [["11311"], "Bottes de Meno"],
-        [["16496"], "Casquette de Meno"],
-        [["17367"], "Cape de Meno"]
+        [["18022"], "Bottes de Meno"],
+        [["18023"], "Casquette de Meno"],
+        [["18024"], "Cape de Meno"]
       ],
       "bonus": [
         ["40 Intelligence", "40 Chance", "5 Retrait PM"],
@@ -478,9 +478,9 @@
       "name": "Panoplie de l'Esprit Salvateur",
       "level": "200",
       "items": [
-        [["10327"], "Ceinture de l'Esprit Salvateur"],
-        [["11330"], "Bottes de l'Esprit Salvateur"],
-        [["16529"], "Masque de l'Esprit Salvateur"]
+        [["19247"], "Ceinture de l'Esprit Salvateur"],
+        [["19248"], "Bottes de l'Esprit Salvateur"],
+        [["19249"], "Masque de l'Esprit Salvateur"]
       ],
       "bonus": [["25 Fuite"], ["25 Fuite", "1 PA"]]
     },
