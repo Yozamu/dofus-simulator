@@ -1,5 +1,5 @@
 import { RestartAlt } from '@mui/icons-material';
-import { Button, Drawer, IconButton, Snackbar, styled } from '@mui/material';
+import { Button, Drawer, Snackbar, styled } from '@mui/material';
 import { useEffect, useState } from 'react';
 import CategoriesFilter from './CategoriesFilter';
 import LevelFilter from './LevelFilter';

@@ -20550,7 +20550,12 @@
       "statistics": [
         { "PV": { "min": 3400, "max": 3900 } },
         { "PA": { "min": 10, "max": null } },
-        { "PM": { "min": 4, "max": null } }
+        { "PM": { "min": 4, "max": null } },
+        { "Force": { "min": 480, "max": null } },
+        { "Intelligence": { "min": 480, "max": null } },
+        { "Chance": { "min": 480, "max": null } },
+        { "Agilité": { "min": 480, "max": null } },
+        { "Sagesse": { "min": 480, "max": null } }
       ],
       "resistances": [
         { "Terre": { "min": 35, "max": 43 } },

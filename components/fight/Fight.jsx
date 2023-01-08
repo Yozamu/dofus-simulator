@@ -53,6 +53,28 @@ const Fight = ({ monsters, character, ...props }) => {
     setMonsterDialogOpen(true);
   };
 
+  const getAdditionalEnemyStats = () => {
+    const stats = {
+      vie: enemy.statistics[0].PV.min,
+      pa: enemy.statistics[1].PA.min,
+      pm: enemy.statistics[2].PM.min,
+      '%résistanceterre': enemy.resistances[0].Terre.min,
+      '%résistanceair': enemy.resistances[1].Air.min,
+      '%résistancefeu': enemy.resistances[2].Feu.min,
+      '%résistanceeau': enemy.resistances[3].Eau.min,
+      '%résistanceneutre': enemy.resistances[4].Neutre.min,
+    };
+    if (enemy.statistics.length > 3) {
+      // Updated monster data with characs
+      stats.force = enemy.statistics[3].Force.min;
+      stats.intelligence = enemy.statistics[4].Intelligence.min;
+      stats.chance = enemy.statistics[5].Chance.min;
+      stats.agilité = enemy.statistics[6].Agilité.min;
+      stats.sagesse = enemy.statistics[7].Sagesse.min;
+    }
+    return stats;
+  };
+
   const initBaseStats = (stats) => {
     const baseStats = { ...stats };
     stats.basestats = baseStats;
@@ -63,17 +85,11 @@ const Fight = ({ monsters, character, ...props }) => {
   const initStats = () => {
     const { classe, level, ...stats } = usedCharacter;
     if (classe) stats.name = classe[0].toUpperCase() + classe.slice(1);
+    const additionalStats = getAdditionalEnemyStats();
     const enemyStats = {
       ...Object.keys(stats).reduce((acc, val) => ({ ...acc, [val]: 0 })),
       name: enemy.name,
-      vie: enemy.statistics[0].PV.min,
-      pa: enemy.statistics[1].PA.min,
-      pm: enemy.statistics[2].PM.min,
-      '%résistanceterre': enemy.resistances[0].Terre.min,
-      '%résistanceair': enemy.resistances[1].Air.min,
-      '%résistancefeu': enemy.resistances[2].Feu.min,
-      '%résistanceeau': enemy.resistances[3].Eau.min,
-      '%résistanceneutre': enemy.resistances[4].Neutre.min,
+      ...additionalStats,
     };
     initBaseStats(stats);
     initBaseStats(enemyStats);

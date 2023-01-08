@@ -5,7 +5,7 @@ import NameFilter from '../filters/NameFilter';
 
 const PAGE_SIZE = 50;
 
-const MonsterChoice = ({ monsters, open, onClose, selectedValue, ...props }) => {
+const MonsterChoice = ({ monsters, open, onClose, selectedValue }) => {
   const [filteredMonsters, setFilteredMonsters] = useState(monsters.slice(0, PAGE_SIZE));
   const [nameFilter, setNameFilter] = useState('');
 

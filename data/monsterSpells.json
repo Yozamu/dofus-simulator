@@ -10,8 +10,8 @@
         "timesPerTurn": 3,
         "timesPerTarget": 3,
         "cooldown": 0,
-        "effects": [{ "type": "damage", "amount": { "min": 179, "max": 290 }, "element": "terre" }],
-        "critEffects": [{ "type": "damage", "amount": { "min": 353, "max": 580 }, "element": "terre" }]
+        "effects": [{ "type": "damage", "amount": { "min": 31, "max": 50 }, "element": "terre" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 61, "max": 100 }, "element": "terre" }]
       },
       {
         "ankamaId": 1069,
@@ -42,11 +42,11 @@
         "cooldown": 3,
         "effects": [
           { "type": "buff", "stat": "pm", "amount": -3, "duration": 1 },
-          { "type": "steal", "amount": { "min": 179, "max": 290 }, "element": "terre" }
+          { "type": "steal", "amount": { "min": 31, "max": 50 }, "element": "terre" }
         ],
         "critEffects": [
           { "type": "buff", "stat": "pm", "amount": -6, "duration": 1 },
-          { "type": "steal", "amount": { "min": 353, "max": 580 }, "element": "terre" }
+          { "type": "steal", "amount": { "min": 61, "max": 100 }, "element": "terre" }
         ]
       }
     ]

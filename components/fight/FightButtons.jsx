@@ -1,5 +1,5 @@
 import { FileDownload, UploadFile } from '@mui/icons-material';
-import { Button, InputLabel, MenuItem, Radio, Select, styled } from '@mui/material';
+import { Button, MenuItem, Radio, Select, styled } from '@mui/material';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
