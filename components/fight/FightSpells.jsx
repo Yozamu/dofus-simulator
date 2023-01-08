@@ -17,6 +17,7 @@ const FightSpells = ({ character, fightingEntities, castSpell, isFighting, turn,
         })
     );
     setSpells(spellsCopy);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [turn]);
 
   const isSpellOnCooldown = (spell) => {
