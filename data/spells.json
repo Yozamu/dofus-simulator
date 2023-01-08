@@ -14,6 +14,158 @@
         "critEffects": [{ "type": "damage", "amount": { "min": 28, "max": 32 }, "element": "air" }]
       }
     ],
+    "ecaflip": [
+      {
+        "_id": 102,
+        "name": "Pile ou Face",
+        "cost": 3,
+        "crit": 5,
+        "target": 1,
+        "timesPerTurn": 3,
+        "timesPerTarget": 2,
+        "cooldown": 0,
+        "effects": [{ "type": "damage", "amount": { "min": 26, "max": 29 }, "element": "terre" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 31, "max": 35 }, "element": "terre" }]
+      }
+    ],
+    "eliotrope": [
+      {
+        "_id": 3358,
+        "name": "Affront",
+        "cost": 3,
+        "crit": 5,
+        "target": 1,
+        "timesPerTurn": 2,
+        "timesPerTarget": 2,
+        "cooldown": 0,
+        "effects": [
+          { "type": "damage", "amount": { "min": 26, "max": 28 }, "element": "air" },
+          { "type": "buff", "stat": "tacle", "amount": -50, "duration": 1 }
+        ],
+        "critEffects": [
+          { "type": "damage", "amount": { "min": 31, "max": 34 }, "element": "air" },
+          { "type": "buff", "stat": "tacle", "amount": -55, "duration": 1 }
+        ]
+      }
+    ],
+    "eniripsa": [
+      {
+        "_id": 122,
+        "name": "Mot Blessant",
+        "cost": 4,
+        "crit": 15,
+        "target": 1,
+        "timesPerTurn": 3,
+        "timesPerTarget": 2,
+        "cooldown": 0,
+        "effects": [{ "type": "damage", "amount": { "min": 20, "max": 22 }, "element": "air" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 24, "max": 26 }, "element": "air" }]
+      }
+    ],
+    "enutrof": [
+      {
+        "_id": 51,
+        "name": "Lancer de Pièces",
+        "cost": 2,
+        "crit": 5,
+        "target": 1,
+        "timesPerTurn": 100,
+        "timesPerTarget": 3,
+        "cooldown": 0,
+        "effects": [{ "type": "damage", "amount": { "min": 13, "max": 15 }, "element": "eau" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 16, "max": 18 }, "element": "eau" }]
+      }
+    ],
+    "feca": [
+      {
+        "_id": 2,
+        "name": "Aveuglement",
+        "cost": 3,
+        "crit": 25,
+        "target": 1,
+        "timesPerTurn": 1,
+        "timesPerTarget": 1,
+        "cooldown": 0,
+        "effects": [
+          { "type": "buff", "stat": "pa", "amount": -3, "duration": 1 },
+          { "type": "damage", "amount": { "min": 20, "max": 22 }, "element": "neutre" }
+        ],
+        "critEffects": [
+          { "type": "buff", "stat": "pa", "amount": -3, "duration": 1 },
+          { "type": "damage", "amount": { "min": 24, "max": 26 }, "element": "neutre" }
+        ]
+      }
+    ],
+    "forgelance": [
+      {
+        "_id": 4313,
+        "name": "Lance du Lac",
+        "cost": 3,
+        "crit": 10,
+        "target": 1,
+        "timesPerTurn": 2,
+        "timesPerTarget": 2,
+        "cooldown": 0,
+        "effects": [{ "type": "damage", "amount": { "min": 25, "max": 28 }, "element": "eau" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 30, "max": 34 }, "element": "eau" }]
+      }
+    ],
+    "huppermage": [
+      {
+        "_id": 3400,
+        "name": "Onde Tellurique",
+        "cost": 3,
+        "crit": 5,
+        "target": 1,
+        "timesPerTurn": 3,
+        "timesPerTarget": 2,
+        "cooldown": 0,
+        "effects": [{ "type": "damage", "amount": { "min": 25, "max": 29 }, "element": "terre" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 30, "max": 34 }, "element": "terre" }]
+      }
+    ],
+    "iop": [
+      {
+        "_id": 141,
+        "name": "Pression",
+        "cost": 3,
+        "crit": 10,
+        "target": 1,
+        "timesPerTurn": 100,
+        "timesPerTarget": 2,
+        "cooldown": 0,
+        "effects": [{ "type": "damage", "amount": { "min": 26, "max": 30 }, "element": "terre" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 31, "max": 36 }, "element": "terre" }]
+      }
+    ],
+    "osamodas": [
+      {
+        "_id": 21,
+        "name": "Dragonique",
+        "cost": 3,
+        "crit": 5,
+        "target": 1,
+        "timesPerTurn": 3,
+        "timesPerTarget": 2,
+        "cooldown": 0,
+        "effects": [{ "type": "damage", "amount": { "min": 23, "max": 26 }, "element": "feu" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 28, "max": 31 }, "element": "feu" }]
+      }
+    ],
+    "ouginak": [
+      {
+        "_id": 3541,
+        "name": "Cubitus",
+        "cost": 3,
+        "crit": 5,
+        "target": 1,
+        "timesPerTurn": 3,
+        "timesPerTarget": 2,
+        "cooldown": 0,
+        "effects": [{ "type": "damage", "amount": { "min": 22, "max": 25 }, "element": "eau" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 26, "max": 30 }, "element": "eau" }]
+      }
+    ],
     "pandawa": [
       {
         "_id": 687,
@@ -94,6 +246,119 @@
         "timesPerTarget": 1,
         "cooldown": 0,
         "effects": [{ "type": "buff", "stat": "%critique", "amount": -15, "duration": 2 }]
+      }
+    ],
+    "roublard": [
+      {
+        "_id": 2802,
+        "name": "Dagues Boomerang",
+        "cost": 4,
+        "crit": 5,
+        "target": 1,
+        "timesPerTurn": 2,
+        "timesPerTarget": 2,
+        "cooldown": 0,
+        "effects": [{ "type": "damage", "amount": { "min": 32, "max": 36 }, "element": "air" }],
+        "critEffects": [
+          { "type": "damage", "amount": { "min": 19, "max": 21 }, "element": "air" },
+          { "type": "damage", "amount": { "min": 19, "max": 21 }, "element": "air" }
+        ]
+      }
+    ],
+    "sacrieur": [
+      {
+        "_id": 3924,
+        "name": "Nervosité",
+        "cost": 3,
+        "crit": 15,
+        "target": 1,
+        "timesPerTurn": 2,
+        "timesPerTarget": 2,
+        "cooldown": 0,
+        "effects": [{ "type": "damage", "amount": { "min": 21, "max": 23 }, "element": "eau" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 25, "max": 28 }, "element": "eau" }]
+      }
+    ],
+    "sadida": [
+      {
+        "_id": 183,
+        "name": "Ronce",
+        "cost": 3,
+        "crit": 5,
+        "target": 1,
+        "timesPerTurn": 3,
+        "timesPerTarget": 2,
+        "cooldown": 0,
+        "effects": [{ "type": "damage", "amount": { "min": 21, "max": 24 }, "element": "terre" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 25, "max": 29 }, "element": "terre" }]
+      }
+    ],
+    "sram": [
+      {
+        "_id": 61,
+        "name": "Truanderie",
+        "cost": 3,
+        "crit": 5,
+        "target": 1,
+        "timesPerTurn": 3,
+        "timesPerTarget": 2,
+        "cooldown": 0,
+        "effects": [{ "type": "damage", "amount": { "min": 26, "max": 29 }, "element": "tere" }],
+        "critEffects": [{ "type": "damage", "amount": { "min": 31, "max": 35 }, "element": "terre" }]
+      }
+    ],
+    "steamer": [
+      {
+        "_id": 3206,
+        "name": "Flibuste",
+        "cost": 3,
+        "crit": 5,
+        "target": 1,
+        "timesPerTurn": 3,
+        "timesPerTarget": 2,
+        "cooldown": 0,
+        "effects": [{ "type": "steal", "amount": { "min": 22, "max": 25 }, "element": "feu" }],
+        "critEffects": [{ "type": "steal", "amount": { "min": 26, "max": 30 }, "element": "feu" }]
+      }
+    ],
+    "xelor": [
+      {
+        "_id": 81,
+        "name": "Ralentissement",
+        "cost": 2,
+        "crit": 5,
+        "target": 1,
+        "timesPerTurn": 4,
+        "timesPerTarget": 2,
+        "cooldown": 0,
+        "effects": [
+          { "type": "buff", "stat": "pa", "amount": -1, "duration": 1 },
+          { "type": "damage", "amount": { "min": 11, "max": 13 }, "element": "eau" }
+        ],
+        "critEffects": [
+          { "type": "buff", "stat": "pa", "amount": -1, "duration": 1 },
+          { "type": "damage", "amount": { "min": 13, "max": 16 }, "element": "eau" }
+        ]
+      }
+    ],
+    "zobal": [
+      {
+        "_id": 2881,
+        "name": "Martelo",
+        "cost": 4,
+        "crit": 15,
+        "target": 1,
+        "timesPerTurn": 2,
+        "timesPerTarget": 2,
+        "cooldown": 0,
+        "effects": [
+          { "type": "buff", "stat": "fuite", "amount": -25, "duration": 1 },
+          { "type": "steal", "amount": { "min": 26, "max": 29 }, "element": "terre" }
+        ],
+        "critEffects": [
+          { "type": "buff", "stat": "fuite", "amount": -27, "duration": 1 },
+          { "type": "steal", "amount": { "min": 31, "max": 35 }, "element": "terre" }
+        ]
       }
     ]
   }
