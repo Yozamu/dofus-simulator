@@ -50,7 +50,7 @@ const MonsterChoice = ({ monsters, open, onClose, selectedValue }) => {
             key={monster.ankamaId}
             onClick={() => handleMonsterClick(monster)}
           >
-            <Image src={`/images/monsters/${monster.ankamaId}.png`} alt={monster.name} width={200} height={200} />
+            <Image src={`/images/monsters/${monster.ankamaId}.png`} alt={monster.name} width={100} height={100} />
             {monster.name}
           </Button>
         ))}

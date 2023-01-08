@@ -24,6 +24,7 @@ const Fight = ({ monsters, character, ...props }) => {
     fetch(`/api/monsters/${enemy.ankamaId}/spells`)
       .then((res) => res.json())
       .then((json) => setEnemySpells(json.data));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [enemy]);
 
   useEffect(() => {
