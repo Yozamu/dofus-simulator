@@ -1,5 +1,5 @@
 import { styled } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { castSpellOnEntity, initFightersStats, resetEntityStatsAfterTurn } from '../../helpers/fight';
 import FightButtons from './FightButtons';
 import Fighter from './Fighter';
@@ -10,31 +10,31 @@ import MonsterChoice from './MonsterChoice';
 const Fight = ({ monsters, character, ...props }) => {
   const [isFigthing, setIsFighting] = useState(false);
   const [usedCharacter, setUsedCharacter] = useState(character);
-  const [enemy, setEnemy] = useState(null);
-  const [enemySpells, setEnemySpells] = useState([]);
+  const [enemy, setEnemy] = useState(monsters.find((monster) => monster.ankamaId === 494));
+  const [enemySpells, setEnemySpells] = useState(null);
   const [turn, setTurn] = useState(0);
   const [damageType, setDamageType] = useState('distance');
   const [fightingEntities, setFightingEntities] = useState([{}, {}]);
   const [notifications, setNotifications] = useState([]);
   const [monsterDialogOpen, setMonsterDialogOpen] = useState(false);
 
-  useEffect(() => {
-    if (!enemy) return;
-    initStats();
-    fetch(`/api/monsters/${enemy.ankamaId}/spells`)
+  const updateSelectedEnemy = (selectedEnemy) => {
+    fetch(`/api/monsters/${selectedEnemy.ankamaId}/spells`)
       .then((res) => res.json())
-      .then((json) => setEnemySpells(json.data));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [enemy]);
+      .then((json) => {
+        setEnemy(selectedEnemy);
+        setEnemySpells(json.data);
+      });
+  };
 
-  useEffect(() => {
-    const enemy = monsters.find((monster) => monster.ankamaId === 494);
-    setEnemy(enemy);
-  }, [monsters]);
+  const initStats = useCallback(() => {
+    const [stats, enemyStats] = initFightersStats(usedCharacter, enemy);
+    setFightingEntities([stats, enemyStats]);
+  }, [enemy, usedCharacter]);
 
   const handleMonsterChoiceClose = (value) => {
     if (!value) return;
-    setEnemy(value);
+    updateSelectedEnemy(value);
     setMonsterDialogOpen(false);
   };
 
@@ -51,11 +51,6 @@ const Fight = ({ monsters, character, ...props }) => {
 
   const chooseEnemy = () => {
     setMonsterDialogOpen(true);
-  };
-
-  const initStats = () => {
-    const [stats, enemyStats] = initFightersStats(usedCharacter, enemy);
-    setFightingEntities([stats, enemyStats]);
   };
 
   const finishTurn = () => {

@@ -70,15 +70,21 @@ const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
           <Info sx={{ position: 'absolute', zIndex: 1 }} />
         </Tooltip>
       )}
-      <Tooltip placement="bottom" enterDelay={500} disableInteractive title={resStats.length > 0 ? <ResTooltip /> : ''}>
+      <Tooltip
+        placement="bottom"
+        enterDelay={500}
+        disableInteractive
+        title={isFighting && resStats.length > 0 ? <ResTooltip /> : ''}
+      >
         <div style={{ position: 'relative' }}>
-          <Image src={imagePath} alt={entity.name || 'fighter'} width={200} height={200} />
+          <Image src={imagePath} alt={entity.name || 'fighter'} width={200} height={200} priority />
           <Image
             src="/images/ui/pedestal.png"
             alt={entity.name || 'fighter'}
             width={200}
             height={98}
             style={{ position: 'absolute', bottom: '-10px', right: '0px', zIndex: '-1' }}
+            priority
           />
         </div>
       </Tooltip>
