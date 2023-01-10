@@ -489,9 +489,9 @@
       "name": "Panoplie Ardente",
       "level": "200",
       "items": [
-        [["11332"], "Chaussures Ardentes"],
-        [["16537"], "Masque Ardent"],
-        [["17399"], "Cape Ardente"]
+        [["19585"], "Chaussures Ardentes"],
+        [["19586"], "Masque Ardent"],
+        [["19589"], "Cape Ardente"]
       ],
       "bonus": [
         ["10 Tacle", "10 Retrait PA", "10 Soins"],
@@ -503,9 +503,9 @@
       "name": "Panoplie du Granduk",
       "level": "200",
       "items": [
-        [["16364"], "Masque du Granduk"],
-        [["1231"], "Amulette du Granduk"],
-        [["6721"], "Épée du Granduk"]
+        [["14082"], "Masque du Granduk"],
+        [["14083"], "Amulette du Granduk"],
+        [["14084"], "Épée du Granduk"]
       ],
       "bonus": [
         ["50 Agilité", "15 Tacle"],
@@ -517,9 +517,9 @@
       "name": "Panoplie du Katcheur",
       "level": "200",
       "items": [
-        [["9293"], "Anneau du Katcheur"],
-        [["11267"], "Bottes du Katcheur"],
-        [["16439"], "Masque du Katcheur"]
+        [["15440"], "Anneau du Katcheur"],
+        [["15441"], "Bottes du Katcheur"],
+        [["15442"], "Masque du Katcheur"]
       ],
       "bonus": [
         ["100 Vitalité", "30 Force", "30 Intelligence", "30 Agilité"],
@@ -531,9 +531,9 @@
       "name": "Panoplie de Kongoku",
       "level": "200",
       "items": [
-        [["17352"], "Cape de Kongoku"],
-        [["16478"], "Boucle d'oreille de Kongoku"],
-        [["10296"], "Ceinture de Kongoku"]
+        [["17106"], "Cape de Kongoku"],
+        [["17107"], "Boucle d'oreille de Kongoku"],
+        [["17108"], "Ceinture de Kongoku"]
       ],
       "bonus": [
         ["100 Vitalité", "30 Résistance Critiques"],
@@ -545,9 +545,9 @@
       "name": "Panoplie de l'Indicible",
       "level": "200",
       "items": [
-        [["1281"], "Amulette de l'Indicible"],
-        [["10311"], "Ceinture de l'Indicible"],
-        [["11312"], "Bottes de l'Indicible"]
+        [["18025"], "Amulette de l'Indicible"],
+        [["18026"], "Ceinture de l'Indicible"],
+        [["18028"], "Bottes de l'Indicible"]
       ],
       "bonus": [
         ["50 Force", "50 Intelligence", "5% Critique", "10 Fuite", "50 Chance", "50 Agilité"],
@@ -559,9 +559,9 @@
       "name": "Panoplie de l'Esprit Malsain",
       "level": "200",
       "items": [
-        [["10328"], "Ceinture de l'Esprit Malsain"],
-        [["11331"], "Bottes de l'Esprit Malsain"],
-        [["16530"], "Masque de l'Esprit Malsain"]
+        [["19250"], "Ceinture de l'Esprit Malsain"],
+        [["19251"], "Bottes de l'Esprit Malsain"],
+        [["19252"], "Masque de l'Esprit Malsain"]
       ],
       "bonus": [["2 Portée"], ["2 Portée", "1 PA"]]
     },
@@ -570,9 +570,9 @@
       "name": "Panoplie Volcanique",
       "level": "200",
       "items": [
-        [["1302"], "Amulette Volcanique"],
-        [["17400"], "Sac Volcanique"],
-        [["11333"], "Sabots Volcaniques"]
+        [["19590"], "Amulette Volcanique"],
+        [["19591"], "Sac Volcanique"],
+        [["19592"], "Sabots Volcaniques"]
       ],
       "bonus": [
         ["50 Résistance Poussée", "10 Tacle", "5 Retrait PM"],
@@ -584,9 +584,9 @@
       "name": "Panoplie du Nocturlabe",
       "level": "200",
       "items": [
-        [["1236"], "Amulette du Nocturlabe"],
-        [["10245"], "Ceinture du Nocturlabe"],
-        [["11242"], "Bottes du Nocturlabe"]
+        [["14097"], "Amulette du Nocturlabe"],
+        [["14098"], "Ceinture du Nocturlabe"],
+        [["14099"], "Bottes du Nocturlabe"]
       ],
       "bonus": [
         ["25 Dommages Terre", "25 Dommages Eau", "15 Dommages Critiques", "7% Critique", "1 Portée", "25 Dommages Air"],
@@ -606,9 +606,9 @@
       "name": "Panoplie du Barbétoal",
       "level": "200",
       "items": [
-        [["16411"], "Masque du Barbétoal"],
-        [["17298"], "Cape du Barbétoal"],
-        [["10268"], "Ceinture du Barbétoal"]
+        [["15183"], "Masque du Barbétoal"],
+        [["15184"], "Cape du Barbétoal"],
+        [["15185"], "Ceinture du Barbétoal"]
       ],
       "bonus": [
         ["40 Agilité", "40 Chance", "5 Retrait PA"],
@@ -620,9 +620,9 @@
       "name": "Panoplibou",
       "level": "200",
       "items": [
-        [["1262"], "Amibou"],
-        [["16449"], "Chapibou"],
-        [["17332"], "Capibou"]
+        [["15737"], "Amibou"],
+        [["15738"], "Chapibou"],
+        [["15739"], "Capibou"]
       ],
       "bonus": [
         ["30 Agilité", "15 Dommages Poussée", "5 Retrait PM"],
@@ -634,9 +634,9 @@
       "name": "Panoplie Luminescente",
       "level": "200",
       "items": [
-        [["1282"], "Amulette Luminescente"],
-        [["10312"], "Ceinture Luminescente"],
-        [["17368"], "Cape Luminescente"]
+        [["18032"], "Amulette Luminescente"],
+        [["18033"], "Ceinture Luminescente"],
+        [["18034"], "Cape Luminescente"]
       ],
       "bonus": [
         ["40 Force", "40 Chance", "15 Dommages Poussée", "5 Tacle"],
