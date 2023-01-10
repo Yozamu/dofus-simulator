@@ -1,5 +1,5 @@
 import { styled } from '@mui/material';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { castSpellOnEntity, initFightersStats, resetEntityStatsAfterTurn } from '../../helpers/fight';
 import FightButtons from './FightButtons';
 import Fighter from './Fighter';
