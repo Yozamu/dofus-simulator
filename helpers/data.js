@@ -1,10 +1,9 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { CLASSES, EQUIPMENT, MONSTERS, MOUNTS, PETS, SETS, WEAPONS } from './constants';
+//import { CLASSES, EQUIPMENT, MONSTERS, MOUNTS, PETS, SETS, WEAPONS } from './constants';
 
-const DOFAPI_URL = 'https://fr.dofus.dofapi.fr';
 const DATA_FOLDER = 'data';
-const IMAGES_FOLDER = 'public/images';
+/*const DOFAPI_URL = 'https://fr.dofus.dofapi.fr';
 // Data filenames
 const EQUIPMENT_FILE = `${EQUIPMENT}.json`;
 const CLASSES_FILE = `${CLASSES}.json`;
@@ -20,14 +19,14 @@ const MONSTERS_API = 'monsters';
 const WEAPONS_API = 'weapons';
 const SETS_API = 'sets';
 const PETS_API = 'pets';
-const MOUNTS_API = 'mounts';
+const MOUNTS_API = 'mounts';*/
 
 // Helpers
-
+/*
 const fetchFromDofApi = async (resource) => {
   const response = await fetch(`${DOFAPI_URL}/${resource}`);
   return await response.json();
-};
+};*/
 
 const getDataFilePath = (filename) => path.join(process.cwd(), DATA_FOLDER, filename);
 
@@ -36,12 +35,12 @@ const getJsonData = async (filename) => {
   return JSON.parse(fileContent);
 };
 
-const updateImages = (data, filename) => {
+/*const updateImages = (data, filename) => {
   const images = data.map((element) => ({
     id: element.ankamaId,
     url: element.imgUrl || element.maleImg,
   }));
-  const folderPath = path.join(process.cwd(), IMAGES_FOLDER, filename);
+  const folderPath = path.join(process.cwd(), 'public/images', filename);
   images.forEach(async (image) => {
     const imagePath = `${folderPath}/${image.id}.png`;
     const imageResponse = await fetch(image.url);
@@ -56,7 +55,7 @@ const updateData = async (filename, api) => {
   const data = { data: rawData };
   const filePath = getDataFilePath(filename);
   fs.writeFile(filePath, JSON.stringify(data));
-};
+};*/
 
 // Getter
 
@@ -143,7 +142,7 @@ export const getMonsterSpellsData = async (monsterId) => {
 };
 
 // Updaters
-
+/*
 export const updateEquipment = async () => await updateData(EQUIPMENT_FILE, EQUIPMENT_API);
 
 export const updateClasses = async () => await updateData(CLASSES_FILE, CLASSES_API);
@@ -167,3 +166,4 @@ export const updateAll = async () => {
   await updatePets();
   await updateMounts();
 };
+*/
