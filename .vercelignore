@@ -1,2 +1,2 @@
 # Ignore everything in public folder (prevents reaching serverless function size limit)
-# /public/*
+/public/equipment/*
