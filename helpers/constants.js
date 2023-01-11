@@ -41,6 +41,18 @@ export const STUFF_ITEMS = [
   'Familier',
 ];
 
+export const EQUIPMENT_ITEMS = [
+  'Amulette',
+  'Anneau',
+  'Bottes',
+  'Bouclier',
+  'Ceinture',
+  'Cape',
+  'Chapeau',
+  'Dofus',
+  'Trophée',
+];
+
 export const MAIN_STATS = ['Vitalité', 'Sagesse', 'Force', 'Intelligence', 'Chance', 'Agilité'];
 
 export const PRIMARY_STATS = [
