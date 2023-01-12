@@ -23,7 +23,7 @@ const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...prop
       });
       return queryParams.join('&');
     },
-    [items, type, filters]
+    [items.length, type, filters]
   );
 
   const fetchItems = useCallback(
@@ -33,11 +33,12 @@ const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...prop
       const queryParams = getQueryParams(shouldReset);
       const res = await fetch(`/api/items?${queryParams}`);
       const json = await res.json();
-      setItems(shouldReset ? json.data : items.concat(json.data));
+      setItems((currItems) => (shouldReset ? json.data : currItems.concat(json.data)));
       setItemCount(json.count);
+      if (shouldReset) window.scrollTo(0, 0);
       setIsFetching(false);
     },
-    [getQueryParams, isFetching, items]
+    [getQueryParams, isFetching]
   );
 
   const handleScroll = useCallback(async () => {
@@ -46,7 +47,7 @@ const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...prop
     if (itemsLeftToFetch > 0 && hasScrolledEnough) {
       fetchItems(false);
     }
-  }, [fetchItems, items, itemCount]);
+  }, [fetchItems, items.length, itemCount]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -56,7 +57,6 @@ const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...prop
   useEffect(() => {
     if (prevFilters && prevFilters !== filters) {
       fetchItems(true);
-      window.scrollTo(0, 0);
     }
   }, [fetchItems, prevFilters, filters]);
 

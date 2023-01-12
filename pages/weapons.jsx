@@ -2,7 +2,7 @@ import { retrieveItems } from './api/items';
 import ItemsPage from '../components/items/ItemsPage';
 import { WEAPONS } from '../helpers/constants';
 
-const WeaponsPage = ({ items, query }) => {
+const WeaponsPage = ({ items, count, query }) => {
   const availableCategories = [
     'Arc',
     'Baguette',
@@ -18,7 +18,14 @@ const WeaponsPage = ({ items, query }) => {
   ];
 
   return (
-    <ItemsPage title="Armes" query={query} items={items} availableCategories={availableCategories} itemHeight={600} />
+    <ItemsPage
+      title="Armes"
+      query={query}
+      items={items}
+      count={count}
+      availableCategories={availableCategories}
+      itemHeight={600}
+    />
   );
 };
 

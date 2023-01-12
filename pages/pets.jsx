@@ -2,7 +2,7 @@ import { retrieveItems } from './api/items';
 import ItemsPage from '../components/items/ItemsPage';
 import { PETS } from '../helpers/constants';
 
-const PetsPage = ({ items, query }) => {
+const PetsPage = ({ items, count, query }) => {
   const availableCategories = ['Dragodinde', 'Muldo', 'Volkorne', 'Familier', 'Montilier'];
 
   return (
@@ -10,6 +10,7 @@ const PetsPage = ({ items, query }) => {
       title="Familiers & Montures"
       query={query}
       items={items}
+      count={count}
       availableCategories={availableCategories}
       itemHeight={300}
     />
