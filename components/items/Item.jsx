@@ -7,7 +7,7 @@ import ItemContent from './ItemContent';
 const Item = (props) => {
   const [snackbarIsOpened, setSnackbarIsOpened] = useState(false);
 
-  const { item, category, className } = props;
+  const { item, category, className, index } = props;
 
   const updateStuff = () => {
     setLocalStorageStuffItem(item, category);
@@ -24,6 +24,7 @@ const Item = (props) => {
             alt={item.name}
             width={64}
             height={64}
+            priority={index < 10}
           />
         </CardMedia>
         <CardContent className="card-content">

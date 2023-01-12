@@ -1,6 +1,6 @@
 import { RestartAlt } from '@mui/icons-material';
 import { Button, Drawer, Snackbar, styled } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import CategoriesFilter from './CategoriesFilter';
 import LevelFilter from './LevelFilter';
 import NameFilter from './NameFilter';
@@ -13,8 +13,13 @@ const Filters = ({ setFilters, availableCategories, initialFilters = {}, ...prop
   const [categories, setCategories] = useState(initialFilters.categories?.split(',') || []);
   const [stats, setStats] = useState(initialFilters.stats || []);
   const [snackbarIsOpened, setSnackbarIsOpened] = useState(false);
+  const hasMounted = useRef(false);
 
   useEffect(() => {
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      return;
+    }
     const timerId = setTimeout(() => {
       const filters = {
         level: levelRange,

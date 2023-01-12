@@ -5,9 +5,9 @@ const ItemList = ({ items, category, itemHeight = 500, ...props }) => {
   return (
     <div className={props.className}>
       <ul className="items-list">
-        {items.map((item) => (
+        {items.map((item, i) => (
           <li key={item._id}>
-            <Item item={item} category={category} height={itemHeight} />
+            <Item item={item} category={category} height={itemHeight} index={i} />
           </li>
         ))}
       </ul>
