@@ -46,7 +46,13 @@ const StuffShowcaseCharacter = ({ characteristics, setCharacteristics, ...props 
 
   return (
     <div className={props.className}>
-      <Image src={`/images/classes/${classe ?? 'pandawa'}.png`} alt="Character background" width={192} height={192} />
+      <Image
+        src={`/images/classes/${classe ?? 'pandawa'}.png`}
+        alt="Character background"
+        width={192}
+        height={192}
+        priority
+      />
       <Button variant="outlined" onClick={() => setDialogOpen(true)}>
         Changer classe
       </Button>

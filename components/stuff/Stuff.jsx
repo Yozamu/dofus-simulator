@@ -45,6 +45,7 @@ const Stuff = ({ localStuff, localCharacteristics, ...props }) => {
   }, [stuff]);
 
   useEffect(() => {
+    if (Object.keys(items).length < 1) return;
     const setIds = {};
     for (let [, slotArray] of Object.entries(items)) {
       for (let item of slotArray) {
@@ -90,7 +91,6 @@ const Stuff = ({ localStuff, localCharacteristics, ...props }) => {
         <StuffCharacteristics items={items} sets={sets} characteristics={characteristics} />
         <StuffShowcase
           items={items}
-          sets={sets}
           setItems={setItems}
           characteristics={characteristics}
           setCharacteristics={setCharacteristics}
