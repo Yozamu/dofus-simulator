@@ -7,31 +7,26 @@ import { useEffect, useState } from 'react';
 import { setLocalStorageFinalStats } from '../../helpers/localstorage';
 
 const StuffCharacteristics = ({ items, sets, characteristics, ...props }) => {
-  const [statsValues, setStatsValues] = useState({});
-
-  useEffect(() => {
-    const statsCopy = {};
-    Object.entries(items).map(([, items]) => {
-      items.map((item) => {
-        item.statistics?.map((statistic) => {
-          const statRange = statistic[Object.keys(statistic)[0]];
-          const statValue = statRange.max || statRange.min;
-          const statName = normalizeStatName(Object.keys(statistic)[0]);
-          statsCopy[statName] ? (statsCopy[statName] += statValue) : (statsCopy[statName] = statValue);
-        });
+  const statsValues = {};
+  Object.entries(items).map(([, items]) => {
+    items.map((item) => {
+      item.statistics?.map((statistic) => {
+        const statRange = statistic[Object.keys(statistic)[0]];
+        const statValue = statRange.max || statRange.min;
+        const statName = normalizeStatName(Object.keys(statistic)[0]);
+        statsValues[statName] ? (statsValues[statName] += statValue) : (statsValues[statName] = statValue);
       });
     });
-    Object.values(sets).map((set) => {
-      set.bonus.map((statistic) => {
-        const [statName, statValue] = statistic;
-        statsCopy[statName] ? (statsCopy[statName] += +statValue) : (statsCopy[statName] = +statValue);
-      });
+  });
+  Object.values(sets).map((set) => {
+    set.bonus.map((statistic) => {
+      const [statName, statValue] = statistic;
+      statsValues[statName] ? (statsValues[statName] += +statValue) : (statsValues[statName] = +statValue);
     });
-    Object.entries(characteristics).map(([statistic, statValue]) => {
-      statsCopy[statistic] ? (statsCopy[statistic] += statValue) : (statsCopy[statistic] = statValue);
-    });
-    setStatsValues(statsCopy);
-  }, [characteristics, items, sets]);
+  });
+  Object.entries(characteristics).map(([statistic, statValue]) => {
+    statsValues[statistic] ? (statsValues[statistic] += statValue) : (statsValues[statistic] = statValue);
+  });
 
   const computeStatFromItemsAndCharacteristics = (stat) => {
     let characteristicsValue = characteristics.stat || 0;
