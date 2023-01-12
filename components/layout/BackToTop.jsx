@@ -1,5 +1,6 @@
 import { ArrowUpward } from '@mui/icons-material';
 import { Fab, styled } from '@mui/material';
+import React from 'react';
 
 const BackToTop = ({ parent, bottom, right, ...props }) => {
   const backToTop = () => {
@@ -13,7 +14,7 @@ const BackToTop = ({ parent, bottom, right, ...props }) => {
   );
 };
 
-export default styled(BackToTop)`
+export default styled(React.memo(BackToTop))`
   position: fixed;
   bottom: ${(props) => props.bottom ?? '32'}px;
   right: ${(props) => props.right ?? '8'}px;
