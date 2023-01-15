@@ -1,41 +1,35 @@
 import { Checkbox, styled, TextField, Typography } from '@mui/material';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 import { MAIN_STATS } from '../../helpers/constants';
 import { setLocalStorageCharacteristics } from '../../helpers/localstorage';
 import { normalizeImageName } from '../../helpers/utils';
 
 const StuffStats = ({ characteristics, setCharacteristics, ...props }) => {
-  const [pointsLeft, setPointsLeft] = useState(995);
-
-  useEffect(() => {
-    let points = characteristics.niveau * 5 - 5;
-    const { classe, niveau, ...characs } = characteristics;
-    Object.entries(characs).forEach(([stat, value]) => {
-      switch (stat) {
-        case stat.match(/^exo|parcho/)?.input:
-          break;
-        case 'niveau':
-          break;
-        case 'vitalité':
-          points -= value;
-          break;
-        case 'sagesse':
-          points -= 3 * value;
-          break;
-        default:
-          let val = value,
-            cost = 1;
-          while (val > 0) {
-            const substract = Math.min(val, 100);
-            points -= substract * cost;
-            val -= substract;
-            cost++;
-          }
-      }
-      setPointsLeft(points);
-    });
-  }, [characteristics]);
+  let pointsLeft = (characteristics?.niveau || 200) * 5 - 5;
+  const { classe, niveau, ...characs } = characteristics;
+  Object.entries(characs).forEach(([stat, value]) => {
+    switch (stat) {
+      case stat.match(/^exo|parcho/)?.input:
+        break;
+      case 'niveau':
+        break;
+      case 'vitalité':
+        pointsLeft -= value;
+        break;
+      case 'sagesse':
+        pointsLeft -= 3 * value;
+        break;
+      default:
+        let val = value,
+          cost = 1;
+        while (val > 0) {
+          const substract = Math.min(val, 100);
+          pointsLeft -= substract * cost;
+          val -= substract;
+          cost++;
+        }
+    }
+  });
 
   const setParcho = (isChecked, stat) => {
     const val = isChecked ? 100 : 0;

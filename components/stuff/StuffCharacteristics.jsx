@@ -3,7 +3,6 @@ import { DAMAGE_STATS, PRIMARY_STATS, RESISTANCE_STATS, SECONDARY_STATS } from '
 import { getSpellActionTypeFromName, normalizeStatName } from '../../helpers/utils';
 import { computeAddedStatFromCharacteristics } from '../../helpers/formulas';
 import StuffCharacteristicsAccordion from './StuffCharacteristicsAccordion';
-import { useEffect, useState } from 'react';
 import { setLocalStorageFinalStats } from '../../helpers/localstorage';
 
 const StuffCharacteristics = ({ items, sets, characteristics, ...props }) => {
@@ -90,14 +89,15 @@ const StuffCharacteristics = ({ items, sets, characteristics, ...props }) => {
     return formatedWeapon;
   };
 
-  useEffect(() => {
-    const mergedStats = [...primaryStats, ...secondaryStats, ...damageStats, ...resistanceStats].map((val) => ({
-      [normalizeStatName(val.name)]: val.value,
-    }));
-    const weapon = items.Arme?.length > 0 ? getFormatedWeapon(items.Arme[0]) : null;
-    const finalStats = [{ classe: characteristics.classe }, { arme: weapon }, ...mergedStats];
-    setLocalStorageFinalStats(JSON.stringify(Object.assign({}, ...finalStats)));
-  }, [primaryStats, secondaryStats, damageStats, resistanceStats, characteristics.classe, items.Arme]);
+  const mergedStats = [...primaryStats, ...secondaryStats, ...damageStats, ...resistanceStats].map((val) => ({
+    [normalizeStatName(val.name)]: val.value,
+  }));
+
+  const weapon = items.Arme?.length > 0 ? getFormatedWeapon(items.Arme[0]) : null;
+
+  const finalStats = [{ classe: characteristics.classe }, { arme: weapon }, ...mergedStats];
+
+  setLocalStorageFinalStats(JSON.stringify(Object.assign({}, ...finalStats)));
 
   return (
     <div className={props.className}>
