@@ -21,6 +21,7 @@ const ItemStats = ({ stats, className }) => {
               .replace("d'armes", 'armes')
               .replace('renvoie dommages', 'other')
               .replace('emote', 'other')
+              .replace('arme de chasse', 'other')
           );
           statName = statName[0].toUpperCase() + statName.slice(1);
           return (
@@ -33,7 +34,8 @@ const ItemStats = ({ stats, className }) => {
                 height={24}
               />
               <span>
-                {statName}: {val.min} {val.max && `à ${val.max}`}
+                {statName}
+                {(val.min || val.max) && ':'} {val.min} {val.max && `à ${val.max}`}
               </span>
               {index === damageLines - 1 && <hr />}
             </li>
