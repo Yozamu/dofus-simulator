@@ -1,5 +1,6 @@
 import { styled } from '@mui/material';
 import Image from 'next/image';
+import { normalizeImageName } from '../../helpers/utils';
 
 const ItemStats = ({ stats, className }) => {
   const damageLinesFilter = (stat) => Object.keys(stat)[0].match(/\(dommages|\(vol|\(PV/)?.length;
@@ -10,11 +11,17 @@ const ItemStats = ({ stats, className }) => {
       {stats.map((stat, index) =>
         Object.entries(stat).map(([key, val]) => {
           let statName = key.replace(/[0-9-()]/g, '');
-          const imageName = statName
-            .replace('vol', 'dommages')
-            .replace('PV rendus', 'Vitalité')
-            .toLowerCase()
-            .replace(/[ %]/g, '');
+          const imageName = normalizeImageName(
+            statName
+              .toLowerCase()
+              .replace('vol', 'dommages')
+              .replace('pv rendus', 'vitalité')
+              .replace('aux sorts', 'sorts')
+              .replace('pièges', '')
+              .replace("d'armes", 'armes')
+              .replace('renvoie dommages', 'other')
+              .replace('emote', 'other')
+          );
           statName = statName[0].toUpperCase() + statName.slice(1);
           return (
             <li key={index} className={val.min < 0 ? 'negative' : ''}>
