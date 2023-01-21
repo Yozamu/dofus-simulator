@@ -13,11 +13,11 @@ const getJsonData = async (filename) => {
   return JSON.parse(fileContent);
 };
 
-const queryFromDatabase = async (collectionName, id = {}, limit = 24, offset = 0) => {
+const queryFromDatabase = async (collectionName, filters = {}, limit = 24, offset = 0) => {
   try {
     const client = await clientPromise;
     const db = client.db('dofus');
-    const toFind = isNaN(id) ? id : { _id: +id };
+    const toFind = isNaN(filters) ? filters : { _id: +filters };
     const collection = await db
       .collection(collectionName)
       .find(toFind)
@@ -30,6 +30,26 @@ const queryFromDatabase = async (collectionName, id = {}, limit = 24, offset = 0
   } catch (e) {
     console.error(e);
   }
+};
+
+const buildQueryFilters = (rawFilters) => {
+  const queryFilters = {};
+  Object.entries(rawFilters).forEach(([key, value]) => {
+    if (typeof value === 'string') {
+      queryFilters[key] = { $regex: `.*${value}.*`, $options: 'i' };
+    } else if (key === 'statistics') {
+      //data = data.filter((element) => areStatsWithinValues(element[key], value));
+    } else if (Array.isArray(value)) {
+      if (value.length < 1) return;
+      queryFilters[key] = { $in: value };
+    } else {
+      // Simple range filter
+      if (value && !queryFilters[key]) queryFilters[key] = {};
+      if (value.min) queryFilters[key].$gte = +value.min;
+      if (value.max) queryFilters[key].$lte = +value.max;
+    }
+  });
+  return queryFilters;
 };
 
 // Getter
@@ -70,27 +90,10 @@ const areStatsWithinValues = (itemStats = [], statsArray) => {
   return true;
 };
 
-const applyFilters = (data, filters) => {
-  Object.entries(filters).forEach(([key, value]) => {
-    if (typeof value === 'string') {
-      data = data.filter((element) => element[key].toLowerCase().includes(value));
-    } else if (key === 'statistics') {
-      data = data.filter((element) => areStatsWithinValues(element[key], value));
-    } else if (Array.isArray(value) && value.length > 0) {
-      data = data.filter((element) => value.some((condition) => element[key] === condition));
-    } else {
-      // Simple range filter
-      value.min && (data = data.filter((e) => e[key] >= value.min));
-      value.max && (data = data.filter((e) => e[key] <= value.max));
-    }
-  });
-  return data;
-};
-
 export const getFilteredData = async (type, filters = {}, size = 24, offset = 0) => {
-  const json = await queryFromDatabase(type, {}, +size, +offset);
+  const queryFilters = buildQueryFilters(filters);
+  const json = await queryFromDatabase(type, queryFilters, +size, +offset);
   let data = extractMeaningfulData(json);
-  data = applyFilters(data, filters);
   return { data, count: json.count };
 };
 
