@@ -1,7 +1,7 @@
 import { getFilteredData } from '../../../helpers/data';
 
-export const getMonsters = () => {
-  const monsters = getFilteredData('monsters', {}, 2000);
+export const getMonsters = async () => {
+  const monsters = await getFilteredData('monsters', {}, 2000);
   const filteredMonsters = monsters.data.filter((monster) => monster.type !== 'Archi-monstres');
   const updatedData = filteredMonsters.map((monster) => ({
     ankamaId: monster.ankamaId,
@@ -15,7 +15,7 @@ export const getMonsters = () => {
 export default async function handler(req, res) {
   let data;
   if (req.method === 'GET') {
-    data = getMonsters();
+    data = await getMonsters();
   }
   res.status(200).json(data);
 }

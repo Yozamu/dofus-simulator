@@ -11,7 +11,7 @@ const EquipmentPage = ({ items, count, query }) => {
 export async function getServerSideProps(context) {
   const query = { ...context.query, type: EQUIPMENT };
   const req = { ...context.req, query };
-  const res = retrieveItems(req);
+  const res = await retrieveItems(req);
   return {
     props: {
       items: res.data,

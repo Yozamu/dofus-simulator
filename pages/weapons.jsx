@@ -32,7 +32,7 @@ const WeaponsPage = ({ items, count, query }) => {
 export async function getServerSideProps(context) {
   const query = { ...context.query, type: WEAPONS };
   const req = { ...context.req, query };
-  const res = retrieveItems(req);
+  const res = await retrieveItems(req);
   return {
     props: {
       items: res.data,

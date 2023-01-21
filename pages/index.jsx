@@ -29,7 +29,7 @@ const HomePage = ({ todos = {} }) => {
 };
 
 export async function getStaticProps() {
-  const res = getTodos();
+  const res = await getTodos();
   return {
     props: {
       todos: res,
