@@ -51,7 +51,7 @@ const Stuff = ({ localStuff, localCharacteristics, ...props }) => {
       for (let item of slotArray) {
         const setId = item.setId;
         if (!setId) continue;
-        setIds[setId] ? setIds[setId].push(item.ankamaId) : (setIds[setId] = [item.ankamaId]);
+        setIds[setId] ? setIds[setId].push(item._id) : (setIds[setId] = [item._id]);
       }
     }
     const promises = [];
@@ -62,9 +62,9 @@ const Stuff = ({ localStuff, localCharacteristics, ...props }) => {
     Promise.all(promises).then((values) => {
       const newSets = {};
       values.forEach((value) => {
-        if (value.data && setIds[value.data.ankamaId].length > 1) {
-          const { ankamaId, bonus, items, ...set } = value.data;
-          const currentSet = setIds[ankamaId];
+        if (value.data && setIds[value.data._id].length > 1) {
+          const { _id, bonus, items, ...set } = value.data;
+          const currentSet = setIds[_id];
           let actualBonus = bonus[currentSet.length - 2];
           actualBonus = actualBonus.map((stat) => {
             const separatorIndex = stat.indexOf('%') >= 0 ? stat.indexOf('%') : stat.indexOf(' ');
@@ -73,7 +73,7 @@ const Stuff = ({ localStuff, localCharacteristics, ...props }) => {
             return [statName, amount];
           });
           const updatedItems = items.map((item) => [...item, currentSet.indexOf(+item[0][0]) >= 0]);
-          newSets[ankamaId] = {
+          newSets[_id] = {
             ...set,
             items: updatedItems,
             bonus: actualBonus,
