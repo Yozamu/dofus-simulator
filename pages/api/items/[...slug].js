@@ -7,7 +7,7 @@ const handler = async (req, res) => {
   if (req.method === 'GET') {
     const arr = params[1].split(',');
     for (let param of arr) {
-      const itemData = await getSpecificData(getTypeFilename(params[0]), param);
+      const itemData = getSpecificData(getTypeFilename(params[0]), param);
       data.push(itemData);
     }
   }

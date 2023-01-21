@@ -22,7 +22,7 @@ const FightPage = ({ monsters }) => {
 };
 
 export async function getServerSideProps() {
-  const res = await getMonsters();
+  const res = getMonsters();
   return {
     props: {
       monsters: res.data,
