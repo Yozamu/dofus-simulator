@@ -9,7 +9,6 @@
       "Monster spells",
       "Classes spells"
     ],
-    "bugs": ["Timeout on Vercel when requesting pages using SSR ? (+ long load time if importing data)"],
     "misc": ["Add tests with jest+rtl / playwright or cypress / storybook ?"]
   }
 }

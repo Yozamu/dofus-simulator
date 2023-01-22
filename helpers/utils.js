@@ -107,3 +107,11 @@ export const getFormattedStatName = (rawStatName) => {
       return rawStatName[0].toUpperCase() + rawStatName.slice(1);
   }
 };
+
+export const buildQueryParamsUrl = (queryParamsObject) => {
+  const urlParams = [];
+  for (let [param, value] of Object.entries(queryParamsObject)) {
+    urlParams.push(`${param}=${value}`);
+  }
+  return urlParams.join('&');
+};

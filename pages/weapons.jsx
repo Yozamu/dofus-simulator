@@ -1,8 +1,9 @@
-import { retrieveItems } from './api/items';
 import ItemsPage from '../components/items/ItemsPage';
+import Progress from '../components/layout/Progress';
 import { WEAPONS } from '../helpers/constants';
+import useFetchItems from '../hooks/useFetchItems';
 
-const WeaponsPage = ({ items, count, query }) => {
+const WeaponsPage = () => {
   const availableCategories = [
     'Arc',
     'Baguette',
@@ -16,30 +17,24 @@ const WeaponsPage = ({ items, count, query }) => {
     'Pelle',
     'Pioche',
   ];
+  const [items, count, query] = useFetchItems(WEAPONS);
 
   return (
-    <ItemsPage
-      title="Armes"
-      query={query}
-      items={items}
-      count={count}
-      availableCategories={availableCategories}
-      itemHeight={600}
-    />
+    <>
+      {count > 0 ? (
+        <ItemsPage
+          title="Armes"
+          query={query}
+          items={items}
+          count={count}
+          availableCategories={availableCategories}
+          itemHeight={600}
+        />
+      ) : (
+        <Progress />
+      )}
+    </>
   );
 };
-
-export async function getServerSideProps(context) {
-  const query = { ...context.query, type: WEAPONS };
-  const req = { ...context.req, query };
-  const res = await retrieveItems(req);
-  return {
-    props: {
-      items: res.data,
-      count: res.count,
-      query,
-    },
-  };
-}
 
 export default WeaponsPage;

@@ -1,33 +1,28 @@
-import { retrieveItems } from './api/items';
 import ItemsPage from '../components/items/ItemsPage';
+import Progress from '../components/layout/Progress';
 import { PETS } from '../helpers/constants';
+import useFetchItems from '../hooks/useFetchItems';
 
-const PetsPage = ({ items, count, query }) => {
+const PetsPage = () => {
   const availableCategories = ['Dragodinde', 'Muldo', 'Volkorne', 'Familier', 'Montilier'];
+  const [items, count, query] = useFetchItems(PETS);
 
   return (
-    <ItemsPage
-      title="Familiers & Montures"
-      query={query}
-      items={items}
-      count={count}
-      availableCategories={availableCategories}
-      itemHeight={300}
-    />
+    <>
+      {count > 0 ? (
+        <ItemsPage
+          title="Familiers & Montures"
+          query={query}
+          items={items}
+          count={count}
+          availableCategories={availableCategories}
+          itemHeight={300}
+        />
+      ) : (
+        <Progress />
+      )}
+    </>
   );
 };
-
-export async function getServerSideProps(context) {
-  const query = { ...context.query, type: PETS };
-  const req = { ...context.req, query };
-  const res = await retrieveItems(req);
-  return {
-    props: {
-      items: res.data,
-      count: res.count,
-      query,
-    },
-  };
-}
 
 export default PetsPage;
