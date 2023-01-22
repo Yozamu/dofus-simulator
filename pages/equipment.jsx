@@ -1,24 +1,33 @@
-import { retrieveItems } from './api/items';
 import ItemsPage from '../components/items/ItemsPage';
 import { EQUIPMENT, EQUIPMENT_ITEMS } from '../helpers/constants';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
-const EquipmentPage = ({ items, count, query }) => {
+const EquipmentPage = () => {
+  const [items, setItems] = useState([]);
+  const [count, setCount] = useState(0);
+
+  const router = useRouter();
+  const query = { type: EQUIPMENT, ...router.query };
+  console.log('render', count);
+
+  useEffect(() => {
+    fetch(`/api/items?type=equipment`)
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+        setItems(json.data);
+        setCount(json.count);
+      });
+  }, []);
+
   return (
-    <ItemsPage title="Equipement" query={query} items={items} count={count} availableCategories={EQUIPMENT_ITEMS} />
+    <>
+      {count > 0 && (
+        <ItemsPage title="Equipement" query={query} items={items} count={count} availableCategories={EQUIPMENT_ITEMS} />
+      )}
+    </>
   );
 };
-
-export async function getServerSideProps(context) {
-  const query = { ...context.query, type: EQUIPMENT };
-  const req = { ...context.req, query };
-  const res = await retrieveItems(req);
-  return {
-    props: {
-      items: res.data,
-      count: res.count,
-      query,
-    },
-  };
-}
 
 export default EquipmentPage;
