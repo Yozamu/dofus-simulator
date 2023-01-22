@@ -9,6 +9,7 @@
       "Monster spells",
       "Classes spells"
     ],
+    "bugs": ["Lance & Dague = nothing displayed in these categories"],
     "misc": ["Add tests with jest+rtl / playwright or cypress / storybook ?"]
   }
 }

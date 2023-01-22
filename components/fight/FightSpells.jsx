@@ -109,7 +109,7 @@ const FightSpells = ({ character, fightingEntities, castSpell, isFighting, turn,
       </Typography>
       <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center' }}>
         Coût: {spell.cost} <Image src="/images/ui/stats/pa.png" alt="PA" width={32} height={32} />
-        {spell.crit ? `Critique: ${spell.crit}%` : ''}
+        {spell.crit ? `Critique: ${Math.round(spell.crit)}%` : ''}
       </Typography>
       <Typography variant="body1">
         {spell.cooldown > 0

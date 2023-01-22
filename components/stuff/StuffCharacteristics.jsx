@@ -63,7 +63,7 @@ const StuffCharacteristics = ({ items, sets, characteristics, ...props }) => {
     const timesPerTurn = +cost[1].replace('(', '');
     cost = +cost[0];
     const critChance = (crit[0].split('/')[0] / crit[0].split('/')[1]) * 100;
-    const critBonus = +crit[1].replace(/[()+]/g, '');
+    const critBonus = +crit[1]?.replace(/[()+]/g, '') || 0;
     const effectLines = statistics
       .filter((stat) => Object.keys(stat)[0].startsWith('('))
       .map((line) => {
