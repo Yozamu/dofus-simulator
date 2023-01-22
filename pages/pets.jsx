@@ -1,5 +1,5 @@
 import ItemsPage from '../components/items/ItemsPage';
-import Progress from '../components/layout/Progress';
+import ItemsProgress from '../components/layout/ItemsProgress';
 import { PETS } from '../helpers/constants';
 import useFetchItems from '../hooks/useFetchItems';
 
@@ -19,7 +19,7 @@ const PetsPage = () => {
           itemHeight={300}
         />
       ) : (
-        <Progress />
+        <ItemsProgress />
       )}
     </>
   );

@@ -1,7 +1,7 @@
+import { CircularProgress } from '@mui/material';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Fight from '../components/fight/Fight';
-import Progress from '../components/layout/Progress';
 
 const FightPage = () => {
   const [stats, setStats] = useState(null);
@@ -31,7 +31,9 @@ const FightPage = () => {
           <div>Pas de données. Veuillez aller sur la page de stuff pour initialiser votre personnage</div>
         )
       ) : (
-        <Progress />
+        <div style={{ textAlign: 'center' }}>
+          <CircularProgress />
+        </div>
       )}
     </>
   );

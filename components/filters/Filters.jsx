@@ -7,7 +7,7 @@ import NameFilter from './NameFilter';
 import StatisticsFilter from './StatisticsFilter';
 import Slide from '@mui/material/Slide';
 
-const Filters = ({ setFilters, availableCategories, initialFilters = {}, ...props }) => {
+const Filters = ({ setFilters, availableCategories = [], initialFilters = {}, ...props }) => {
   const [name, setName] = useState(initialFilters.name || '');
   const [levelRange, setLevelRange] = useState(initialFilters.level || [1, 200]);
   const [categories, setCategories] = useState(initialFilters.categories?.split(',') || []);
@@ -16,6 +16,7 @@ const Filters = ({ setFilters, availableCategories, initialFilters = {}, ...prop
   const hasMounted = useRef(false);
 
   useEffect(() => {
+    if (!setFilters) return;
     if (!hasMounted.current) {
       hasMounted.current = true;
       return;

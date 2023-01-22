@@ -1,5 +1,5 @@
 import ItemsPage from '../components/items/ItemsPage';
-import Progress from '../components/layout/Progress';
+import ItemsProgress from '../components/layout/ItemsProgress';
 import { EQUIPMENT, EQUIPMENT_ITEMS } from '../helpers/constants';
 import useFetchItems from '../hooks/useFetchItems';
 
@@ -11,7 +11,7 @@ const EquipmentPage = () => {
       {count > 0 ? (
         <ItemsPage title="Equipement" query={query} items={items} count={count} availableCategories={EQUIPMENT_ITEMS} />
       ) : (
-        <Progress />
+        <ItemsProgress />
       )}
     </>
   );

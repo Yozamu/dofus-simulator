@@ -70,7 +70,7 @@ const extractMeaningfulData = (json) =>
     return rest;
   });
 
-export const getFilteredData = async (type, filters = {}, size = 24, offset = 0) => {
+export const getFilteredData = async (type, filters = {}, size = 12, offset = 0) => {
   const queryFilters = buildQueryFilters(filters);
   const json = await queryFromDatabase(type, queryFilters, +size, +offset);
   let data = extractMeaningfulData(json);

@@ -1,5 +1,5 @@
 import ItemsPage from '../components/items/ItemsPage';
-import Progress from '../components/layout/Progress';
+import ItemsProgress from '../components/layout/ItemsProgress';
 import { WEAPONS } from '../helpers/constants';
 import useFetchItems from '../hooks/useFetchItems';
 
@@ -31,7 +31,7 @@ const WeaponsPage = () => {
           itemHeight={600}
         />
       ) : (
-        <Progress />
+        <ItemsProgress />
       )}
     </>
   );
