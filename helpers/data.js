@@ -47,7 +47,7 @@ const buildQueryFilters = (rawFilters) => {
   Object.entries(rawFilters).forEach(([key, value]) => {
     if (typeof value === 'string') {
       queryFilters[key] = { $regex: `.*${value}.*`, $options: 'i' };
-    } else if (key === 'statistics') {
+    } else if (key === 'statistics' && Object.keys(value).length > 0) {
       queryFilters[key] = buildStatsFilter(value);
     } else if (Array.isArray(value)) {
       if (value.length < 1) return;
