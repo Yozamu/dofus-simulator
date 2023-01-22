@@ -103,7 +103,7 @@ const Fight = ({ monsters, character, ...props }) => {
     );
     setFightingEntities(newFightingEntities);
   };
-
+  console.log(enemy);
   return (
     <div className={props.className}>
       <i>Combattre permet de tester un stuff sur un ennemi, mais celui-ci ne rendra pas les coups</i>
@@ -117,7 +117,11 @@ const Fight = ({ monsters, character, ...props }) => {
         <Fighter
           entity={fightingEntities[1]}
           isFighting={isFigthing}
-          imagePath={`/images/monsters/${enemy?.ankamaId || '494'}.png`}
+          imagePath={
+            enemy?.ankamaId && enemy.ankamaId !== 494
+              ? `https://static.ankama.com/dofus/www/game/monsters/200/${enemy?.ankamaId}.w200h200.png`
+              : `/images/monsters/494.png`
+          }
           scaleX={-1}
         />
       </div>

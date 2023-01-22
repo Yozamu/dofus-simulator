@@ -55,7 +55,12 @@ const MonsterChoice = ({ monsters, open, onClose, selectedValue, ...props }) => 
             key={monster.ankamaId}
             onClick={() => handleMonsterClick(monster)}
           >
-            <Image src={`/images/monsters/${monster.ankamaId}.png`} alt={monster.name} width={100} height={100} />
+            <Image
+              src={`https://static.ankama.com/dofus/www/game/monsters/200/${monster.ankamaId}.w200h200.png`}
+              alt={monster.name}
+              width={100}
+              height={100}
+            />
             {monster.name}
           </Button>
         ))}

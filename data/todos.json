@@ -5,11 +5,10 @@
       "Add spells by hand for Pandawa",
       "Sets: update items IDs",
       "Volkornes: update names & stats",
-      "Monsters: update images",
       "Monster spells",
       "Classes spells"
     ],
-    "bugs": ["Lance & Dague = nothing displayed in these categories"],
+    "bugs": [],
     "misc": ["Add tests with jest+rtl / playwright or cypress / storybook ?"]
   }
 }
