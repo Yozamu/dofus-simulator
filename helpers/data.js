@@ -32,13 +32,23 @@ const queryFromDatabase = async (collectionName, filters = {}, limit = 24, offse
   }
 };
 
+const buildStatsFilter = (statsArray) => {
+  const statsFilter = [];
+  for (let stat of statsArray) {
+    let statName = Object.keys(stat)[0];
+    statName = statName[0].toUpperCase() + statName.slice(1);
+    statsFilter.push({ $elemMatch: { [statName]: { $exists: true } } });
+  }
+  return { $all: statsFilter };
+};
+
 const buildQueryFilters = (rawFilters) => {
   const queryFilters = {};
   Object.entries(rawFilters).forEach(([key, value]) => {
     if (typeof value === 'string') {
       queryFilters[key] = { $regex: `.*${value}.*`, $options: 'i' };
     } else if (key === 'statistics') {
-      //data = data.filter((element) => areStatsWithinValues(element[key], value));
+      queryFilters[key] = buildStatsFilter(value);
     } else if (Array.isArray(value)) {
       if (value.length < 1) return;
       queryFilters[key] = { $in: value };
@@ -59,36 +69,6 @@ const extractMeaningfulData = (json) =>
     const { imgUrl, url, recipe, description, ...rest } = element;
     return rest;
   });
-
-const isItemWithinInterval = (item, statRange) => {
-  const itemRange = { ...item, max: item.max || item.min };
-  if (!statRange.max) statRange.max = 9999;
-  if (!statRange.min) statRange.min = -9999;
-  const isItemStatHighEnough = statRange.min && itemRange.max >= statRange.min;
-  const isItemStatLowEnough = statRange.max && itemRange.min <= statRange.max;
-  return isItemStatHighEnough && isItemStatLowEnough;
-};
-
-const areStatsWithinValues = (itemStats = [], statsArray) => {
-  for (let stat of statsArray) {
-    let found = false;
-    for (let itemStat of itemStats) {
-      const itemStatName = Object.keys(itemStat)[0];
-      const statName = Object.keys(stat)[0];
-      if (itemStatName.toLowerCase() !== statName) {
-        continue;
-      }
-      found = true;
-      if (!isItemWithinInterval(itemStat[itemStatName], stat[statName])) {
-        return false;
-      }
-    }
-    if (!found) {
-      return false;
-    }
-  }
-  return true;
-};
 
 export const getFilteredData = async (type, filters = {}, size = 24, offset = 0) => {
   const queryFilters = buildQueryFilters(filters);
