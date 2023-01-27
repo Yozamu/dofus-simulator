@@ -2,12 +2,12 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { buildQueryParamsUrl } from '../helpers/utils';
 
-const useFetchItems = (type) => {
+const useFetchItems = (type, size = 12) => {
   const [items, setItems] = useState([]);
   const [count, setCount] = useState(0);
 
   const router = useRouter();
-  const query = { type, ...router.query };
+  const query = { type, size, ...router.query };
 
   useEffect(() => {
     const params = buildQueryParamsUrl(query);

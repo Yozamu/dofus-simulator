@@ -12,7 +12,8 @@ const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...prop
   const [isFetching, setIsFetching] = useState(false);
   const { type, ...queryRest } = query;
   const initialFilters = { level: [1, 200], ...queryRest };
-  const [filters, setFilters] = useState(initialFilters);
+  const { size, ...clearedFilters } = initialFilters;
+  const [filters, setFilters] = useState(clearedFilters);
   const prevFilters = usePrevious(filters);
 
   const getQueryParams = useCallback(

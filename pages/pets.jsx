@@ -5,7 +5,7 @@ import useFetchItems from '../hooks/useFetchItems';
 
 const PetsPage = () => {
   const availableCategories = ['Dragodinde', 'Muldo', 'Volkorne', 'Familier', 'Montilier'];
-  const [items, count, query] = useFetchItems(PETS);
+  const [items, count, query] = useFetchItems(PETS, 24);
 
   return (
     <>
