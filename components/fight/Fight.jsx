@@ -103,7 +103,7 @@ const Fight = ({ monsters, character, ...props }) => {
     );
     setFightingEntities(newFightingEntities);
   };
-  console.log(enemy);
+
   return (
     <div className={props.className}>
       <i>Combattre permet de tester un stuff sur un ennemi, mais celui-ci ne rendra pas les coups</i>

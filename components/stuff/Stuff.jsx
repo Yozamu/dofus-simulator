@@ -26,25 +26,23 @@ const Stuff = ({ localStuff, localCharacteristics, ...props }) => {
   };
 
   const importData = (data) => {
+    setItems({});
     setStuff(data);
   };
 
   useEffect(() => {
-    const promises = [];
+    const fetchItemData = async (stuff, slot) => {
+      const data = await getItemData(stuff, slot);
+      setItems((prevItems) => ({ ...prevItems, [slot]: data ? data.data : [] }));
+    };
+
     for (let slot of STUFF_ITEMS) {
-      promises.push(getItemData(stuff, slot));
+      fetchItemData(stuff, slot);
     }
-    Promise.all(promises).then((values) => {
-      const newItems = {};
-      values.forEach((value, index) => {
-        newItems[STUFF_ITEMS[index]] = value ? value.data : [];
-      });
-      setItems(newItems);
-      setLocalStorageStuff(newItems);
-    });
   }, [stuff]);
 
   useEffect(() => {
+    setLocalStorageStuff(items);
     if (Object.keys(items).length < 1) return;
     const setIds = {};
     for (let [, slotArray] of Object.entries(items)) {
