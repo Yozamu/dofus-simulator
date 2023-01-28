@@ -11,8 +11,13 @@ export const WindowContextProvider = ({ children }) => {
     return Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
   }, []);
 
-  const [clientHeight, setVh] = useState(0);
-  const [clientWidth, setVw] = useState(0);
+  const [clientHeight, setVh] = useState(1080);
+  const [clientWidth, setVw] = useState(1920);
+
+  useEffect(() => {
+    setVh(getVh());
+    setVw(getVw());
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
