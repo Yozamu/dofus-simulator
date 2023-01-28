@@ -1,9 +1,13 @@
 import Navbar from './Navbar';
+import { useContext } from 'react';
+import { WindowContext } from './WindowContext';
 
 const Layout = (props) => {
+  const { clientWidth } = useContext(WindowContext);
+
   return (
     <>
-      <Navbar />
+      <Navbar clientWidth={clientWidth} />
       {props.children}
     </>
   );

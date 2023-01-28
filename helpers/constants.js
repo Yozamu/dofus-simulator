@@ -5,6 +5,7 @@ export const WEAPONS = 'weapons';
 export const SETS = 'sets';
 export const PETS = 'pets';
 export const MOUNTS = 'mounts';
+export const MOBILE_WIDTH_TRESHOLD = 850;
 
 export const DOFUS_CLASSES = [
   'Cra',

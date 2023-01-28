@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Layout from '../components/layout/Layout';
+import { WindowContextProvider } from '../components/layout/WindowContext';
 
 const fontColor = '#b0de00'; // or 9ce900
 
@@ -38,9 +39,11 @@ const theme = createTheme({
 export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <WindowContextProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </WindowContextProvider>
     </ThemeProvider>
   );
 }
