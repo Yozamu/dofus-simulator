@@ -61,6 +61,6 @@ export default styled(Navbar)`
   }
 
   nav div > :not(a:first-of-type) {
-    ${(props) => props.clientWidth < MOBILE_WIDTH_TRESHOLD && 'width: 100%'}
+    ${(props) => props.clientWidth <= MOBILE_WIDTH_TRESHOLD && 'width: 100%'}
   }
 `;

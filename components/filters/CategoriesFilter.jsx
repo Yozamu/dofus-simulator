@@ -12,7 +12,7 @@ import {
 const CategoriesFilter = ({ categories, setCategories, availableCategories, ...props }) => {
   return (
     <div className={props.className}>
-      <FormControl sx={{ m: 1, width: 180, margin: 0 }}>
+      <FormControl sx={{ m: 1, width: '100%', margin: 0 }}>
         <InputLabel id="categories-label">Catégories</InputLabel>
         <Select
           labelId="categories-label"

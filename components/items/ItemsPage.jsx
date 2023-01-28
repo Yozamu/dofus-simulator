@@ -1,9 +1,10 @@
 import { CircularProgress, styled } from '@mui/material';
 import Head from 'next/head';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import usePrevious from '../../hooks/usePrevious';
 import Filters from '../filters/Filters';
 import BackToTop from '../layout/BackToTop';
+import { WindowContext } from '../layout/WindowContext';
 import ItemList from './ItemList';
 
 const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...props }) => {
@@ -15,6 +16,7 @@ const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...prop
   const { size, ...clearedFilters } = initialFilters;
   const [filters, setFilters] = useState(clearedFilters);
   const prevFilters = usePrevious(filters);
+  const { clientWidth } = useContext(WindowContext);
 
   const getQueryParams = useCallback(
     (shouldReset) => {
@@ -67,7 +69,12 @@ const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...prop
         <title>Dofus Simulator - {title}</title>
       </Head>
       <div className={`${props.className} wrapper`}>
-        <Filters setFilters={setFilters} initialFilters={initialFilters} availableCategories={availableCategories} />
+        <Filters
+          clientWidth={clientWidth}
+          setFilters={setFilters}
+          initialFilters={initialFilters}
+          availableCategories={availableCategories}
+        />
         <ItemList className="items" items={items} category={type} itemHeight={itemHeight} />
         {isFetching && (
           <div className="progress">

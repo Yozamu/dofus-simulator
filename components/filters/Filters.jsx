@@ -6,8 +6,9 @@ import LevelFilter from './LevelFilter';
 import NameFilter from './NameFilter';
 import StatisticsFilter from './StatisticsFilter';
 import Slide from '@mui/material/Slide';
+import { MOBILE_WIDTH_TRESHOLD } from '../../helpers/constants';
 
-const Filters = ({ setFilters, availableCategories = [], initialFilters = {}, ...props }) => {
+const Filters = ({ clientWidth, setFilters, availableCategories = [], initialFilters = {}, ...props }) => {
   const [name, setName] = useState(initialFilters.name || '');
   const [levelRange, setLevelRange] = useState(initialFilters.level || [1, 200]);
   const [categories, setCategories] = useState(initialFilters.categories?.split(',') || []);
@@ -44,7 +45,7 @@ const Filters = ({ setFilters, availableCategories = [], initialFilters = {}, ..
   return (
     <Drawer className={`${props.className} drawer`} variant="permanent">
       <Button variant="contained" startIcon={<RestartAlt />} onClick={clearFilters}>
-        Reset
+        {clientWidth > MOBILE_WIDTH_TRESHOLD && 'Reset'}
       </Button>
       <NameFilter name={name} setName={setName} />
       <br />
@@ -54,7 +55,7 @@ const Filters = ({ setFilters, availableCategories = [], initialFilters = {}, ..
         setCategories={setCategories}
         availableCategories={availableCategories}
       />
-      <StatisticsFilter stats={stats} setStats={setStats} />
+      <StatisticsFilter stats={stats} setStats={setStats} clientWidth={clientWidth} />
       <Snackbar
         open={snackbarIsOpened}
         autoHideDuration={1000}
@@ -71,7 +72,7 @@ export default styled(Filters)`
     color: var(--foreground);
     background-color: var(--background-light);
     padding: 80px 8px 0 8px;
-    width: 192px;
+    width: ${(props) => (props.clientWidth > MOBILE_WIDTH_TRESHOLD ? 192 : 96)}px;
   }
 
   > div > div {

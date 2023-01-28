@@ -1,5 +1,6 @@
 import { styled, ToggleButton } from '@mui/material';
 import Image from 'next/image';
+import { MOBILE_WIDTH_TRESHOLD } from '../../helpers/constants';
 
 const availableStatistics = [
   { name: 'vitalité' },
@@ -17,7 +18,7 @@ const availableStatistics = [
   { name: 'initiative' },
 ].map((stat) => ({ ...stat, icon: stat.name.replace('% ', '') }));
 
-const StatisticsFilter = ({ stats = [], setStats, ...props }) => {
+const StatisticsFilter = ({ stats = [], setStats, clientWidth, ...props }) => {
   const handleStatToggle = (stat) => {
     if (stats.includes(stat)) {
       setStats(stats.filter((statistic) => statistic !== stat));
@@ -37,7 +38,7 @@ const StatisticsFilter = ({ stats = [], setStats, ...props }) => {
           value={stat.name}
         >
           <Image src={`/images/ui/stats/${stat.icon}.png`} alt={stat} width={24} height={24} />
-          {stat.name}
+          {clientWidth > MOBILE_WIDTH_TRESHOLD && stat.name}
         </ToggleButton>
       ))}
     </div>
@@ -47,7 +48,8 @@ const StatisticsFilter = ({ stats = [], setStats, ...props }) => {
 export default styled(StatisticsFilter)`
   button {
     padding: 2px;
-    width: 150px;
+    width: ${(props) => (props.clientWidth > MOBILE_WIDTH_TRESHOLD ? 150 : 64)}px;
+    ${(props) => props.clientWidth <= MOBILE_WIDTH_TRESHOLD && 'text-align: center'}
     justify-content: flex-start;
   }
 `;
