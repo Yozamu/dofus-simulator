@@ -648,9 +648,9 @@
       "name": "Panoplie de l'Œil Attentif",
       "level": "200",
       "items": [
-        [["17394"], "Cape de l'Œil Attentif"],
-        [["16531"], "Capuche de l'Œil Attentif"],
-        [["1300"], "Amulette de l'Œil Attentif"]
+        [["19253"], "Cape de l'Œil Attentif"],
+        [["19254"], "Capuche de l'Œil Attentif"],
+        [["19255"], "Amulette de l'Œil Attentif"]
       ],
       "bonus": [["20 Esquive PA"], ["1 PA", "20 Esquive PA"]]
     },
@@ -659,9 +659,9 @@
       "name": "Panoplie Submergée",
       "level": "200",
       "items": [
-        [["10330"], "Sangle Oriole"],
-        [["16539"], "Chapeau de Tournoyé"],
-        [["17401"], "Cape de Crânonier"]
+        [["19599"], "Sangle Oriole"],
+        [["19600"], "Chapeau de Tournoyé"],
+        [["19601"], "Cape de Crânonier"]
       ],
       "bonus": [["20 Esquive PA"], ["20 Esquive PA", "1 PA"]]
     },
@@ -670,9 +670,9 @@
       "name": "Panoplie de Nidas",
       "level": "200",
       "items": [
-        [["16412"], "Couronne de Nidas"],
-        [["9288"], "Anneau de Nidas"],
-        [["11258"], "Tongues de Nidas"]
+        [["15186"], "Couronne de Nidas"],
+        [["15187"], "Anneau de Nidas"],
+        [["15188"], "Tongues de Nidas"]
       ],
       "bonus": [
         ["5 Fuite", "10 Soins", "30 Intelligence"],
@@ -684,9 +684,9 @@
       "name": "Panoplie des égarés",
       "level": "200",
       "items": [
-        [["9297"], "Anneau des égarés"],
-        [["11277"], "Bottes des égarés"],
-        [["16450"], "Casque des égarés"]
+        [["15740"], "Anneau des égarés"],
+        [["15741"], "Bottes des égarés"],
+        [["15742"], "Casque des égarés"]
       ],
       "bonus": [
         ["40 Force", "40 Agilité", "5 Esquive PM"],
@@ -698,9 +698,9 @@
       "name": "Panoplie de R’lyugluglu",
       "level": "200",
       "items": [
-        [["1283"], "Pendentif mignon de Koutoulou"],
-        [["16498"], "Casque Cyclopéen"],
-        [["9318"], "Anneau Rifique"]
+        [["18035"], "Pendentif mignon de Koutoulou"],
+        [["18036"], "Casque Cyclopéen"],
+        [["18037"], "Anneau Rifique"]
       ],
       "bonus": [
         ["40 Intelligence", "40 Agilité", "10 Soins", "10 Résistance Critiques"],
@@ -712,9 +712,9 @@
       "name": "Panoplie de l'Œil Putride",
       "level": "200",
       "items": [
-        [["17395"], "Cape de l'Œil Putride"],
-        [["16532"], "Capuche de l'Œil Putride"],
-        [["1301"], "Amulette de l'Œil Putride"]
+        [["19256"], "Cape de l'Œil Putride"],
+        [["19257"], "Capuche de l'Œil Putride"],
+        [["19258"], "Amulette de l'Œil Putride"]
       ],
       "bonus": [
         ["1000 Initiative", "150 Vitalité"],
