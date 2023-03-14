@@ -726,9 +726,9 @@
       "name": "Panoplie de Bethel",
       "level": "200",
       "items": [
-        [["10331"], "Culotte de Bethel"],
-        [["11334"], "Chaussons de Macrab"],
-        [["16540"], "Masque de Funespadon"]
+        [["19602"], "Culotte de Bethel"],
+        [["19603"], "Chaussons de Macrab"],
+        [["19604"], "Masque de Funespadon"]
       ],
       "bonus": [
         ["10 Retrait PA", "1 Portée"],
@@ -740,9 +740,9 @@
       "name": "Panoplie du Piloztère",
       "level": "200",
       "items": [
-        [["1252"], "Amulette du Piloztère"],
-        [["9289"], "Bracelet du Piloztère"],
-        [["11259"], "Pantoufles du Piloztère"]
+        [["15189"], "Amulette du Piloztère"],
+        [["15190"], "Bracelet du Piloztère"],
+        [["15191"], "Pantoufles du Piloztère"]
       ],
       "bonus": [
         ["40 Force", "40 Chance", "20 Résistance Critiques"],
@@ -754,9 +754,9 @@
       "name": "Panoplie de Vortex",
       "level": "200",
       "items": [
-        [["10282"], "Ceinture de Vortex"],
-        [["11278"], "Sabots de Vortex"],
-        [["16451"], "Cagoule de Vortex"]
+        [["15743"], "Ceinture de Vortex"],
+        [["15744"], "Sabots de Vortex"],
+        [["15745"], "Cagoule de Vortex"]
       ],
       "bonus": [
         ["40 Intelligence", "40 Agilité", "5 Retrait PA"],
@@ -768,9 +768,9 @@
       "name": "Panoplie du Roi Joueur",
       "level": "200",
       "items": [
-        [["11304"], "Bottes du Roi Joueur"],
-        [["16491"], "Couronne du Roi Joueur"],
-        [["9313"], "Chevalière du Roi Joueur\t"]
+        [["17572"], "Bottes du Roi Joueur"],
+        [["17573"], "Couronne du Roi Joueur"],
+        [["17574"], "Chevalière du Roi Joueur\t"]
       ],
       "bonus": [
         ["40 Force", "40 Intelligence", "20 Résistance Critiques", "5 Retrait PM"],
