@@ -14,6 +14,7 @@ const Navbar = ({ className, clientWidth }) => {
     { link: '/weapons', name: 'Armes', icon: 'weapons' },
     { link: '/pets', name: 'Familiers & Montures', icon: 'pets' },
     { link: '/fight', name: 'Combattre !', icon: 'monsters' },
+    { link: '/maging', name: 'Forgemagie', icon: 'rune' },
   ];
 
   return (
