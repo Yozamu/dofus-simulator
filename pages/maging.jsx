@@ -41,6 +41,14 @@ const MagingPage = ({ className }) => {
     setSelectedChip(null);
   };
 
+  const handleChipClick = (chip, e) => {
+    const added = e ? -1 : 1;
+    if (selectedChip && chip.label === selectedChip.label) {
+      setPuits((prevPuits) => prevPuits - added * selectedChip.weight);
+      setSelectedChip(null);
+    } else setSelectedChip(chip);
+  };
+
   return (
     <>
       <Head>
@@ -60,7 +68,8 @@ const MagingPage = ({ className }) => {
               shortLabel={chip.shortLabel}
               icon={`/images/ui/stats/${chip.icon}.png`}
               isSelected={selectedChip?.label === chip.label}
-              onClick={() => setSelectedChip(chip)}
+              onClick={() => handleChipClick(chip)}
+              onAuxClick={(e) => handleChipClick(chip, e)}
               weight={chip.weight}
             />
           ))}
