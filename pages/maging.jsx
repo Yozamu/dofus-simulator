@@ -1,7 +1,8 @@
-import { Button, Slider, TextField, Typography, styled } from '@mui/material';
+import { Button, IconButton, Slider, TextField, Typography, styled } from '@mui/material';
 import Head from 'next/head';
 import CharacteristicChip from '../components/maging/CharacteristicChip';
 import { useState } from 'react';
+import { Refresh, TramSharp } from '@mui/icons-material';
 
 const MagingPage = ({ className }) => {
   const chips = [
@@ -33,6 +34,12 @@ const MagingPage = ({ className }) => {
   const [addedValue, setAddedValue] = useState(0);
   const sliderStep = selectedChip ? Math.max(1, 1 / selectedChip.weight) : 1;
   const sliderRange = 20 * sliderStep;
+
+  const resetPuits = () => {
+    setPuits(0);
+    setAddedValue(0);
+    setSelectedChip(null);
+  };
 
   const updatePuits = () => {
     if (!selectedChip) return;
@@ -100,6 +107,9 @@ const MagingPage = ({ className }) => {
         <Button variant="contained" onClick={updatePuits}>
           Actualiser le puits
         </Button>
+        <IconButton color="primary" onClick={resetPuits}>
+          <Refresh />
+        </IconButton>
       </div>
     </>
   );
