@@ -6,6 +6,7 @@ import Filters from '../filters/Filters';
 import BackToTop from '../layout/BackToTop';
 import { WindowContext } from '../layout/WindowContext';
 import ItemList from './ItemList';
+import ReactGA from 'react-ga4';
 
 const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...props }) => {
   const [items, setItems] = useState(props.items);
@@ -39,6 +40,7 @@ const ItemsPage = ({ query = {}, title, availableCategories, itemHeight, ...prop
       setItems((currItems) => (shouldReset ? json.data : currItems.concat(json.data)));
       setItemCount(json.count);
       if (shouldReset) window.scrollTo(0, 0);
+      else ReactGA.event({ category: 'Items page', action: 'Fetch', label: 'Load more items' });
       setIsFetching(false);
     },
     [getQueryParams, isFetching]

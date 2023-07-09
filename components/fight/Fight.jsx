@@ -6,6 +6,7 @@ import Fighter from './Fighter';
 import FightNotifications from './FightNotifications';
 import FightSpells from './FightSpells';
 import MonsterChoice from './MonsterChoice';
+import ReactGA from 'react-ga4';
 
 const Fight = ({ monsters, character, ...props }) => {
   const [isFigthing, setIsFighting] = useState(false);
@@ -18,12 +19,15 @@ const Fight = ({ monsters, character, ...props }) => {
   const [notifications, setNotifications] = useState([]);
   const [monsterDialogOpen, setMonsterDialogOpen] = useState(false);
 
+  const GA_CATEGORY = 'Fight page';
+
   const updateSelectedEnemy = (selectedEnemy) => {
     fetch(`/api/monsters/${selectedEnemy.ankamaId}/spells`)
       .then((res) => res.json())
       .then((json) => {
         setEnemy(selectedEnemy);
         setEnemySpells(json.data);
+        ReactGA.event({ category: GA_CATEGORY, action: 'Enemy choice', label: selectedEnemy.name });
       });
   };
 

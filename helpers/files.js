@@ -1,17 +1,18 @@
 export const handleFileUpload = (e, importData) => {
   if (!e.target.files) {
-    return;
+    return false;
   }
   const file = e.target.files[0];
   const reader = new FileReader();
   reader.onload = (evt) => {
     if (!evt?.target?.result) {
-      return;
+      return false;
     }
     const { result } = evt.target;
     importData(JSON.parse(result));
   };
   reader.readAsText(file);
+  return true;
 };
 
 export const generateDownloadURL = (jsonData) => {

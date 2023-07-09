@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { DOFUS_CLASSES } from '../../helpers/constants';
 import { setLocalStorageCharacteristics } from '../../helpers/localstorage';
+import ReactGA from 'react-ga4';
 
 const ClassSelectionDialog = (props) => {
   const { onClose, selectedValue, open } = props;
@@ -13,6 +14,7 @@ const ClassSelectionDialog = (props) => {
 
   const handleClassClick = (value) => {
     onClose(value.toLowerCase());
+    ReactGA.event({ category: 'Stuff page', action: 'Character selection', label: value });
   };
 
   return (

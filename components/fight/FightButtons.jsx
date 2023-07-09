@@ -3,6 +3,9 @@ import { Button, MenuItem, Radio, Select, styled } from '@mui/material';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { generateDownloadURL, handleFileUpload } from '../../helpers/files';
+import ReactGA from 'react-ga4';
+
+const GA_CATEGORY = 'Fight page';
 
 const FightButtons = ({
   isFighting,
@@ -29,6 +32,7 @@ const FightButtons = ({
       doFileDownload.current.click();
       URL.revokeObjectURL(fileDownloadUrl);
       setFileDownloadUrl('');
+      ReactGA.event({ category: GA_CATEGORY, action: 'Export stats' });
     }
   }, [fileDownloadUrl]);
 
@@ -42,6 +46,12 @@ const FightButtons = ({
     castSpell(fightingEntities[1], fightingEntities[spell.target], spell);
   };
 
+  const handleImport = (e) => {
+    if (handleFileUpload(e, importData)) {
+      ReactGA.event({ category: GA_CATEGORY, action: 'Import stats' });
+    }
+  };
+
   const NotFighting = () => (
     <div className="fight-buttons">
       <Button onClick={startFight} variant="contained">
@@ -52,7 +62,7 @@ const FightButtons = ({
       </Button>
       <Button variant="contained" component="label" startIcon={<UploadFile />} sx={{ margin: '4px' }}>
         Importer données
-        <input type="file" accept=".json" hidden onChange={(e) => handleFileUpload(e, importData)} />
+        <input type="file" accept=".json" hidden onChange={(e) => handleImport(e)} />
       </Button>
       <Button onClick={exportData} variant="contained" startIcon={<FileDownload />}>
         Exporter données

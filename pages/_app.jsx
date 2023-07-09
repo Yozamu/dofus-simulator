@@ -2,7 +2,9 @@ import '../styles/globals.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Layout from '../components/layout/Layout';
 import { WindowContextProvider } from '../components/layout/WindowContext';
+import ReactGA from 'react-ga4';
 
+ReactGA.initialize('G-XD4EZYW9ER');
 const fontColor = '#b0de00'; // or 9ce900
 
 const theme = createTheme({

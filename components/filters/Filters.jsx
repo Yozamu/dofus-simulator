@@ -7,6 +7,7 @@ import NameFilter from './NameFilter';
 import StatisticsFilter from './StatisticsFilter';
 import Slide from '@mui/material/Slide';
 import { MOBILE_WIDTH_TRESHOLD } from '../../helpers/constants';
+import ReactGA from 'react-ga4';
 
 const Filters = ({ clientWidth, setFilters, availableCategories = [], initialFilters = {}, ...props }) => {
   const [name, setName] = useState(initialFilters.name || '');
@@ -15,6 +16,8 @@ const Filters = ({ clientWidth, setFilters, availableCategories = [], initialFil
   const [stats, setStats] = useState(initialFilters.stats || []);
   const [snackbarIsOpened, setSnackbarIsOpened] = useState(false);
   const hasMounted = useRef(false);
+
+  const registerGAEvent = (label) => ReactGA.event({ category: 'Items page', action: 'Filters', label: label });
 
   useEffect(() => {
     if (!setFilters) return;
@@ -26,15 +29,26 @@ const Filters = ({ clientWidth, setFilters, availableCategories = [], initialFil
       const filters = {
         level: levelRange,
       };
-      if (name) filters.name = name;
-      if (categories.length > 0) filters.categories = categories;
-      if (stats.length > 0) filters.stats = stats;
+
+      if (name) {
+        filters.name = name;
+        registerGAEvent('Filter by name');
+      }
+      if (categories.length > 0) {
+        filters.categories = categories;
+        registerGAEvent('Filter by item category');
+      }
+      if (stats.length > 0) {
+        filters.stats = stats;
+        registerGAEvent('Filter by stat');
+      }
       setFilters(filters);
     }, 500);
     return () => clearTimeout(timerId);
   }, [name, levelRange, categories, stats, setFilters]);
 
   const clearFilters = () => {
+    registerGAEvent('Clear filters');
     setName('');
     setLevelRange([1, 200]);
     setCategories([]);
