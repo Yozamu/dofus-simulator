@@ -1,34 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This application has been developed to support theorycrafting in [Dofus](https://www.dofus.com/fr), but is just a hobby project.
 
-## Getting Started
+## Why does it exist ?
 
-First, run the development server:
+At the start, there was no particular reason for this to exist. There are alternatives, [Dofusbook](https://www.dofusbook.net/fr/) being the most popular one. This application's first version only included character stuff, which is similar to what already exists; but as I worked towards new versions, I implemented features I haven't seen yet, and that could be useful to some people, hence why I decided to share the project.
+
+## Features
+
+- Select a character among the 19 available classes, and set your characteristics
+- Choose among items from the database to stuff your character
+- Check detailed stats computed from your characteristics and stuff
+- Browse items and filter them based on various criteria
+- 🔥 Simulate fights (one-sided) to test your damage output each turn (with real AP usage and buffs)
+- 🔥 Choose an enemy from the game to see how an actual battle would go damage-wise
+- 🔥 Use the maging tool to track remainder on your item as you work
+
+## What's left to do
+
+- Translate the application (currently French only)
+- Add spells for all classes (only Pandawa has been partially added for now)
+- Update Volkorne names & stats
+- Add monster spells to simulate two-sided battles
+- Update sets IDs
+
+## Limitations
+
+There are two main limitations to this project
+
+- I do not have an unlimited amount of time (nor of will) to work on the project on a daily basis
+- Data sources are sparse and I've had to retrieve everything from different sources, which involves a lot of boring work, which may not stay up to date with time.
+
+## Run the project
+
+You can directly use the [online version](https://dofus-simulator.vercel.app/stuff).
+If you'd rather run it locally you can clone the repository and, as usual, run the webapp locally with
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If it doesn't launch automatically, [open it manually in your browser](http://localhost:3000).
