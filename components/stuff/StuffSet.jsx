@@ -1,5 +1,4 @@
 import { styled, Typography } from '@mui/material';
-import Image from 'next/image';
 import Link from 'next/link';
 import { normalizeImageName } from '../../helpers/utils';
 
@@ -18,7 +17,7 @@ const StuffSet = ({ set, ...props }) => {
           const itemIsEquipped = item[2];
           return (
             <Link key={itemId} href={`/equipment?name=${itemName}`}>
-              <Image
+              <img
                 className={itemIsEquipped ? '' : 'not-equiped'}
                 key={itemId}
                 src={`/images/${category}/${itemId}.png`}
@@ -34,12 +33,7 @@ const StuffSet = ({ set, ...props }) => {
           {set.bonus.map((bonus) => (
             <div key={bonus[0]}>
               {bonus[1]}
-              <Image
-                src={`/images/ui/stats/${normalizeImageName(bonus[0])}.png`}
-                alt={bonus[0]}
-                width={24}
-                height={24}
-              />
+              <img src={`/images/ui/stats/${normalizeImageName(bonus[0])}.png`} alt={bonus[0]} width={24} height={24} />
             </div>
           ))}
         </div>

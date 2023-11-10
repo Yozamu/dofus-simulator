@@ -1,5 +1,4 @@
 import { Button, Dialog, DialogTitle, styled } from '@mui/material';
-import Image from 'next/image';
 import { useState } from 'react';
 import { DOFUS_CLASSES } from '../../helpers/constants';
 import { setLocalStorageCharacteristics } from '../../helpers/localstorage';
@@ -27,7 +26,7 @@ const ClassSelectionDialog = (props) => {
             key={classe}
             onClick={() => handleClassClick(classe)}
           >
-            <Image src={`/images/classes-icons/${classe.toLowerCase()}Icon.png`} alt={classe} width={64} height={64} />
+            <img src={`/images/classes-icons/${classe.toLowerCase()}Icon.png`} alt={classe} width={64} height={64} />
           </Button>
         ))}
       </div>
@@ -48,7 +47,7 @@ const StuffShowcaseCharacter = ({ characteristics, setCharacteristics, ...props 
 
   return (
     <div className={props.className}>
-      <Image
+      <img
         src={`/images/classes/${classe ?? 'pandawa'}.png`}
         alt="Character background"
         width={192}

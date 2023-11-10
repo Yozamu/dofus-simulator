@@ -1,5 +1,4 @@
 import { styled } from '@mui/material';
-import Image from 'next/image';
 import { normalizeImageName } from '../../helpers/utils';
 
 const ItemStats = ({ stats, className }) => {
@@ -26,7 +25,7 @@ const ItemStats = ({ stats, className }) => {
           statName = statName[0].toUpperCase() + statName.slice(1);
           return (
             <li key={index} className={val.min < 0 ? 'negative' : ''}>
-              <Image
+              <img
                 src={key.length < 30 ? `/images/ui/stats/${imageName}.png` : '/images/ui/stats/other.png'}
                 alt={key}
                 className="icon"

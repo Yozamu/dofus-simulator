@@ -110,7 +110,10 @@ const Fight = ({ monsters, character, ...props }) => {
 
   return (
     <div className={props.className}>
-      <i>Combattre permet de tester un stuff sur un ennemi, mais celui-ci ne rendra pas les coups</i>
+      <i>
+        Combattre permet de tester un stuff sur un ennemi, mais celui-ci ne rendra pas les coups automatiquement. En
+        revanche, l'Abrakleur Clair a ses attaques.
+      </i>
       <div className="fighters">
         <Fighter
           entity={fightingEntities[0]}

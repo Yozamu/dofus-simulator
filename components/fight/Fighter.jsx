@@ -14,10 +14,10 @@ const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
         sx={{ width: '200px', marginTop: '10px' }}
       />
       <div className="pa-pm-po">
-        <Image src="/images/ui/stats/vie.png" alt="Vie" width={32} height={32} /> {entity.vie}
-        <Image src="/images/ui/stats/pa.png" alt="PA" width={32} height={32} /> {entity.pa}
-        <Image src="/images/ui/stats/pm.png" alt="PM" width={32} height={32} /> {entity.pm}
-        <Image src="/images/ui/stats/portée.png" alt="PO" width={32} height={32} /> {entity['portée']}
+        <img src="/images/ui/stats/vie.png" alt="Vie" width={32} height={32} /> {entity.vie}
+        <img src="/images/ui/stats/pa.png" alt="PA" width={32} height={32} /> {entity.pa}
+        <img src="/images/ui/stats/pm.png" alt="PM" width={32} height={32} /> {entity.pm}
+        <img src="/images/ui/stats/portée.png" alt="PO" width={32} height={32} /> {entity['portée']}
       </div>
     </div>
   );
@@ -53,7 +53,7 @@ const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
           {resStats.map((stat, i) => (
             <li key={i}>
               <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center' }}>
-                <Image src={`/images/ui/stats/${normalizeImageName(stat)}.png`} alt={stat} width={24} height={24} />
+                <img src={`/images/ui/stats/${normalizeImageName(stat)}.png`} alt={stat} width={24} height={24} />
                 {entity[stat]} {getFormattedStatName(stat)}
               </Typography>
             </li>
@@ -78,7 +78,7 @@ const Fighter = ({ entity, isFighting, imagePath, scaleX = 1, ...props }) => {
       >
         <div style={{ position: 'relative' }}>
           <Image src={imagePath} alt={entity.name || 'fighter'} width={200} height={200} priority />
-          <Image
+          <img
             src="/images/ui/pedestal.png"
             alt={entity.name || 'fighter'}
             width={200}

@@ -1,5 +1,4 @@
 import { Button, styled, Tooltip, Typography } from '@mui/material';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { getFormattedStatName, getSpellActionTypeName } from '../../helpers/utils';
 
@@ -108,7 +107,7 @@ const FightSpells = ({ character, fightingEntities, castSpell, isFighting, turn,
         <hr />
       </Typography>
       <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center' }}>
-        Coût: {spell.cost} <Image src="/images/ui/stats/pa.png" alt="PA" width={32} height={32} />
+        Coût: {spell.cost} <img src="/images/ui/stats/pa.png" alt="PA" width={32} height={32} />
         {spell.crit ? `Critique: ${Math.round(spell.crit)}%` : ''}
       </Typography>
       <Typography variant="body1">
@@ -143,7 +142,7 @@ const FightSpells = ({ character, fightingEntities, castSpell, isFighting, turn,
                       handleSpellClick(spell);
                     }}
                   >
-                    <Image src={spell.icon} alt={spell.name} width={55} height={55} />
+                    <img src={spell.icon} alt={spell.name} width={55} height={55} />
                   </Button>
                   {spell.currentValues.cooldown > 0 && (
                     <Typography variant="h6" className="spell-cooldown">

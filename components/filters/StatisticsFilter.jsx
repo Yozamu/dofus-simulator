@@ -1,5 +1,4 @@
 import { styled, ToggleButton } from '@mui/material';
-import Image from 'next/image';
 import { MOBILE_WIDTH_TRESHOLD } from '../../helpers/constants';
 
 const availableStatistics = [
@@ -37,7 +36,7 @@ const StatisticsFilter = ({ stats = [], setStats, clientWidth, ...props }) => {
           onChange={(e) => handleStatToggle(stat.name)}
           value={stat.name}
         >
-          <Image src={`/images/ui/stats/${stat.icon}.png`} alt={stat} width={24} height={24} />
+          <img src={`/images/ui/stats/${stat.icon}.png`} alt={stat} width={24} height={24} />
           {clientWidth > MOBILE_WIDTH_TRESHOLD && stat.name}
         </ToggleButton>
       ))}

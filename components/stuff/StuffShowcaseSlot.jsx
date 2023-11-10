@@ -1,6 +1,5 @@
 import { Delete } from '@mui/icons-material';
 import { Button, styled, Tooltip } from '@mui/material';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { getItemSlotCategories, getTypeFilename } from '../../helpers/utils';
 import ItemContent from '../items/ItemContent';
@@ -28,7 +27,7 @@ const StuffShowcaseSlot = ({ type, index = 0, item, tooltip, deleteItem, ...prop
   return (
     <Tooltip enterDelay={250} placement={tooltip} title={item ? <TooltipContent /> : ''}>
       <Button className={props.className} onClick={browseItems}>
-        <Image src={imgPath} alt={`${type} background`} width={64} height={64} />
+        <img src={imgPath} alt={`${type} background`} width={64} height={64} />
       </Button>
     </Tooltip>
   );

@@ -1,6 +1,5 @@
 import { FileDownload, UploadFile } from '@mui/icons-material';
 import { Button, MenuItem, Radio, Select, styled } from '@mui/material';
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { generateDownloadURL, handleFileUpload } from '../../helpers/files';
 import ReactGA from 'react-ga4';
@@ -79,9 +78,9 @@ const FightButtons = ({
     };
 
     const damageTypes = [
-      { icon: <Image src="/images/ui/stats/dommagesmêlée.png" alt="melee" width={32} height={32} />, name: 'melee' },
+      { icon: <img src="/images/ui/stats/dommagesmêlée.png" alt="melee" width={32} height={32} />, name: 'melee' },
       {
-        icon: <Image src="/images/ui/stats/dommagesdistance.png" alt="distance" width={32} height={32} />,
+        icon: <img src="/images/ui/stats/dommagesdistance.png" alt="distance" width={32} height={32} />,
         name: 'distance',
       },
     ];
@@ -96,7 +95,7 @@ const FightButtons = ({
           ))}
         </Select>
         <Button onClick={() => castEnemySpell()} variant="contained">
-          <Image src="/images/ui/weapons.png" alt="Attaque ennemie" width={32} height={32} />
+          <img src="/images/ui/weapons.png" alt="Attaque ennemie" width={32} height={32} />
         </Button>
       </div>
     );

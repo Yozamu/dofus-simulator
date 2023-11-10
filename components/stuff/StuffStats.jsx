@@ -1,5 +1,4 @@
 import { Checkbox, styled, TextField, Typography } from '@mui/material';
-import Image from 'next/image';
 import { MAIN_STATS } from '../../helpers/constants';
 import { setLocalStorageCharacteristics } from '../../helpers/localstorage';
 import { normalizeImageName } from '../../helpers/utils';
@@ -70,7 +69,7 @@ const StuffStats = ({ characteristics, setCharacteristics, ...props }) => {
         <div className="fm-exo">
           {exos.map((exo) => (
             <div key={exo}>
-              <Image src={`/images/ui/stats/${exo}.png`} alt={`exo ${exo}`} width={32} height={32} />
+              <img src={`/images/ui/stats/${exo}.png`} alt={`exo ${exo}`} width={32} height={32} />
               <Checkbox
                 checked={characteristics[`exo${exo}`] > 0}
                 onChange={(e) => setExo(e.target.checked, `exo${exo}`)}
@@ -85,7 +84,7 @@ const StuffStats = ({ characteristics, setCharacteristics, ...props }) => {
             return (
               <div key={stat}>
                 <div>
-                  <Image
+                  <img
                     src={`/images/ui/stats/${normalizeImageName(stat)}.png`}
                     alt={stat}
                     className="icon"
@@ -103,7 +102,7 @@ const StuffStats = ({ characteristics, setCharacteristics, ...props }) => {
                   value={characteristics[statName] ?? 0}
                 />
                 <div className="stat-scroll">
-                  <Image src={`/images/ui/parchemins/${statName}Parchemin.png`} alt={stat} width={32} height={32} />
+                  <img src={`/images/ui/parchemins/${statName}Parchemin.png`} alt={stat} width={32} height={32} />
                   <Checkbox
                     checked={characteristics[`parcho${statName}`] > 0}
                     onChange={(e) => setParcho(e.target.checked, `parcho${statName}`)}

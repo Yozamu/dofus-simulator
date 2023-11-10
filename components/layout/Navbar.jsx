@@ -1,5 +1,4 @@
 import { AppBar, Box, Button, styled, Toolbar } from '@mui/material';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { MOBILE_WIDTH_TRESHOLD } from '../../helpers/constants';
@@ -24,7 +23,7 @@ const Navbar = ({ className, clientWidth }) => {
           {buttons.map((button) => (
             <Link key={button.link} href={button.link}>
               <Button sx={router?.route === button.link ? { backgroundColor: 'rgba(var(--main-rgb), 0.2)' } : {}}>
-                <Image src={`/images/ui/${button.icon}.png`} alt="menu icon" width={32} height={32} />
+                <img src={`/images/ui/${button.icon}.png`} alt="menu icon" width={32} height={32} />
                 {clientWidth > MOBILE_WIDTH_TRESHOLD && button.name}
               </Button>
             </Link>

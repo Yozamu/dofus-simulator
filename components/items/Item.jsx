@@ -1,5 +1,4 @@
 import { Card, CardActionArea, CardContent, CardMedia, Slide, Snackbar, styled } from '@mui/material';
-import Image from 'next/image';
 import { useState } from 'react';
 import { setLocalStorageStuffItem } from '../../helpers/localstorage';
 import ItemContent from './ItemContent';
@@ -18,7 +17,7 @@ const Item = (props) => {
     <Card className={className}>
       <CardActionArea onClick={updateStuff}>
         <CardMedia>
-          <Image
+          <img
             className="item-image"
             src={`/images/${category}/${item.ankamaId}.png`}
             alt={item.name}
