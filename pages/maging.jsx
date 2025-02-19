@@ -4,13 +4,6 @@ import Head from 'next/head';
 import { useState } from 'react';
 import CharacteristicChip from '../components/maging/CharacteristicChip';
 
-export async function getServerSideProps({ req }) {
-  // TODO remove temporary test
-  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'not detected';
-  console.info(`IP address : ${ip}`);
-  return { props: {} };
-}
-
 const MagingPage = ({ className }) => {
   const chips = [
     { label: 'Initiative', shortLabel: 'Ini', icon: 'initiative', weight: 0.1 },

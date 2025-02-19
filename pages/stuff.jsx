@@ -4,6 +4,13 @@ import Stuff from '../components/stuff/Stuff';
 import { MAIN_STATS } from '../helpers/constants';
 import { setLocalStorageCharacteristics } from '../helpers/localstorage';
 
+export async function getServerSideProps({ req }) {
+  // TODO remove temporary test
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'not detected';
+  console.info(`IP address : ${ip}`);
+  return { props: {} };
+}
+
 const StuffPage = () => {
   const [characteristics, setCharacteristics] = useState({});
   const [stuff, setStuff] = useState(null);
