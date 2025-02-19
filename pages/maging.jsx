@@ -1,8 +1,15 @@
+import { Refresh } from '@mui/icons-material';
 import { Button, IconButton, Slider, TextField, Typography, styled } from '@mui/material';
 import Head from 'next/head';
-import CharacteristicChip from '../components/maging/CharacteristicChip';
 import { useState } from 'react';
-import { Refresh, TramSharp } from '@mui/icons-material';
+import CharacteristicChip from '../components/maging/CharacteristicChip';
+
+export async function getServerSideProps({ req }) {
+  // TODO remove temporary test
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'not detected';
+  console.info(`IP address : ${ip}`);
+  return { props: {} };
+}
 
 const MagingPage = ({ className }) => {
   const chips = [
